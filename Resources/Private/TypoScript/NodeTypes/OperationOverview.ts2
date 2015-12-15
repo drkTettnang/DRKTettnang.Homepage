@@ -1,0 +1,4 @@
+prototype(DRKTettnang.Homepage:OperationOverview) < prototype(TYPO3.Neos.NodeTypes:Menu) {
+   
+   filter = 'DRKTettnang.Homepage:Operation'
+}

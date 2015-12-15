@@ -1,0 +1,21 @@
+'TYPO3.Neos.NodeTypes:Image':
+   properties:
+      width:
+         type: string
+         validation:
+            'TYPO3.Neos/Validation/RegularExpressionValidator':
+               regularExpression: '/^[0-9]+(px|%)$/'
+         ui:
+            reloadPageIfChanged: true
+            label: 'Größe'
+            inspector:
+               group: 'image'
+               editorOptions:
+                  placeholder: 'Breite in px oder %'
+      thumbnail:
+         type: boolean
+         ui:
+            label: 'Vorschaubild (deaktiviert Link)'
+            inspector:
+               group: 'image'
+               position: 310

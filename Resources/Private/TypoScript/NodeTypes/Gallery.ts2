@@ -1,0 +1,6 @@
+
+prototype(DRKTettnang.Homepage:Gallery) < prototype(TYPO3.Neos:Content) {
+   images = ${q(node).property('images')}
+   width = ${q(node).property('width') * 105}
+   alignment = ${q(node).property('alignment')}
+}

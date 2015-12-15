@@ -1,0 +1,27 @@
+<f:layout name="EmailLayout" />
+
+<f:section name="subject">
+  [SAN-Dienst] Neue Anfrage für den {data.eventDate -> f:format.date(format: 'j. M Y')}
+</f:section>
+
+<f:section name="body">
+   <div class="col-sm-8">
+      <p>Hey hey,</p>
+
+      <p>Es gibt mal wieder eine Sanitätsdienstanfrage mit den untenstehenden Informationen.</p>
+      
+      <f:render partial="BookingFormStep2Content" arguments="{data: data}" />
+   </div>
+   
+   <div class="col-sm-4 sidebar">
+      <img src="{f:uri.resource(path: 'Images/DRK_Logo2.svg', package: 'DRKTettnang.Homepage')}" alt="DRK Logo" />
+      
+      <div>
+         <h3>Kontakt</h3>
+         
+            <p><b>Deutsches Rotes Kreuz<br/>Ortsverein Tettnang ev.</b>
+               <br/>Loretostr. 12
+               <br/>123456 Tettnang</p>
+      </div>
+   </div>
+</f:section>

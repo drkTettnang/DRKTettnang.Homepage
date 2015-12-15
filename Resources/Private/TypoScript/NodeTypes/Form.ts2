@@ -1,0 +1,7 @@
+prototype(DRKTettnang.Homepage:Form) < prototype(TYPO3.Neos:Plugin) {
+      package = 'DRKTettnang.Homepage'
+      controller = 'Form'
+      action = 'step1'
+      
+      form = ${q(node).property('form')}
+}

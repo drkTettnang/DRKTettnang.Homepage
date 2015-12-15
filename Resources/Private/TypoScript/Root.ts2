@@ -1,0 +1,132 @@
+//include: resource://RobertLemke.Plugin.Blog/Private/TypoScripts/Library/NodeTypes.ts2
+
+include: NodeTypes/*
+
+root.operation {
+   condition = ${q(node).is('[instanceof DRKTettnang.Homepage:Operation]')}
+   renderPath = '/operation'
+}
+
+page = Page {
+   httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' www.kurs-anmeldung.de www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
+   httpResponseHead.headers.Content-Security-Policy.@if.1 = ${node.context.workspaceName == 'live'}
+   
+   head {
+		stylesheets.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
+			sectionName = 'stylesheets'
+         
+         backgroundImage = ${q(node).property('backgroundImage') != null && q(node).property('backgroundImage') != '' ? q(node).property('backgroundImage') : q(node).parents('[backgroundImage!=""][backgroundImage]').first().property('backgroundImage')}
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
+			sectionName = 'headScripts'
+		}
+      
+      metadata = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
+			sectionName = 'metadata'
+		}
+	}
+
+	body {
+		templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
+		sectionName = 'body'
+      
+      brand = ${Configuration.setting('DRKTettnang.Homepage.brand')}
+      
+      hasSecondMenu = ${q(node).siblings('[instanceof TYPO3.Neos.NodeTypes:Page]') && q(node).parents('[instanceof TYPO3.Neos.NodeTypes:Page]')}
+      
+      isDistributor = ${q(node).children('[instanceof TYPO3.Neos.NodeTypes:Page]')}
+      
+		parts {
+			menu = Menu {
+            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/Menu.html'
+            
+            entryLevel = 1
+            maximumLevels = 2
+            
+            attributes {
+               class = 'nav navbar-nav'
+            }
+            active.sub.attributes = TYPO3.TypoScript:Attributes {
+                   class = 'dropdown active'
+           }
+            current.sub.attributes = TYPO3.TypoScript:Attributes {
+                class = 'dropdown current'
+            }
+            normal.sub.attributes = TYPO3.TypoScript:Attributes {
+                 class = ' dropdown normal'
+            }
+         }
+			
+         secondMenu = Menu {
+            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/SecondMenu.html'
+            entryLevel = 2
+            maximumLevels = 2
+         }
+         
+         thirdMenu = Menu {
+            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/ThirdMenu.html'
+            entryLevel = 3
+            maximumLevels = 0
+            attributes {
+               class = 'dropdown-menu dropdown-menu-right'
+            }
+            parentTitle = ${q(node).parents().count()==3 ? q(node).parent().property('title') : q(node).property('title')}
+            level = ${q(node).parents().count()}
+         }
+         
+         footerMenu = Menu {
+            entryLevel = 2
+            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/FooterMenu.html'
+            maximumLevels = 1
+            startingPoint = ${q(site).children('[title="Footer"]').last().get(0)}
+         }
+		}
+
+		content {
+			main = PrimaryContent {
+				nodePath = 'main'
+			}
+         sidebar = ContentCollection {
+            nodePath = 'sidebar'
+         }
+         commonSidebar = TYPO3.TypoScript:Collection {
+                collection = ${q(site).children('[title="Sidebar"]').first().find('[instanceof DRKTettnang.Homepage:SideBox]')}
+                itemRenderer = TYPO3.Neos:ContentCase
+                itemName = 'node'
+         }
+         header = ContentCollection {
+            nodePath = 'header'
+         }
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
+			sectionName = 'bodyScripts'
+		}
+	}
+}
+
+default < page
+
+operation < page
+operation.body.content {
+   main =  TYPO3.TypoScript:Template {
+      templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
+      
+      operation {
+         type = ${q(node).property('type')}
+         description = ${q(node).property('description')}
+         location = ${q(node).property('location')}
+         date = ${q(node).property('date')}
+         image = ${q(node).property('image')}
+         assets = ${q(node).property('assets')}
+         bos = ${q(node).property('bos')}
+      }
+   }
+   sidebar = ''
+   header = ''
+}

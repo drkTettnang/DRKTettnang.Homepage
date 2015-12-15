@@ -1,0 +1,47 @@
+'DRKTettnang.Homepage:Gallery':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      icon: 'icon-folder-open'
+      group: 'general'
+      label: 'Galerie'
+      inspector:
+         groups:
+            gallery:
+               label: 'Galerie'
+               position: 0
+   properties:
+      images:
+         type: 'array<TYPO3\Media\Domain\Model\Asset>'
+         ui:
+            label: 'Bilder'
+            reloadPageIfChanged: true
+            inspector:
+               group: 'gallery'
+               position: 100
+      width:
+         type: integer
+         defaultValue: 0
+         ui:
+            reloadPageIfChanged: true
+            label: 'Anzahl Spalten'
+            inspector:
+               group: 'gallery'
+               editorOptions:
+                  placeholder: '0 = volle Breite'
+      alignment:
+         type: 'string'
+         ui:
+            label: 'Ausrichtung'
+            reloadIfChanged: TRUE
+            inspector:
+               group: 'gallery'
+               position: 300
+               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+               editorOptions:
+                  multiple: false
+                  allowEmpty: true
+                  values:
+                     left:
+                        label: 'Links'
+                     right:
+                        label: 'Rechts'

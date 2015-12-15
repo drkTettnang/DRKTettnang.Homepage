@@ -1,0 +1,6 @@
+'DRKTettnang.Homepage:LastOperationReferences':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      group: 'general'
+      label: 'Letzter Einsatz'
+      icon: 'icon-bell'

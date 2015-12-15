@@ -1,0 +1,36 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+{namespace drk=DRKTettnang\Homepage\ViewHelpers}
+<div class="fb-post">
+   <div class="fb-body"> 
+      <p>{message -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
+
+      <f:if condition="{images}">
+         <div class="images gallery img-{f:count(subject: images)}">
+            <f:for each="{images}" as="image">
+               <a href="{f:uri.resource(resource:image.resource)}" data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
+            </f:for>
+         </div>
+      </f:if>
+   </div>
+
+   <div class="fb-meta">
+      <f:if condition="{likes}">
+         <f:if condition="{likes_count} > 0">
+            <p>{likes_first_concat}
+               <f:if condition="{likes_more_count} > 0">
+                  und  <span title="{likes_more_concat}" data-toggle="tooltip" data-placement="top">{likes_more_count} weiteren Personen</span>
+               </f:if>
+               gefällt das.
+            </p>
+         </f:if>
+      </f:if>
+
+      <f:if condition="{actions}">
+         <f:for each="{actions}" as="action" iteration="iterator">
+            <a class="{action.name}" href="{action.link}" target="_blank">{action.label}</a>
+         </f:for>
+      </f:if>
+
+      <!-- <p>{created_time -> f:format.date(format: 'j. M Y, H:i')}</p> -->
+   </div>
+</div>

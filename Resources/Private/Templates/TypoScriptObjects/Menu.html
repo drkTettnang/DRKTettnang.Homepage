@@ -1,0 +1,50 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+<ul{attributes -> f:format.raw()}>
+        <f:render section="itemsList" arguments="{items: items}" />
+</ul>
+
+<f:section name="itemsList">
+        <f:for each="{items}" as="item">
+                
+                <f:if condition="{item.subItems}">
+                  <f:then>
+                     <!-- TODO: add dropdown class -->
+                     <li {ts:render(path: '{item.state}.sub.attributes', context: {item: item}) -> f:format.raw()}>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{item.node.label} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                                <f:render section="itemsList" arguments="{items: item.subItems}" />
+                        </ul>
+                     </li>
+                  </f:then>
+                  <f:else>
+                     <li{ts:render(path: '{item.state}.attributes', context: {item: item}) -> f:format.raw()}>
+                        <neos:link.node node="{item.node}" />
+                     </li>
+                  </f:else>
+                </f:if>
+        </f:for>
+</f:section>
+
+<!--<ul class="nav navbar-nav">
+   <f:for each="{items}" as="item">
+      <li>
+         <neos:link.node node="{item.node}" />
+      </li>
+   </f:for> 
+</ul> -->
+
+<!-- <li class="active"><a href="#">Aktuelles <span class="sr-only">(current)</span></a></li>
+<li><a href="#">Unser Ortsverein</a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leistungen <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+     <li><a href="#">Kurse im Überblick</a></li>
+     <li><a href="#">Sanitätsdienste</a></li>
+     <li><a href="#">Blutspendedienst</a></li>
+     <li><a href="#">Hausnotruf</a></li>
+     <li><a href="#">Kleiderkammer</a></li>
+     <li><a href="#">Tafelladen</a></li>
+  </ul>
+</li>
+<li><a href="#">Aktiv werden</a></li> -->

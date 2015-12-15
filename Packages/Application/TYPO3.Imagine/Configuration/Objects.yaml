@@ -1,0 +1,2 @@
+Imagine\Image\ImagineInterface:
+  factoryObjectName: TYPO3\Imagine\ImagineFactory

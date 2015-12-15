@@ -1,0 +1,146 @@
+<form class="form-horizontal" method="post" action="{f:uri.action(action: 'step2')}">
+   <div class="row">
+      <h1 class="col-sm-4">Veranstalter</h1>
+   </div>
+
+   <div class="form-group cache">
+      <label for="input1" class="col-sm-4 control-label">Name</label>
+      <div class="col-sm-8">
+         <input type="text" name="organizerName" value="{data.organizerName}" data-toggle="tooltip" title="Test" required class="form-control" id="input1" placeholder="Verein, Firma, ...">
+      </div>
+   </div>
+
+   <div class="form-group cache">
+      <label for="input2" class="col-sm-4 col-xs-12 control-label">Anschrift</label>
+      <div class="col-sm-5 col-xs-9">
+         <input type="text" name="organizerStreet" value="{data.organizerStreet}" required class="form-control" id="input2" placeholder="Straße">
+      </div>
+      <div class="col-sm-3 col-xs-3">
+         <input type="text" name="organizerNumber" value="{data.organizerNumber}" required class="form-control" placeholder="Nummer">
+      </div>
+   </div>
+
+   <div class="form-group cache">
+      <label for="input3" class="col-sm-4 col-xs-12 control-label">Ort</label>
+      <div class="col-sm-3 col-xs-4">
+         <input type="text" name="organizerZip" value="{data.organizerZip}" maxlength="5" pattern="[0-9][0-9][0-9][0-9][0-9]" required class="form-control" id="input3" placeholder="PLZ">
+      </div>
+      <div class="col-sm-5 col-xs-8">
+         <input type="text" name="organizerPlace" value="{data.organizerPlace}" required class="form-control" placeholder="Ort">
+      </div>
+   </div>
+
+   <div class="form-group cache">
+      <label for="input4" class="col-sm-4 control-label">Telefon</label>
+      <div class="col-sm-8">
+         <input type="tel" name="organizerPhone" value="{data.organizerPhone}" required class="form-control" id="input4" placeholder="Telefonnummer">
+      </div>
+   </div>
+
+   <div class="form-group cache">
+      <label for="input5" class="col-sm-4 control-label">E-Mail</label>
+      <div class="col-sm-8">
+         <input type="email" name="organizerMail" value="" required class="form-control" id="input5" placeholder="E-Mail">
+      </div>
+   </div>
+
+   <div class="row">
+      <h1 class="col-sm-4">Veranstaltung</h1>
+   </div>
+
+   <div class="form-group">
+      <label for="input6" class="col-sm-4 control-label">Titel / Anlass</label>
+      <div class="col-sm-8">
+         <input type="text" name="eventTitle" value="{data.eventTitle}" required class="form-control" id="input6" placeholder="Bezeichnung der Veranstaltung">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input7" class="col-sm-4 control-label">Datum</label>
+      <div class="col-sm-8 date">
+         <input type="text" name="eventDate" value="{data.eventDate}" pattern="([0-2][0-9]|3[0-1]).(0[0-9]|1[0-2]).20[1-9][0-9]" required class="form-control" id="input7" placeholder="Veranstaltungsdatum">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input8" class="col-sm-4 control-label">Veranstaltungsort</label>
+      <div class="col-sm-8">
+         <input type="text" name="eventPlace" value="{data.eventPlace}" required class="form-control" id="input8" placeholder="Ort der Veranstaltung">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input9" class="col-sm-4 control-label">Beschreibung</label>
+      <div class="col-sm-8">
+         <input type="text" name="eventDescription" value="{data.eventDescription}" required class="form-control" id="input9" placeholder="Veranstaltungsbeschreibung (Konzert, ...)">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input10" class="col-sm-4 control-label">Besucheranzahl</label>
+      <div class="col-sm-8">
+         <input type="number" name="eventVisitors" value="{data.eventVisitors}" required class="form-control" id="input10" placeholder="Erwartete Anzahl">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input11" class="col-sm-4 control-label">(Prominente?)</label>
+      <div class="col-sm-8">
+         <input type="text" name="eventVIP" value="{data.eventVIP}" class="form-control" id="input11" placeholder="Erwartete">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input12" class="col-sm-4 col-xs-12 control-label">Veranstaltungszeitraum</label>
+      <div class="col-sm-4 col-xs-6 time">
+         <input type="text" name="eventStart" value="{data.eventStart}" pattern="[0-9][0-9]:[0-9][0-9]" required class="form-control" id="input12" placeholder="Beginn">
+      </div>
+      <div class="col-sm-4 col-xs-6 time">
+         <input type="text" name="eventEnd" value="{data.eventEnd}" pattern="[0-9][0-9]:[0-9][0-9]" required class="form-control" placeholder="Ende">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input13" class="col-xs-12 col-sm-4 control-label">Sanitätsdienstzeiten</label>
+      <div class="col-sm-4 col-xs-6 time">
+         <input type="text" name="sanStart" value="{data.sanStart}" pattern="[0-9][0-9]:[0-9][0-9]" required class="form-control" id="input13" placeholder="Beginn">
+      </div>
+      <div class="col-sm-4 col-xs-6 time">
+         <input type="text" name="sanEnd" value="{data.sanEnd}" pattern="[0-9][0-9]:[0-9][0-9]" required class="form-control" placeholder="Ende">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input14" class="col-sm-4 control-label">Ansprechpartner</label>
+      <div class="col-sm-8">
+         <input type="text" name="eventCounterpart" value="{data.eventCounterpart}" required class="form-control" id="input14" placeholder="Vor Ort">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="input15" class="col-sm-4 col-xs-12 control-label">Kontrollcode</label>
+      <div class="col-xs-6 col-sm-4">
+         <img src="{data.captcha}" alt="captcha" />
+      </div>
+      <div class="col-xs-6 col-sm-4">
+         <input type="text" name="captcha" required class="no-validation form-control" id="input15">
+      </div>
+   </div>
+
+   <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+         <div class="checkbox">
+            <label>
+               <input type="checkbox" name="agreement" value="true" required> Ich habe verstanden, dass eine Anforderung keine Buchung darstellt. Besonders bei kurzfristigen Anfragen können wir eine Abdeckung durch unsere ehrenamtlichen Helfer nicht garantieren.
+            </label>
+         </div>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+         <button type="button" data-reset-text="Zurücksetzen..." class="reset btn btn-default" style="display:none;">Zurücksetzen</button>
+         <button type="reset" class="btn btn-default" data-value="Sicher?">Zurücksetzen</button>
+         <button type="submit" class="btn btn-primary">Anforderung erstellen</button>
+      </div>
+   </div>
+</form>

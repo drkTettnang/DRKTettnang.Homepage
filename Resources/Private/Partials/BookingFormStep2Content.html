@@ -1,0 +1,66 @@
+<table>
+   <tr>
+      <td><h1>Veranstalter</h1></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><strong>Name</strong></td>
+      <td>{data.organizerName}</td>
+   </tr>
+   <tr>
+      <td><strong>Anschrift</strong></td>
+      <td>{data.organizerStreet} {data.organizerNumber}<br />
+         {data.organizerZip} {data.organizerPlace}</td>
+   </tr>
+   <tr>
+      <td><strong>Telefon</strong></td>
+      <td>{data.organizerPhone}</td>
+   </tr>
+   <tr>
+      <td><strong>E-Mail</strong></td>
+      <td>{data.organizerMail}</td>
+   </tr>
+</table>
+
+<table>
+   <tr>
+      <td><h1>Veranstaltung</h1></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><strong>Titel / Anlass</strong></td>
+      <td>{data.eventTitle}</td>
+   </tr>
+   <tr>
+      <td><strong>Datum</strong></td>
+      <td>{data.eventDate -> f:format.date(format: 'j. M Y')}</td>
+   </tr>
+   <tr>
+      <td><strong>Ort</strong></td>
+      <td>{data.eventPlace}</td>
+   </tr>
+   <tr>
+      <td><strong>Beschreibung</strong></td>
+      <td>{data.eventDescription}</td>
+   </tr>
+   <tr>
+      <td><strong>Besucheranzahl</strong></td>
+      <td>{data.eventVisitors}</td>
+   </tr>
+   <tr>
+      <td><strong>Prominente</strong></td>
+      <td>{data.eventVIP}</td>
+   </tr>
+   <tr>
+      <td><strong>Zeitraum</strong></td>
+      <td>{data.eventStart -> f:format.date(format: 'H:i')} - {data.eventEnd -> f:format.date(format: 'H:i')}</td>
+   </tr>
+   <tr>
+      <td><strong>Sanitätsdienst</strong></td>
+      <td>{data.sanStart -> f:format.date(format: 'H:i')} - {data.sanEnd -> f:format.date(format: 'H:i')}</td>
+   </tr>
+   <tr>
+      <td><strong>Ansprechpartner</strong></td>
+      <td>{data.eventCounterpart}</td>
+   </tr>
+</table>

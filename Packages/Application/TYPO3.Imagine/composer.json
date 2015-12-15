@@ -1,0 +1,15 @@
+{
+    "name": "typo3/imagine",
+    "type": "typo3-flow-package",
+    "description": "Provides a Flow factory for the imagine library",
+    "license": "GPL-3.0+",
+    "require": {
+        "typo3/flow": "~3.0",
+        "imagine/Imagine": "0.6.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "TYPO3\\Imagine": "Classes"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+prototype(TYPO3.Neos.NodeTypes:Image) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Image.html'
+   
+   imageUrl = TYPO3.Neos:ImageUri {
+     asset = ${q(node).property('image')}
+     // @if.image = ${q(node).property('backgroundImage')||q(node).parents().property('backgroundImage')}
+   }
+   
+   width = ${q(node).property('width') || 'auto'}
+   
+   maximumWidth = 877
+}

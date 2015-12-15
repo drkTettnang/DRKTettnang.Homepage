@@ -1,0 +1,18 @@
+[submodule "Resources/Private/Vendor/bootstrap"]
+	path = Resources/Private/Vendor/bootstrap
+	url = https://github.com/twbs/bootstrap
+[submodule "Resources/Private/Vendor/Magnific-Popup"]
+	path = Resources/Private/Vendor/Magnific-Popup
+	url = https://github.com/dimsemenov/Magnific-Popup
+[submodule "Resources/Private/Vendor/Font-Awesome"]
+	path = Resources/Private/Vendor/Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome
+[submodule "Resources/Private/Vendor/Clockpicker"]
+	path = Resources/Private/Vendor/Clockpicker
+	url = https://github.com/weareoutman/clockpicker
+[submodule "Resources/Private/Vendor/Datepicker"]
+	path = Resources/Private/Vendor/Datepicker
+	url = https://github.com/eternicode/bootstrap-datepicker
+[submodule "Resources/Private/Vendor/CSS3-animate-it"]
+	path = Resources/Private/Vendor/CSS3-animate-it
+	url = https://github.com/Jack-McCourt/css3-animate-it

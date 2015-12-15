@@ -1,0 +1,16 @@
+privilegeTargets:
+  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'DRKTettnang.Homepage:FacebookPost':
+      matcher: 'method(DRKTettnang\Homepage\Controller\FacebookController->(index)Action())'
+    'DRKTettnang.Homepage:Form':
+      matcher: 'method(DRKTettnang\Homepage\Controller\FormController->(step1|step2)Action())'
+      
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'DRKTettnang.Homepage:FacebookPost'
+        permission: GRANT
+      -
+        privilegeTarget: 'DRKTettnang.Homepage:Form'
+        permission: GRANT

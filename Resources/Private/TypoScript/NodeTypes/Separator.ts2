@@ -1,0 +1,3 @@
+prototype(DRKTettnang.Homepage:Separator) < prototype(TYPO3.Neos:Content) {
+
+}

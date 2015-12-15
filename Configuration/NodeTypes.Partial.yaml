@@ -1,0 +1,23 @@
+'DRKTettnang.Homepage:Partial':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      group: 'general'
+      label: 'Partial'
+      icon: 'icon-puzzle-piece'
+      inspector:
+         groups:
+            partial:
+               label: 'Partial'
+               position: 0
+   properties:
+      partial:
+         type: string
+         ui:
+            reloadPageIfChanged: true
+            label: 'Name'
+            inspector:
+               group: 'partial'
+               position: 100
+               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+               editorOptions:
+                  dataSourceIdentifier: 'drktettnang-homepage-partials'

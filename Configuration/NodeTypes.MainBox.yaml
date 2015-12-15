@@ -1,0 +1,56 @@
+'DRKTettnang.Homepage:MainBox':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      group: 'general'
+      label: 'Artikel'
+      inlineEditable: true
+      icon: 'icon-file-text'
+      inspector:
+         groups:
+            layout:
+               label: 'Layout'
+               position: 10
+   properties:
+      style:
+         type: string
+         defaultValue: normal
+         ui:
+            reloadPageIfChanged: true
+            label: 'Style'
+            inspector:
+               group: 'layout'
+               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+               editorOptions:
+                  multiple: false
+                  allowEmpty: false
+                  values:
+                     normal:
+                        label: 'Normal'
+                     highlight:
+                        label: 'Highlight'
+                     facebook:
+                        label: 'Facebook'
+      headline:
+         type: string
+         defaultValue: 'Überschrift'
+         ui:
+            inlineEditable: true
+            label: 'Überschrift'
+            aloha:
+               'format':
+                  '*': false
+                  'h2': true
+               'table': []
+               'link': []
+               'list': []
+               'alignment': []
+               'formatlesspaste': []
+   childNodes:
+      content:
+         type: 'TYPO3.Neos:ContentCollection'
+         constraints:
+            nodeTypes:
+               'Flowpack.Neos.FrontendLogin:LoginForm': false
+               'TYPO3.Neos:PluginView': false
+               'TYPO3.Neos.NodeTypes:TextWithImage': false
+               'DRKTettnang.Homepage:SideBox': false

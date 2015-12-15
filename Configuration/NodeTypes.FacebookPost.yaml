@@ -1,0 +1,7 @@
+'DRKTettnang.Homepage:FacebookPost':
+  superTypes:
+    'TYPO3.Neos:Plugin': TRUE
+  ui:
+    label: 'Facebook Post'
+    group: 'plugins'
+    icon: 'icon-facebook-sign'

@@ -1,0 +1,6 @@
+'DRKTettnang.Homepage:Separator':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      group: 'general'
+      label: 'Separator'
+      icon: 'icon-minus'

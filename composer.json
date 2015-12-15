@@ -1,0 +1,22 @@
+{
+    "name": "drktettnang/homepage",
+    "type": "typo3-flow-site",
+    "description": "Flow site for drk sub-organisations",
+    "require": {
+        "typo3/neos": "*",
+        "typo3/neos-nodetypes": "*",
+        "weissheiten/neos-bootstrap": "dev-master"
+    },
+    "suggest": {
+        "typo3/neos-seo": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "DRKTettnang\\Homepage": "Classes"
+        }
+    },
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap.git"
+    }]
+}

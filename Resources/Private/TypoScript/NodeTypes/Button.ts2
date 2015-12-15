@@ -1,0 +1,7 @@
+prototype(Weissheiten.Neos.Bootstrap:Button) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Button.html'
+   sectionName = 'buttonSection'
+   
+   href = ${q(node).property('href') || '#'}
+   href.@process.convertUris = ConvertUris
+}

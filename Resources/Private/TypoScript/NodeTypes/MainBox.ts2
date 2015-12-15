@@ -1,0 +1,9 @@
+prototype(DRKTettnang.Homepage:MainBox) {
+   //headlineRenderer = TYPO3.Neos.NodeTypes:Headline
+   contentRenderer = TYPO3.Neos:ContentCollection
+   
+   headline = ${q(node).property('headline')}
+   text = ${q(node).property('text')}
+   content = ${q(node).children('content').get(0)}
+   class = ${q(node).property('style')}
+}

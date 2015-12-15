@@ -1,0 +1,2 @@
+prototype(DRKTettnang.Homepage:Operation) < prototype(TYPO3.Neos:Document) {
+}

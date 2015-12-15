@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^fb/([a-zA-Z0-9]+==)$ FacebookImageProxy.php?img=$1 [L]

@@ -1,0 +1,25 @@
+'DRKTettnang.Homepage:Form':
+  superTypes:
+    'TYPO3.Neos:Plugin': TRUE
+  ui:
+    label: 'Formular'
+    group: 'plugins'
+    icon: 'icon-comment'
+    inspector:
+      groups:
+          form:
+             label: 'Formular'
+             position: 0
+  properties:
+    form:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: 'Formular'
+        inspector:
+          group: 'form'
+          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: false
+            dataSourceIdentifier: 'drktettnang-homepage-operation-forms'
+              

@@ -1,0 +1,111 @@
+---
+'TYPO3.Neos.NodeTypes:Page':
+   ui:
+      inspector:
+         groups:
+            background:
+               label: 'Hintergrund'
+               position: 200
+   properties:
+      twitterCardType: []
+      twitterCardCreator: []
+      twitterCardTitle: []
+      twitterCardDescription: []
+      twitterCardImage: []
+      openGraphType: []
+      openGraphTitle: []
+      openGraphDescription: []
+      openGraphImage: []
+      xmlSitemapChangeFrequency: []
+      xmlSitemapPriority: []
+      backgroundImage:
+         type: 'TYPO3\Media\Domain\Model\ImageInterface'
+         ui:
+            label: 'Bild'
+            reloadPageIfChanged: true
+            inspector:
+               group: 'background'
+               editorOptions:
+                  crop: true
+                  resize: true
+   childNodes:
+      'sidebar':
+         type: 'TYPO3.Neos:ContentCollection'
+         constraints:
+            nodeTypes:
+               '*': false
+               'DRKTettnang.Homepage:SideBox': true
+               'TYPO3.Neos.NodeTypes:ContentReferences': true
+      'header':
+         type: 'TYPO3.Neos:ContentCollection'
+         constraints:
+            nodeTypes:            
+               '*': false
+               'TYPO3.Neos.NodeTypes:Headline': true
+               'TYPO3.Neos.NodeTypes:Text': true
+               'DRKTettnang.Homepage:Separator': true
+               'Weissheiten.Neos.Bootstrap:Button': true
+      'main':
+         constraints:
+            nodeTypes:            
+               '*': false
+               'DRKTettnang.Homepage:MainBox': true
+               'TYPO3.Neos.NodeTypes:Column': true
+               'TYPO3.Neos.NodeTypes:ContentReferences': true
+               'DRKTettnang.Homepage:OperationOverview': true
+               'DRKTettnang.Homepage:LastOperationReferences': true
+
+'TYPO3.Neos:Shortcut':
+   ui:
+      inspector:
+         groups:
+            background:
+               label: 'Hintergrund'
+               position: 200
+   properties:
+      backgroundImage:
+         type: 'TYPO3\Media\Domain\Model\ImageInterface'
+         ui:
+            label: 'Bild'
+            reloadPageIfChanged: true
+            inspector:
+               group: 'background'
+               editorOptions:
+                  crop: true
+                  resize: true
+         
+'Weissheiten.Neos.Bootstrap:Button':
+   ui:
+      group: 'general'
+   properties:
+      href:
+         type: string
+         ui:
+            label: 'Zieladresse'
+            inspector:
+               group: 'layout'
+               editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+               editorOptions:
+                  assets: FALSE
+
+'Weissheiten.Neos.Bootstrap:YouTube':
+   ui:
+      group: 'general'
+
+'Weissheiten.Neos.Bootstrap:Jumbotron':
+   ui:
+      group: 'general'
+
+'Weissheiten.Neos.Bootstrap:PanelGroup': []
+'Weissheiten.Neos.Bootstrap:Panel': []
+'Weissheiten.Neos.Bootstrap:MediaList': []
+'Weissheiten.Neos.Bootstrap:Media': []
+'Weissheiten.Neos.Bootstrap:ResponsiveImage': []
+'Weissheiten.Neos.Bootstrap:NavTab': []
+'Weissheiten.Neos.Bootstrap:NavTabPanel': []
+'Weissheiten.Neos.Bootstrap:Carousel': []
+'Flowpack.Neos.FrontendLogin:LoginForm': []
+'TYPO3.Neos.NodeTypes:TextWithImage': []
+#'TYPO3.Neos.NodeTypes:Html': []
+'TYPO3.Neos.NodeTypes:Form': []
+'TYPO3.Neos:PluginView': []

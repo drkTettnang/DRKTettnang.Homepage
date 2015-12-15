@@ -1,0 +1,8 @@
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="row">
+   <article class="col-xs-12 {class}">
+      {neos:contentElement.editable(property: 'headline', tag: 'h1')}
+      <ts:render path="contentRenderer" context="{node: content}" />
+   </article>
+</div>

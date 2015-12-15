@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace media=TYPO3\Media\ViewHelpers}
+{namespace drk=DRKTettnang\Homepage\ViewHelpers}
+<div class="operation animatedParent animateOnce">
+	<h1 class="type">
+		<span class="number animated growIn">
+			#<drk:sub x="{total}" y="{index}" />
+		</span>
+		
+		<drk:operationType key="{operation.type}" />
+	</h1>
+
+	<div class="body">
+		<p class="description">
+			{operation.description -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}
+		</p>
+	</div>
+
+	<div class="footer">
+		<div class="location">
+			<span class="fa fa-map-marker"></span> {operation.location -> f:format.htmlspecialchars()}
+		</div>
+
+		<div class="date">
+			<span class="fa fa-calendar"></span> {operation.date -> f:format.date(cldrFormat: 'd. MMM, H:mm', forceLocale:'de_DE')}
+		</div>
+		
+		<div style="clear:both"></div>
+		
+		<f:if condition="{operation.assets}">
+			<div class="images">
+				<f:for each="{operation.assets}" as="asset" iteration="iterator">
+					<a href="{f:uri.resource(resource:asset.resource)}">
+						<media:image asset="{asset}" maximumHeight="40" allowCropping="true" alt="a sample image without scaling" />
+					</a>
+				</f:for>
+			</div> 
+		</f:if>
+		
+		<f:if condition="{operation.bos}">
+			<!--<br />-->
+			<div class="bos">
+				<f:for each="{operation.bos}" key="b" as="bos" iteration="iterator">
+					<div class="icon icon-{bos}" title="{drk:operationBos(key: bos)}" data-toggle="tooltip" data-placement="bottom"></div>
+				</f:for>
+			</div>
+		</f:if>
+		
+		<div style="clear:both"></div>
+	</div>
+
+	<f:if condition="{more}">
+		<p class="more">
+			<neos:link.node additionalAttributes="{class: ''}" node="{more}"><span class="fa fa-hand-o-right"></span> Weitere Einsätze</neos:link.node>
+		</p>
+	</f:if>
+</div>

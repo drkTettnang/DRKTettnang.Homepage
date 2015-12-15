@@ -1,0 +1,212 @@
+TYPO3:
+  Form:
+    yamlPersistenceManager:
+      savePath: '%FLOW_PATH_DATA%Forms/'
+    supertypeResolver:
+      hiddenProperties: []
+    presets:
+      default:
+        title: 'Default'
+
+        ########### Required CSS / JavaScripts ###########
+
+        stylesheets: []
+        javaScripts: []
+
+        ########### DEFAULT FORM ELEMENT DEFINITIONS ###########
+        formElementTypes:
+
+          ### BASE ELEMENTS ###
+
+          # NAMING: base class for everything is RENDERABLE
+          'TYPO3.Form:Base':
+            renderingOptions:
+              templatePathPattern: 'resource://{@package}/Private/Form/{@type}.html'
+              partialPathPattern: 'resource://{@package}/Private/Form/Partials/{@type}.html'
+              layoutPathPattern: 'resource://{@package}/Private/Form/Layouts/{@type}.html'
+              # set this to TRUE if you want to avoid exceptions for FormElements without definitions
+              skipUnknownElements: FALSE
+              # Package with XLIFF files for translatable messages (e.g. validation errors)
+              # If you need custom messages, copy Resources/Private/Translations/en/ValidationErrors.xlf to your package and adjust this setting
+              translationPackage: 'TYPO3.Flow'
+
+          'TYPO3.Form:Form':
+            superTypes: ['TYPO3.Form:Base']
+            rendererClassName: 'TYPO3\Form\Core\Renderer\FluidFormRenderer'
+            renderingOptions:
+              renderableNameInTemplate: 'form'
+
+          'TYPO3.Form:RemovableMixin': {} # empty "removable" mixin for all form elements which can be removed (i.e. everything except the root form object)
+
+          'TYPO3.Form:ReadOnlyFormElement':
+            superTypes: ['TYPO3.Form:Base', 'TYPO3.Form:RemovableMixin']
+            implementationClassName: 'TYPO3\Form\FormElements\GenericFormElement'
+            renderingOptions:
+              renderableNameInTemplate: 'element'
+
+          'TYPO3.Form:FormElement':
+            superTypes: ['TYPO3.Form:Base', 'TYPO3.Form:RemovableMixin']
+            implementationClassName: 'TYPO3\Form\FormElements\GenericFormElement'
+            properties:
+              containerClassAttribute: 'input'
+              elementClassAttribute: ''
+              elementErrorClassAttribute: 'error'
+            renderingOptions:
+              renderableNameInTemplate: 'element'
+
+          ### FORM ELEMENTS: CONTAINER ###
+          'TYPO3.Form:Page':
+            superTypes: ['TYPO3.Form:Base', 'TYPO3.Form:RemovableMixin']
+            implementationClassName: 'TYPO3\Form\Core\Model\Page'
+            renderingOptions:
+              renderableNameInTemplate: 'page'
+
+          'TYPO3.Form:PreviewPage':
+            superTypes: ['TYPO3.Form:Page']
+
+          'TYPO3.Form:Section':
+            superTypes: ['TYPO3.Form:FormElement']
+            implementationClassName: 'TYPO3\Form\FormElements\Section'
+            renderingOptions:
+              renderableNameInTemplate: 'section'
+
+
+          ### FORM ELEMENTS: INPUT ###
+          'TYPO3.Form:TextMixin': []
+
+          'TYPO3.Form:SingleLineText':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:TextMixin']
+          'TYPO3.Form:Password':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:TextMixin']
+          'TYPO3.Form:PasswordWithConfirmation':
+            superTypes: ['TYPO3.Form:Password']
+            implementationClassName: 'TYPO3\Form\FormElements\PasswordWithConfirmation'
+            properties:
+              elementClassAttribute: 'input-medium'
+              # Optional description (hint) for the first password input element
+              #   passwordDescription: 'Use at least 8 characters'
+              confirmationLabel: 'Confirmation'
+              confirmationClassAttribute: 'input-medium'
+          'TYPO3.Form:MultiLineText':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:TextMixin']
+            properties:
+              elementClassAttribute: 'xxlarge'
+
+          ### FORM ELEMENTS: SELECT ###
+          'TYPO3.Form:SelectionMixin': []
+          'TYPO3.Form:SingleSelectionMixin':
+            superTypes: ['TYPO3.Form:SelectionMixin']
+          'TYPO3.Form:MultiSelectionMixin':
+            superTypes: ['TYPO3.Form:SelectionMixin']
+
+          'TYPO3.Form:Checkbox':
+            superTypes: ['TYPO3.Form:FormElement']
+            properties:
+              elementClassAttribute: 'add-on'
+              value: 1
+          'TYPO3.Form:MultipleSelectCheckboxes':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:MultiSelectionMixin']
+          'TYPO3.Form:MultipleSelectDropdown':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:MultiSelectionMixin']
+            properties:
+              elementClassAttribute: 'xlarge'
+          'TYPO3.Form:SingleSelectRadiobuttons':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:SingleSelectionMixin']
+          'TYPO3.Form:SingleSelectDropdown':
+            superTypes: ['TYPO3.Form:FormElement', 'TYPO3.Form:SingleSelectionMixin']
+
+          ### FORM ELEMENTS: CUSTOM ###
+          'TYPO3.Form:DatePicker':
+            superTypes: ['TYPO3.Form:FormElement']
+            implementationClassName: 'TYPO3\Form\FormElements\DatePicker'
+            properties:
+              elementClassAttribute: 'small'
+              timeSelectorClassAttribute: 'mini'
+              dateFormat: 'Y-m-d'
+              enableDatePicker: true
+              displayTimeSelector: false
+          'TYPO3.Form:FileUpload':
+            superTypes: ['TYPO3.Form:FormElement']
+            implementationClassName: 'TYPO3\Form\FormElements\FileUpload'
+            properties:
+              allowedExtensions: ['pdf', 'doc']
+          'TYPO3.Form:ImageUpload':
+            superTypes: ['TYPO3.Form:FormElement']
+            implementationClassName: 'TYPO3\Form\FormElements\ImageUpload'
+            properties:
+              allowedTypes: ['jpeg', 'png', 'bmp']
+          'TYPO3.Form:StaticText':
+            superTypes: ['TYPO3.Form:ReadOnlyFormElement']
+            properties:
+              text: ''
+          'TYPO3.Form:HiddenField':
+            superTypes: ['TYPO3.Form:FormElement']
+
+
+        ### FINISHERS ###
+        finisherPresets:
+          'TYPO3.Form:Closure':
+            implementationClassName: 'TYPO3\Form\Finishers\ClosureFinisher'
+            options: {}
+          'TYPO3.Form:Confirmation':
+            implementationClassName: 'TYPO3\Form\Finishers\ConfirmationFinisher'
+            options: {}
+          'TYPO3.Form:Email':
+            implementationClassName: 'TYPO3\Form\Finishers\EmailFinisher'
+            options: {}
+          'TYPO3.Form:FlashMessage':
+            implementationClassName: 'TYPO3\Form\Finishers\FlashMessageFinisher'
+            options: {}
+          'TYPO3.Form:Redirect':
+            implementationClassName: 'TYPO3\Form\Finishers\RedirectFinisher'
+            options: {}
+
+
+        ### VALIDATORS ###
+        validatorPresets:
+          'TYPO3.Flow:NotEmpty':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\NotEmptyValidator'
+          'TYPO3.Flow:DateTimeRange':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\DateTimeRangeValidator'
+          'TYPO3.Flow:Alphanumeric':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\AlphanumericValidator'
+          'TYPO3.Flow:Text':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\TextValidator'
+          'TYPO3.Flow:StringLength':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\StringLengthValidator'
+          'TYPO3.Flow:EmailAddress':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\EmailAddressValidator'
+          'TYPO3.Flow:Integer':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\IntegerValidator'
+          'TYPO3.Flow:Float':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\FloatValidator'
+          'TYPO3.Flow:NumberRange':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\NumberRangeValidator'
+          'TYPO3.Flow:RegularExpression':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\RegularExpressionValidator'
+          'TYPO3.Flow:Count':
+            implementationClassName: 'TYPO3\Flow\Validation\Validator\CountValidator'
+
+        ########### CUSTOM PRESETS ###########
+#      somePresetName:
+#        parentPreset: 'default'
+#        title: 'Some Preset'
+#        stylesheets:
+#          css1:
+#            source: 'resource://SomePackage/Public/Css/File1.css'
+#        javaScripts:
+#          js1:
+#            source: 'resource://SomePackage/Public/JavaScript/File1.js'
+#            skipInFormBuilder: true
+#        formElementTypes:
+#          'TYPO3.Form:Base':
+#            renderingOptions:
+#              templatePathPattern: 'resource://TYPO3.SomePackage/Private/Form/{@type}.html'
+
+  DocTools:
+    bundles:
+      Form:
+        documentationRootPath: '%FLOW_PATH_PACKAGES%Application/TYPO3.Form/Documentation/Guide/source'
+        renderedDocumentationRootPath: '%FLOW_PATH_DATA%Temporary/Documentation/Form'
+        configurationRootPath: '%FLOW_PATH_PACKAGES%Application/TYPO3.Form/Documentation/Guide/source'
+        imageRootPath: '%FLOW_PATH_PACKAGES%Application/TYPO3.Form/Documentation/Guide/Images/'

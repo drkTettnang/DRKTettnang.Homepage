@@ -1,0 +1,33 @@
+<f:layout name="EmailLayout" />
+
+<f:section name="subject">
+  Ihre Sanitätsdienstanforderung für den {data.eventDate -> f:format.date(format: 'j. M Y')}
+</f:section>
+
+<f:section name="body">
+   <div class="col-sm-8">
+      <p>Guten Tag,</p>
+      
+      <p>Hiermit bestätigen wir Ihnen den Erhalt ihrer Sanitätsdienstanfrage mit 
+         den unten aufgelisteten Information. Soweit noch nicht geschehen, drucken 
+         Sie diese Informationen bitte aus und schicken sie Sie an die untenstehende Adresse.</p>
+
+      <p>Wir werden uns in den kommenden Tagen bei ihnen melden.</p>
+      
+      <p>Mit freundlichen Grüßen</p>
+      
+      <f:render partial="BookingFormStep2Content" arguments="{data: data}" />
+   </div>
+   
+   <div class="col-sm-4 sidebar">
+      <img src="{f:uri.resource(path: 'Images/DRK_Logo2.svg', package: 'DRKTettnang.Homepage')}" alt="DRK Logo" />
+      
+      <div>
+         <h3>Kontakt</h3>
+         
+            <p><b>Deutsches Rotes Kreuz<br/>Ortsverein Tettnang ev.</b>
+               <br/>Loretostr. 12
+               <br/>123456 Tettnang</p>
+      </div>
+   </div>
+</f:section>

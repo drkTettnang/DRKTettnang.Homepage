@@ -1,0 +1,29 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<f:if condition="{level} >= 2">
+   <f:if condition="{items -> f:count()} > 0">
+      <nav id="third-level-nav" class="dropdown visible-xs-block">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          {parentTitle}
+          <span class="caret"></span>
+        </button>
+        <ul{attributes -> f:format.raw()}>
+           <f:render section="itemsList" arguments="{items: items}" />
+        </ul>
+      </nav>
+   </f:if>
+</f:if>
+
+<f:section name="itemsList">
+   <f:for each="{items}" as="item">
+      <li{ts:render(path: '{item.state}.attributes', context: {item: item}) -> f:format.raw()}>
+         <neos:link.node node="{item.node}" />
+         <f:if condition="{item.subItems}">
+            <ul>
+               <f:render section="itemsList" arguments="{items: item.subItems}" />
+            </ul>
+         </f:if>
+      </li>
+   </f:for>
+</f:section>

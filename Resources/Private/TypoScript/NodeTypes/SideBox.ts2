@@ -1,0 +1,8 @@
+prototype(DRKTettnang.Homepage:SideBox) {
+   
+   //headlineRenderer = TYPO3.Neos.NodeTypes:Headline
+   //contentRenderer = TYPO3.Neos:ContentCollection
+   
+   headline = ${q(node).property('headline')}
+   text = ${q(node).property('text')}
+}

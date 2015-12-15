@@ -1,0 +1,20 @@
+prototype(DRKTettnang.Homepage:LastOperationReferences) < prototype(TYPO3.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
+      
+   @context.lastOperation = ${q(site).find('[instanceof DRKTettnang.Homepage:Operation]').first()}
+
+   total = ${q(site).find('[instanceof DRKTettnang.Homepage:Operation]').first().parent().find('[instanceof DRKTettnang.Homepage:Operation]').first().parent().find('[instanceof DRKTettnang.Homepage:Operation]').count()}
+   index = 0
+
+   operation {
+      type = ${lastOperation.property('type')}
+      description = ${lastOperation.property('description')}
+      location = ${lastOperation.property('location')}
+      date = ${lastOperation.property('date')}
+      image = ${lastOperation.property('image')}
+      assets = ${lastOperation.property('assets')}
+      bos = ${lastOperation.property('bos')}
+   }
+   
+   more = ${q(site).children().children('[title="Einsätze"]').get(0)}
+}
