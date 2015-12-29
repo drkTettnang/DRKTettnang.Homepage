@@ -54,3 +54,4 @@
                'TYPO3.Neos:PluginView': false
                'TYPO3.Neos.NodeTypes:TextWithImage': false
                'DRKTettnang.Homepage:SideBox': false
+               'DRKTettnang.Homepage:MainBox': false
