@@ -402,17 +402,16 @@ footer {
 }
 
 figure{
+   margin-bottom: 10px;
    img {
       height: auto;
    }
    &.typo3-neos-alignment-left {
       margin-right: 20px;
-      margin-bottom: 10px;
       float: left;
    }
    &.typo3-neos-alignment-right {
       margin-left: 20px;
-      margin-bottom: 10px;
       float: right;
    }
    figcaption {

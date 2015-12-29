@@ -360,17 +360,18 @@ footer {
     background-color: #e30613;
 }*/
 }
+figure {
+  margin-bottom: 10px;
+}
 figure img {
   height: auto;
 }
 figure.typo3-neos-alignment-left {
   margin-right: 20px;
-  margin-bottom: 10px;
   float: left;
 }
 figure.typo3-neos-alignment-right {
   margin-left: 20px;
-  margin-bottom: 10px;
   float: right;
 }
 figure figcaption p {
