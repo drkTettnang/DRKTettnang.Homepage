@@ -75,7 +75,7 @@ if ($('#main-content').height() > $('#main-sidebar').height()) {
    $('#main-sidebar > .inner').affix({
       offset: {
          top: $('#main-sidebar > .inner').offset().top,
-         bottom: $('footer').outerHeight() + 30
+         bottom: $('footer').outerHeight(true) + 30
       }
    });
 }
