@@ -373,6 +373,12 @@ figure.typo3-neos-alignment-right {
   margin-bottom: 10px;
   float: right;
 }
+figure figcaption p {
+  margin: 0;
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 12px;
+}
 
 .neos-backend {
   padding-top: 0;

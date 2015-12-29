@@ -415,6 +415,14 @@ figure{
       margin-bottom: 10px;
       float: right;
    }
+   figcaption {
+      p {
+         margin: 0;
+         margin-top: 5px;
+         font-style: italic;
+         font-size: 12px;
+      }
+   }
 }
 
 .neos-backend {
