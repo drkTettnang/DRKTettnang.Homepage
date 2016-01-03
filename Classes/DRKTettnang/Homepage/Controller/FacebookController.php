@@ -73,7 +73,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
         for ($i = 0; $i < count($json->data); ++$i) {
             $post = $json->data[$i];
-            $message = $post->message;
+            $message = (isset($post->message)) ? $post->message : null;
 
             if (!empty($this->fb['ignore']) && preg_match($this->fb['ignore'], $message)) {
                 continue;
