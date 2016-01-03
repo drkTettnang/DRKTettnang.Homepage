@@ -1,20 +1,22 @@
 prototype(DRKTettnang.Homepage:LastOperationReferences) < prototype(TYPO3.Neos:Content) {
    templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
-      
-   @context.lastOperation = ${q(site).children().children('[title="Einsätze"]').children().first().find('[instanceof DRKTettnang.Homepage:Operation]').first()}
 
-   total = ${q(site).children().children('[title="Einsätze"]').children().first().find('[instanceof DRKTettnang.Homepage:Operation]').count()}
+   root = ${q(node).property('operationRoot')}
+   year = ${q(this.root).children().first().find('[instanceof DRKTettnang.Homepage:Operation]')}
+
+   lastOperation = ${this.year.first()}
+
+   total = ${this.year.count()}
    index = 0
 
    operation {
-      type = ${lastOperation.property('type')}
-      description = ${lastOperation.property('description')}
-      location = ${lastOperation.property('location')}
-      date = ${lastOperation.property('date')}
-      image = ${lastOperation.property('image')}
-      assets = ${lastOperation.property('assets')}
-      bos = ${lastOperation.property('bos')}
+      type = ${this.lastOperation.property('type')}
+      description = ${this.lastOperation.property('description')}
+      location = ${this.lastOperation.property('location')}
+      date = ${this.lastOperation.property('date')}
+      image = ${this.lastOperation.property('image')}
+      assets = ${this.lastOperation.property('assets')}
+      bos = ${this.lastOperation.property('bos')}
    }
    
-   more = ${q(site).children().children('[title="Einsätze"]').get(0)}
-}
+   more = ${q(this.root).get(0)}
