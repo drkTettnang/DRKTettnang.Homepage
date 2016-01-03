@@ -433,6 +433,9 @@ figure figcaption p {
   margin-bottom: 30px;
   padding-bottom: 15px;
 }
+.operation h1 {
+  white-space: nowrap;
+}
 .operation .number, .operation:before {
   width: 80px;
   height: 80px;
