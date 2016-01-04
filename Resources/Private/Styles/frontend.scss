@@ -49,18 +49,16 @@ a[target="_blank"]:before {
 
    table {
       width: 100%;
-      td {
-         vertical-align: top;
-         padding-bottom: 15px;
-         padding-right: 15px;
-         &:first-child {
-            width: 33.333333%;
-            text-align: right;
-         }
-         h1 {
-            padding: 0.6em 0.6em 0.5em 0.1em;
-            text-align: right;
-         }
+      border-top: 1px solid #ccc;
+      tr {
+         border-bottom: 1px solid #ccc;
+      }
+      td, th {
+         padding: 0.4em 0.8em;
+      }
+      th {
+         background: #eee;
+         font-weight: bold;
       }
    }
 }
@@ -344,6 +342,9 @@ footer {
          }
       }
       &>li>a {
+         overflow: hidden;
+         text-overflow: ellipsis;
+
          @media (max-width: 767px) {
             color: #000;
          }
@@ -356,21 +357,6 @@ footer {
      }
    }
 }
-
-/*
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #e30613;
-}
-
-.navbar-default .navbar-nav > .current > a, .navbar-default .navbar-nav > .current > a:hover, .navbar-default .navbar-nav > .current > a:focus {
-  color: #fff;
-  background-color: #e30613;
-}
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #c1c1c1;
-}*/
 
 .navbar-default .dropdown-menu:before {
    bottom: 100%;
@@ -394,11 +380,6 @@ footer {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #e30613;
   }
-
-  /*.navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #e30613;
-    background-color: #e30613;
-}*/
 }
 
 figure{

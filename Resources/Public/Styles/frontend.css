@@ -37,19 +37,17 @@ a[target="_blank"]:before {
 }
 #main-content table {
   width: 100%;
+  border-top: 1px solid #ccc;
 }
-#main-content table td {
-  vertical-align: top;
-  padding-bottom: 15px;
-  padding-right: 15px;
+#main-content table tr {
+  border-bottom: 1px solid #ccc;
 }
-#main-content table td:first-child {
-  width: 33.333333%;
-  text-align: right;
+#main-content table td, #main-content table th {
+  padding: 0.4em 0.8em;
 }
-#main-content table td h1 {
-  padding: 0.6em 0.6em 0.5em 0.1em;
-  text-align: right;
+#main-content table th {
+  background: #eee;
+  font-weight: bold;
 }
 
 #main-sidebar h2 {
@@ -306,6 +304,10 @@ footer {
     background-color: red;
   }
 }
+.navbar-default.navbar-drk .dropdown-menu > li > a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @media (max-width: 767px) {
   .navbar-default.navbar-drk .dropdown-menu > li > a {
     color: #000;
@@ -318,20 +320,6 @@ footer {
   background-color: #a1a1a1;
 }
 
-/*
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #e30613;
-}
-
-.navbar-default .navbar-nav > .current > a, .navbar-default .navbar-nav > .current > a:hover, .navbar-default .navbar-nav > .current > a:focus {
-  color: #fff;
-  background-color: #e30613;
-}
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #c1c1c1;
-}*/
 .navbar-default .dropdown-menu:before {
   bottom: 100%;
   left: 17px;
@@ -354,11 +342,6 @@ footer {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #e30613;
   }
-
-  /*.navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #e30613;
-    background-color: #e30613;
-}*/
 }
 figure {
   margin-bottom: 10px;
