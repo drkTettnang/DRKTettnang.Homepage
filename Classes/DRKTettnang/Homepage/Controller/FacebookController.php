@@ -42,9 +42,10 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
         $postUrl = 'https://graph.facebook.com/v2.4/'.$this->fb['pageid'].'/posts?';
         $postUrl .= http_build_query(array(
-           'fields' => 'created_time,message,actions,likes{name},link',
+           'fields' => 'story,created_time,message,actions,likes{name},link',
            'access_token' => $this->fb['token'],
            'limit' => $this->fb['limit'],
+           'locale' => 'de_DE'
         ));
         $response = file_get_contents($postUrl);
 
@@ -73,7 +74,8 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
         for ($i = 0; $i < count($json->data); ++$i) {
             $post = $json->data[$i];
-            $message = (isset($post->message)) ? $post->message : null;
+            $story = (isset($post->story)) ? $post->story : null;
+            $message = (isset($post->message)) ? $post->message : $story;
 
             if (!empty($this->fb['ignore']) && preg_match($this->fb['ignore'], $message)) {
                 continue;
@@ -135,6 +137,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                 $this->view->assign('link', $post->link);
             }
 
+            // $this->view->assign('story', $story);
             $this->view->assign('message', $message);
             $this->view->assign('created_time', $post->created_time);
 
