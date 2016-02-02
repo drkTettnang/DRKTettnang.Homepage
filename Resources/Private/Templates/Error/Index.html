@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		
-	<title>Error</title>
+	<title>{neos:backend.translate(id: 'error.exception.{renderingOptions.renderingGroup}.title', package: 'TYPO3.Neos')} - Error</title>
 	<link rel="stylesheet" href="{f:uri.resource(path: 'Styles/Error.css', package: 'TYPO3.Neos')}" />
    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/Error.css', package: 'DRKTettnang.Homepage')}" />
 	</head>
@@ -26,6 +26,12 @@
 				<p><a href="/setup" class="neos-button neos-button-primary">{neos:backend.translate(id: 'error.exception.goToSetup', package: 'TYPO3.Neos')}</a></p>
 			</f:if>
 		</div>
+		
+		<script>
+			var drkException = '{renderingOptions.renderingGroup}'; //notFoundExceptions
+		</script>
+		<script src="{f:uri.resource(path: '/Libraries/jQuery/jquery-2.0.2.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>
+		<script src="{f:uri.resource(path: 'Vendor/_vendor.min.js', package: 'DRKTettnang.Homepage')}"></script>
+		<script src="{f:uri.resource(path: 'Scripts/main.min.js', package: 'DRKTettnang.Homepage')}"></script>
 	</body>
-
 </html>
