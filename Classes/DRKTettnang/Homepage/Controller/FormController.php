@@ -58,7 +58,9 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
       if ($captcha !== $_POST['captcha']) {
          $this->addFlashMessage('Kontrollcode leider falsch.', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
-         
+
+         $this->systemLogger->log('Wrong captcha', LOG_INFO);
+
          $this->forward('step1');
       }else if ($data === false) {
          $this->forward('step1');
@@ -67,6 +69,8 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
       $processed = $this->session->getData('processed');
       
       if ($processed !== true) {
+         $this->systemLogger->log('Process new form', LOG_INFO);
+
          $actions = $this->settings['forms'][$form]['actions'];
          
          foreach($actions as $action=>$config) {
@@ -76,6 +80,8 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
                break;
             }
          }
+
+         $this->systemLogger->log('Form processed', LOG_INFO);
 
          $this->session->putData('processed', true);
          $this->addFlashMessage('Formular erfolgreich verarbeitet.', null, \TYPO3\Flow\Error\Message::SEVERITY_OK);
