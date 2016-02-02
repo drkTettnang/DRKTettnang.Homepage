@@ -49,6 +49,16 @@ a[target="_blank"]:before {
   background: #eee;
   font-weight: bold;
 }
+#main-content table.clear-layout {
+  border: 0;
+}
+#main-content table.clear-layout tr {
+  border: 0;
+}
+#main-content table.clear-layout td, #main-content table.clear-layout th {
+  background-color: transparent;
+  font-weight: normal;
+}
 
 #main-sidebar h2 {
   color: #000;

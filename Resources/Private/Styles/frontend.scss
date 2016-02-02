@@ -60,6 +60,16 @@ a[target="_blank"]:before {
          background: #eee;
          font-weight: bold;
       }
+      &.clear-layout {
+         border:0;
+         tr {
+            border:0;
+         }
+         td, th {
+            background-color:transparent;
+            font-weight: normal;
+         }
+      }
    }
 }
 
