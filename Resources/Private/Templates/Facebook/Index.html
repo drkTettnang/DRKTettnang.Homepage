@@ -11,7 +11,7 @@
 
       <f:if condition="{images}">
          <div class="images gallery img-{f:count(subject: images)}">
-            <f:if condition="{f:count(subject: images) == 1}">
+            <f:if condition="{f:count(subject: images)} == 1">
                <f:then>
                   <f:for each="{images}" as="image">
                      <a href="{f:uri.resource(resource:image.resource)}" style="height:auto">
