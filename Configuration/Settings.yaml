@@ -21,13 +21,13 @@ DRKTettnang:
       forms:
          BookingForm:
             label: 'Buchungsformular'
-            actions:
-               email:
-                  from: 
-                     'no-reply@localhost': 'no-reply'
-                  recipients:
-                     Internal: ['internal@localhost']
-                     External: ['organizerMail']
+#             actions:
+#                email:
+#                   from: 
+#                      'no-reply@localhost': 'no-reply'
+#                   recipients:
+#                      Internal: ['internal@localhost']
+#                      External: ['organizerMail']
             inputs:
                organizerName: ['required']
                organizerStreet: ['required']
