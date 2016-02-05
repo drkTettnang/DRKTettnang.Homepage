@@ -71,6 +71,29 @@ a[target="_blank"]:before {
          }
       }
    }
+   
+   .events {
+      td {
+         background-color: #f1f1f1;
+         vertical-align: top;
+         padding-top:15px;
+         padding-bottom: 15px;
+      }
+      .bezeichnung {
+         width: 15%;
+      }
+      .fromTo {
+         font-weight: bold;
+      }
+      .ort, .plaetze, .preis {
+         font-size: 85%;
+      }
+      [data-plaetze='keine'] {
+         .fromTo {
+            font-weight: normal;
+         }
+      }
+   }
 }
 
 #main-sidebar {
@@ -414,43 +437,6 @@ figure{
       }
    }
 }
-
-.neos-backend {
-   padding-top: 0;
-   .container {
-      max-width: 100%;
-   }
-   .navbar-fixed-top {
-      position: static;
-   }
-   .common {
-      position: relative;
-      &:before {
-         content: ' ';
-         position: absolute;
-         top: 0;
-         bottom: 0;
-         left: 0;
-         right: 0;
-         background-color: rgba(50, 50, 50, 0.2);
-         opacity: 0.5;
-         z-index: 999;
-      }
-   }
-   [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
-      float: left;
-      * {
-         float: none;
-      }
-   }
-   [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
-      float: right;
-      * {
-         float: none;
-      }
-   }
-}
-
 
 .typo3-neos-nodetypes-headline > div {
    display: inline-block;

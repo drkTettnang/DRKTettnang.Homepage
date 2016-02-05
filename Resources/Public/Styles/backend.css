@@ -2,4 +2,43 @@
   /*display: none;*/
 }
 
+.neos-backend {
+  padding-top: 0;
+}
+.neos-backend .events {
+  min-height: 100px;
+}
+.neos-backend .container {
+  max-width: 100%;
+}
+.neos-backend .navbar-fixed-top {
+  position: static;
+}
+.neos-backend .common {
+  position: relative;
+}
+.neos-backend .common:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(50, 50, 50, 0.2);
+  opacity: 0.5;
+  z-index: 999;
+}
+.neos-backend [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+  float: left;
+}
+.neos-backend [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] * {
+  float: none;
+}
+.neos-backend [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+  float: right;
+}
+.neos-backend [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] * {
+  float: none;
+}
+
 /*# sourceMappingURL=backend.css.map */

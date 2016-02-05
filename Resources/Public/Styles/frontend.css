@@ -59,6 +59,24 @@ a[target="_blank"]:before {
   background-color: transparent;
   font-weight: normal;
 }
+#main-content .events td {
+  background-color: #f1f1f1;
+  vertical-align: top;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+#main-content .events .bezeichnung {
+  width: 15%;
+}
+#main-content .events .fromTo {
+  font-weight: bold;
+}
+#main-content .events .ort, #main-content .events .plaetze, #main-content .events .preis {
+  font-size: 85%;
+}
+#main-content .events [data-plaetze='keine'] .fromTo {
+  font-weight: normal;
+}
 
 #main-sidebar h2 {
   color: #000;
@@ -372,42 +390,6 @@ figure figcaption p {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
-}
-
-.neos-backend {
-  padding-top: 0;
-}
-.neos-backend .container {
-  max-width: 100%;
-}
-.neos-backend .navbar-fixed-top {
-  position: static;
-}
-.neos-backend .common {
-  position: relative;
-}
-.neos-backend .common:before {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(50, 50, 50, 0.2);
-  opacity: 0.5;
-  z-index: 999;
-}
-.neos-backend [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
-  float: left;
-}
-.neos-backend [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] * {
-  float: none;
-}
-.neos-backend [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
-  float: right;
-}
-.neos-backend [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] * {
-  float: none;
 }
 
 .typo3-neos-nodetypes-headline > div {

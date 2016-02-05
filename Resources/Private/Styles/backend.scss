@@ -1,3 +1,42 @@
 .neos-select2-container.neos-select2-container-multi.ember-view.ember-select .neos-select2-search-choice:first-of-type {
   /*display: none;*/
 }
+
+.neos-backend {
+   .events {
+      min-height: 100px;
+   }
+   padding-top: 0;
+   .container {
+      max-width: 100%;
+   }
+   .navbar-fixed-top {
+      position: static;
+   }
+   .common {
+      position: relative;
+      &:before {
+         content: ' ';
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         background-color: rgba(50, 50, 50, 0.2);
+         opacity: 0.5;
+         z-index: 999;
+      }
+   }
+   [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+      float: left;
+      * {
+         float: none;
+      }
+   }
+   [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+      float: right;
+      * {
+         float: none;
+      }
+   }
+}

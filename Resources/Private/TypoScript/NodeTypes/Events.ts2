@@ -1,0 +1,9 @@
+
+prototype(DRKTettnang.Homepage:Events) < prototype(TYPO3.Neos:Content) {
+   lic = ${q(node).property('lic')}
+   location = ${q(node).property('location')}
+   maxEvents = ${q(node).property('maxEvents')}
+   bezeichnung = ${q(node).property('bezeichnung')}
+   lgTyp = ${q(node).property('lgTyp')}
+   mon = ${q(node).property('mon') - 1}
+}
