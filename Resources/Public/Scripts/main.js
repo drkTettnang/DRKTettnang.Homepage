@@ -52,7 +52,6 @@ function buildFromToString(datum, von, bis) {
 function displayEvents(container, xml, options) {
    options = options || {};
    
-   var KEINE = 'keine';
    var table = $('<table>');
    
    $(xml).find('lehrgang').each(function(index) {
@@ -67,8 +66,11 @@ function displayEvents(container, xml, options) {
       var ausbildungsort = lehrgang.find('ausbildungsort');
       var ort = ausbildungsort.find('plz').text() + ' ' + ausbildungsort.find('ort').text();
       var adresse = ausbildungsort.find('adresse').text();
-      var plaetze = lehrgang.find('freie_plaetze').text();
       var gebuehr = lehrgang.find('tn_gebuehr').text();
+      var plaetze = lehrgang.find('freie_plaetze').text();
+      
+      plaetze = parseInt(plaetze);
+      plaetze = (!isNaN(plaetze) && plaetze > 0) ? plaetze : 0;
       
       if (options.bezeichnung) {
          $('<td>').addClass('bezeichnung').text(lehrgangstyp).appendTo(tr);
@@ -88,7 +90,7 @@ function displayEvents(container, xml, options) {
       
       details.push('<span class="ort">' + ort + ', ' + adresse + '</span>');
       
-      if (plaetze === KEINE) {
+      if (plaetze === 0) {
          details.push('<span class="plaetze">Leider sind alle Plätze vergeben.</small>');
       } else {
          details.push('<span class="preis">Preis: <em>' + gebuehr + '€</em>,</span> <span class="plaetze">Freie Plätze: <em>' + plaetze + '</em></span>');
@@ -112,7 +114,13 @@ function displayEvents(container, xml, options) {
       tr.appendTo(table);
    });
    
-   container.empty().append(table);
+   container.empty();
+   
+   if (table.find('tr').length > 0) {
+      container.append(table);
+   } else {
+      container.append('<p>(Keine Kurstermine gefunden)</p>');
+   }
 }
 
 $('.events').each(function() {

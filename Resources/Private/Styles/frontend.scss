@@ -73,6 +73,9 @@ a[target="_blank"]:before {
    }
    
    .events {
+      table {
+         margin: 0 0 10px;
+      }
       td {
          background-color: #f1f1f1;
          vertical-align: top;
@@ -88,7 +91,7 @@ a[target="_blank"]:before {
       .ort, .plaetze, .preis {
          font-size: 85%;
       }
-      [data-plaetze='keine'] {
+      [data-plaetze='0'] {
          .fromTo {
             font-weight: normal;
          }

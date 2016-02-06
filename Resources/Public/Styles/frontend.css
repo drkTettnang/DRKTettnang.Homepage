@@ -59,6 +59,9 @@ a[target="_blank"]:before {
   background-color: transparent;
   font-weight: normal;
 }
+#main-content .events table {
+  margin: 0 0 10px;
+}
 #main-content .events td {
   background-color: #f1f1f1;
   vertical-align: top;
@@ -74,7 +77,7 @@ a[target="_blank"]:before {
 #main-content .events .ort, #main-content .events .plaetze, #main-content .events .preis {
   font-size: 85%;
 }
-#main-content .events [data-plaetze='keine'] .fromTo {
+#main-content .events [data-plaetze='0'] .fromTo {
   font-weight: normal;
 }
 
