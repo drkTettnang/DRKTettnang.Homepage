@@ -1,15 +1,16 @@
 <?php
 namespace TYPO3\Eel\FlowQuery;
+// @codingStandardsIgnoreFile
 
-/*                                                                        *
- * This script belongs to the TYPO3 Flow package "TYPO3.Eel".             *
- *                                                                        *
- * It is free software; you can redistribute it and/or modify it under    *
- * the terms of the GNU Lesser General Public License, either version 3   *
- * of the License, or (at your option) any later version.                 *
- *                                                                        *
- * The TYPO3 project - inspiring people to share!                         *
- *                                                                        */
+/*
+ * This file is part of the TYPO3.Eel package.
+ *
+ * (c) Contributors of the Neos Project - www.neos.io
+ *
+ * This package is Open Source Software. For the full copyright and license
+ * information, please view the LICENSE file which was distributed with this
+ * source code.
+ */
 
 /*!* !insert_autogen_warning */
 /**
@@ -64,10 +65,10 @@ PathFilter: ( '/' ( Identifier ( '/' Identifier )* )? ) | ( Identifier '/' Ident
 AttributeFilter:
   '[' S
       (
-          ( Operator:'instanceof' S ( Operand:StringLiteral | Operand:UnquotedOperand ) S )
+          ( Operator:( 'instanceof' | '!instanceof' ) S ( Operand:StringLiteral | Operand:UnquotedOperand ) S )
           | ( :Identifier S
               (
-                  Operator:( 'instanceof' | PrefixMatch | SuffixMatch | SubstringMatch | ExactMatch | NotEqualMatch | LessThanOrEqualMatch | LessThanMatch | GreaterThanOrEqualMatch | GreaterThanMatch )
+                  Operator:( 'instanceof' | '!instanceof' | PrefixMatch | SuffixMatch | SubstringMatch | ExactMatch | NotEqualMatch | LessThanOrEqualMatch | LessThanMatch | GreaterThanOrEqualMatch | GreaterThanMatch )
                   S ( Operand:StringLiteral | Operand:NumberLiteral | Operand:BooleanLiteral | Operand:UnquotedOperand ) S
               )?
           )
@@ -125,4 +126,3 @@ GreaterThanMatch: '>'
 		}
 	}
 }
-?>

@@ -2,21 +2,16 @@
     "name": "drktettnang/homepage",
     "type": "typo3-flow-site",
     "description": "Flow site for drk sub-organisations",
+    "license": "MIT",
     "require": {
         "typo3/neos": "*",
         "typo3/neos-nodetypes": "*",
-        "weissheiten/neos-bootstrap": "dev-master"
-    },
-    "suggest": {
-        "typo3/neos-seo": "*"
+        "typo3/neos-seo": "dev-master",
+	"weissheiten/neos-bootstrap": "2.*"
     },
     "autoload": {
         "psr-0": {
             "DRKTettnang\\Homepage": "Classes"
         }
-    },
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap.git"
-    }]
+    }
 }

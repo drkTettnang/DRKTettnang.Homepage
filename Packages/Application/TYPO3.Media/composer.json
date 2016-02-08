@@ -4,7 +4,7 @@
     "description": "The Media package",
     "license": "GPL-3.0+",
     "require": {
-        "typo3/flow": "~3.0",
+        "typo3/flow": "~3.1",
         "typo3/imagine": "~2.0"
     },
     "autoload": {

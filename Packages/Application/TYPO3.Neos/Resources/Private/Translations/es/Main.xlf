@@ -6,6 +6,12 @@
       <trans-unit id="autoPublish" xml:space="preserve">
 				<source>Auto-Publish</source>
 			<target xml:lang="es-ES" state="translated">Autopublicar</target></trans-unit>
+      <trans-unit id="autoPublishTo" xml:space="preserve">
+				<source>Auto-Publish to {0}</source>
+			<target xml:lang="es-ES" state="translated">Autopublicar en {0}</target></trans-unit>
+      <trans-unit id="reviewChanges" xml:space="preserve">
+				<source>Review changes</source>
+			<target xml:lang="es-ES" state="translated">Revisar los cambios</target></trans-unit>
       <trans-unit id="apply" xml:space="preserve">
 				<source>Apply</source>
 			<target xml:lang="es-ES" state="translated">Aplicar</target></trans-unit>
@@ -15,15 +21,21 @@
       <trans-unit id="cancel" xml:space="preserve">
 				<source>Cancel</source>
 			<target xml:lang="es-ES" state="translated">Cancelar</target></trans-unit>
+      <trans-unit id="back" xml:space="preserve">
+				<source>Back</source>
+			<target xml:lang="es-ES" state="translated">Atrás</target></trans-unit>
       <trans-unit id="choose" xml:space="preserve">
 				<source>Choose</source>
 			<target xml:lang="es-ES" state="translated">Elegir</target></trans-unit>
       <trans-unit id="typeToSearch" xml:space="preserve">
 				<source>Type to search</source>
-			<target xml:lang="es-ES" state="translated">Escribe para buscar</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Escriba para buscar</target><alt-trans><target xml:lang="es-ES">Escribe para buscar</target></alt-trans></trans-unit>
       <trans-unit id="content" xml:space="preserve">
 				<source>Content</source>
 			<target xml:lang="es-ES" state="translated">Contenido</target></trans-unit>
+      <trans-unit id="node" xml:space="preserve">
+				<source>Node</source>
+			<target xml:lang="es-ES" state="translated">Nodo</target></trans-unit>
       <trans-unit id="contentView" xml:space="preserve">
 				<source>Content View</source>
 			<target xml:lang="es-ES" state="translated">Vista de contenido</target></trans-unit>
@@ -111,12 +123,27 @@
       <trans-unit id="publish" xml:space="preserve">
 				<source>Publish</source>
 			<target xml:lang="es-ES" state="translated">Publicar</target></trans-unit>
+      <trans-unit id="publishTo" xml:space="preserve">
+				<source>Publish to {0}</source>
+			<target xml:lang="es-ES" state="translated">Publicar en {0}</target></trans-unit>
+      <trans-unit id="publishAllChangesForCurrentPage" xml:space="preserve">
+				<source>Publish all changes for current page</source>
+			<target xml:lang="es-ES" state="translated">Publicar todos los cambios de la página actual</target></trans-unit>
+      <trans-unit id="cantPublishBecauseTargetWorkspaceIsReadOnly" xml:space="preserve">
+				<source>Can't publish because the target workspace is read-only</source>
+			<target xml:lang="es-ES" state="translated">No puedes publicarlo, porque el espacio de trabajo de destino es de solo lectura</target></trans-unit>
+      <trans-unit id="publishing" xml:space="preserve">
+				<source>Publishing</source>
+			<target xml:lang="es-ES" state="translated">Publicando</target></trans-unit>
       <trans-unit id="published" xml:space="preserve">
 				<source>Published</source>
 			<target xml:lang="es-ES" state="translated">Publicado</target></trans-unit>
       <trans-unit id="targetWorkspace" xml:space="preserve">
 				<source>Target workspace</source>
 			<target xml:lang="es-ES" state="translated">Espacio de trabajo de destino</target></trans-unit>
+      <trans-unit id="currentWorkspace" xml:space="preserve">
+				<source>Current workspace</source>
+			<target xml:lang="es-ES" state="translated">Espacio de trabajo actual</target></trans-unit>
       <trans-unit id="remove" xml:space="preserve">
 				<source>Remove</source>
 			<target xml:lang="es-ES" state="translated">Eliminar</target></trans-unit>
@@ -124,7 +151,7 @@
 				<source>Refresh</source>
 			<target xml:lang="es-ES" state="translated">Actualizar</target></trans-unit>
       <trans-unit id="saving" xml:space="preserve">
-				<source>Saving...</source>
+				<source>Saving</source>
 			<target xml:lang="es-ES" state="translated">Guardando...</target></trans-unit>
       <trans-unit id="saved" xml:space="preserve">
 				<source>Saved</source>
@@ -148,13 +175,13 @@
 				<source>Label</source>
 			<target xml:lang="es-ES" state="translated">Etiqueta</target></trans-unit>
       <trans-unit id="nodeTypeCaption" xml:space="preserve">
-				<source>Node type</source>
+				<source>Content Type</source>
 			<target xml:lang="es-ES" state="translated">Tipo de nodo</target></trans-unit>
       <trans-unit id="pathCaption" xml:space="preserve">
 				<source>Path</source>
 			<target xml:lang="es-ES" state="translated">Ruta</target></trans-unit>
       <trans-unit id="relativePathCaption" xml:space="preserve">
-				<source>Relative path</source>
+				<source>Relative Path</source>
 			<target xml:lang="es-ES" state="translated">Ruta relativa</target></trans-unit>
       <!-- node types -->
       <trans-unit id="nodeTypes.groups.general" xml:space="preserve">
@@ -209,7 +236,7 @@
 			<target xml:lang="es-ES" state="translated">Publicar todos los cambios</target></trans-unit>
       <trans-unit id="content.components.publishAllDialog.subheader" xml:space="preserve">
 				<source>Are you sure that you want to publish all changes?</source>
-			<target xml:lang="es-ES" state="translated">¿Seguro que quieres publicar todos los cambios?</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">¿Seguro que quiere publicar todos los cambios?</target><alt-trans><target xml:lang="es-ES">¿Seguro que quieres publicar todos los cambios?</target></alt-trans></trans-unit>
       <trans-unit id="content.components.dirtyWorkspaceDialog.dirtyWorkspaceHeader" xml:space="preserve">
 				<source>Pending changes</source>
 			<target xml:lang="es-ES" state="translated">Cambios pendientes</target></trans-unit>
@@ -266,7 +293,7 @@
 			<target xml:lang="es-ES" state="translated">Editar código</target></trans-unit>
       <trans-unit id="content.inspector.editors.linkEditor.search" xml:space="preserve">
 				<source>Paste a link, or type to search</source>
-			<target xml:lang="es-ES" state="translated">Pega un enlace o escribe para buscar</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Pegue un enlace o escriba para buscar</target><alt-trans><target xml:lang="es-ES">Pega un enlace o escribe para buscar</target></alt-trans></trans-unit>
       <trans-unit id="content.inspector.editors.nodeTypeEditor.unableToLoadSubNodeTypes" xml:space="preserve">
 				<source>Unable to load sub node types of:</source>
 			<target xml:lang="es-ES" state="translated">No se pueden cargar los tipos de nodo secundario de:</target></trans-unit>
@@ -293,7 +320,7 @@
 			<target xml:lang="es-ES" state="translated">Este texto no puede superar {{maximum}} caracteres.</target></trans-unit>
       <trans-unit id="content.inspector.validators.alphanumericValidator" xml:space="preserve">
 				<source>Only regular characters (a to z, umlauts, ...) and numbers are allowed.</source>
-			<target xml:lang="es-ES" state="needs-translation">Only regular characters (a to z, umlauts, ...) and numbers are allowed.</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Sólo están permitidos caracteres alfabéticos (de la a a la z, tildes,...) y números.</target></trans-unit>
       <trans-unit id="content.inspector.validators.countValidator.notCountable" xml:space="preserve">
 				<source>The given subject was not countable.</source>
 			<target xml:lang="es-ES" state="translated">El objeto no es contable.</target></trans-unit>
@@ -350,7 +377,7 @@
 			<target xml:lang="es-ES" state="translated">Contenido</target></trans-unit>
       <trans-unit id="content.navigate.deleteNodeDialog.header" xml:space="preserve">
 				<source>Do you really want to delete</source>
-			<target xml:lang="es-ES" state="translated">Realmente quieres borrar</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Realmente quiere borrar</target><alt-trans><target xml:lang="es-ES">Realmente quieres borrar</target></alt-trans></trans-unit>
       <trans-unit id="content.navigate.createNewHoldPosition" xml:space="preserve">
 				<source>Create new (hold to select position)</source>
 			<target xml:lang="es-ES" state="translated">Crear nuevo (mantenga para seleccionar posición)</target></trans-unit>
@@ -371,7 +398,7 @@
 			<target xml:lang="es-ES" state="translated">Altura</target></trans-unit>
       <trans-unit id="inlineEditing.dialogs.deleteNodeDialog.header.1a" xml:space="preserve">
 				<source>Do you really want to delete</source>
-			<target xml:lang="es-ES" state="translated">Realmente quieres borrar</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Realmente quiere borrar</target><alt-trans><target xml:lang="es-ES">Realmente quieres borrar</target></alt-trans></trans-unit>
       <trans-unit id="inlineEditing.dialogs.deleteNodeDialog.header.1b" xml:space="preserve">
 				<source>this element</source>
 			<target xml:lang="es-ES" state="translated">este elemento</target></trans-unit>
@@ -425,10 +452,13 @@
       <trans-unit id="authenticating" xml:space="preserve">
 				<source>Authenticating</source>
 			<target xml:lang="es-ES" state="translated">Autenticando</target></trans-unit>
+      <trans-unit id="logout" xml:space="preserve">
+				<source>Logout</source>
+			<target xml:lang="es-ES" state="translated">Salir</target></trans-unit>
       <!-- Error handlers -->
       <trans-unit id="error.exception.goToSetup" xml:space="preserve">
 				<source>Go to setup</source>
-			<target xml:lang="es-ES" state="translated">Ir a configuración</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Ir a la configuración</target><alt-trans><target xml:lang="es-ES">Ir a configuración</target></alt-trans></trans-unit>
       <trans-unit id="error.exception.noHomepageException.title" xml:space="preserve">
 				<source>Missing Homepage</source>
 			<target xml:lang="es-ES" state="translated">Falta la página de inicio</target></trans-unit>
@@ -437,7 +467,7 @@
 			<target xml:lang="es-ES" state="translated">No se ha definido ningún sitio, el sitio no contiene una página de inicio o el sitio activo no ha podido ser determinado.</target></trans-unit>
       <trans-unit id="error.exception.noHomepageException.setupMessage" xml:space="preserve">
 				<source>You might want to set the site's domain or import a new site in the setup.</source>
-			<target xml:lang="es-ES" state="translated">Puedes configurar el dominio del sitio o importar un nuevo sitio en la configuración.</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Puede configurar el dominio del sitio o importar un nuevo sitio en la configuración.</target><alt-trans><target xml:lang="es-ES">Puedes configurar el dominio del sitio o importar un nuevo sitio en la configuración.</target></alt-trans></trans-unit>
       <trans-unit id="error.exception.databaseConnectionExceptions.title" xml:space="preserve">
 				<source>Database Error</source>
 			<target xml:lang="es-ES" state="translated">Error de base de datos</target></trans-unit>
@@ -446,7 +476,7 @@
 			<target xml:lang="es-ES" state="translated">Lo sentimos, hemos detectado un error con su base de datos. Revise los archivos de registro de datos, logs, etc... para obtener más información.</target></trans-unit>
       <trans-unit id="error.exception.databaseConnectionExceptions.setupMessage" xml:space="preserve">
 				<source>You might want to configure or check your database configuration in the setup.</source>
-			<target xml:lang="es-ES" state="translated">Tal vez quieras configurar o comprobar la configuración de la base de datos en la configuración.</target></trans-unit>
+			<target xml:lang="es-ES" state="translated">Tal vez quiera configurar o comprobar la configuración de la base de datos en la configuración.</target><alt-trans><target xml:lang="es-ES">Tal vez quieras configurar o comprobar la configuración de la base de datos en la configuración.</target></alt-trans></trans-unit>
       <trans-unit id="error.exception.notFoundExceptions.title" xml:space="preserve">
 				<source>Page Not Found</source>
 			<target xml:lang="es-ES" state="translated">Página no encontrada</target></trans-unit>
@@ -459,6 +489,23 @@
       <trans-unit id="error.invalidNodeType.description" xml:space="preserve">
 				<source>The configuration of the NodeType that is supposed to be rendered here is not available. Probably you renamed the NodeType and are missing a migration or you simply misspelled it.</source>
 			<target xml:lang="es-ES" state="translated">La configuración del tipo de nodo que se supone que se representa aquí no está disponible. Probablemente se cambió el nombre el tipo de nodo y falta una migración o puede que simplemente esté mal escrito.</target></trans-unit>
+      <!-- Miscellaneous -->
+      <trans-unit id="masterPlugins.nodeTypeOnPageLabel" xml:space="preserve">
+				<source>"{nodeTypeName}" on page "{pageLabel}"</source>
+			<target xml:lang="es-ES" state="translated">"{nodeTypeName}" en la página "{pageLabel}"</target></trans-unit>
+      <!-- Service output -->
+      <trans-unit id="service.nodes.title" xml:space="preserve">
+				<source>Nodes</source>
+			<target xml:lang="es-ES" state="translated">Nodos</target></trans-unit>
+      <trans-unit id="service.nodes.show" xml:space="preserve">
+				<source>Show</source>
+			<target xml:lang="es-ES" state="translated">Mostrar</target></trans-unit>
+      <trans-unit id="service.nodes.noPublicUrl" xml:space="preserve">
+				<source>This node cannot be accessed through a public URL</source>
+			<target xml:lang="es-ES" state="translated">No se puede acceder a este nodo desde una URL pública</target></trans-unit>
+      <trans-unit id="service.nodes.nodeProperties" xml:space="preserve">
+				<source>Node Properties</source>
+			<target xml:lang="es-ES" state="translated">Propiedades del nodo</target></trans-unit>
     </body>
   </file>
 </xliff>

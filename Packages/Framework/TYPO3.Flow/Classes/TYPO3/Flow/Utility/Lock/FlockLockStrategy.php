@@ -1,15 +1,15 @@
 <?php
 namespace TYPO3\Flow\Utility\Lock;
 
-/*                                                                        *
- * This script belongs to the TYPO3 Flow framework.                       *
- *                                                                        *
- * It is free software; you can redistribute it and/or modify it under    *
- * the terms of the GNU Lesser General Public License, either version 3   *
- * of the License, or (at your option) any later version.                 *
- *                                                                        *
- * The TYPO3 project - inspiring people to share!                         *
- *                                                                        */
+/*
+ * This file is part of the TYPO3.Flow package.
+ *
+ * (c) Contributors of the Neos Project - www.neos.io
+ *
+ * This package is Open Source Software. For the full copyright and license
+ * information, please view the LICENSE file which was distributed with this
+ * source code.
+ */
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Core\Bootstrap;
@@ -19,102 +19,154 @@ use TYPO3\Flow\Utility\Files;
 /**
  * A flock based lock strategy.
  *
- * This lock strategy is based on Flock. This strategy is currently disabled on Windows.
+ * This lock strategy is based on Flock.
  *
  * @Flow\Scope("prototype")
  */
-class FlockLockStrategy implements LockStrategyInterface {
+class FlockLockStrategy implements LockStrategyInterface
+{
 
-	/**
-	 * @var string
-	 */
-	protected static $temporaryDirectory;
+    /**
+     * @var string
+     */
+    protected static $temporaryDirectory;
 
-	/**
-	 * Identifier used for this lock
-	 * @var string
-	 */
-	protected $id;
+    /**
+     * Identifier used for this lock
+     *
+     * @var string
+     */
+    protected $id;
 
-	/**
-	 * File name used for this lock
-	 * @var string
-	 */
-	protected $lockFileName;
+    /**
+     * File name used for this lock
+     *
+     * @var string
+     */
+    protected $lockFileName;
 
-	/**
-	 * File pointer if using flock method
-	 * @var resource
-	 */
-	protected $filePointer;
+    /**
+     * File pointer if using flock method
+     *
+     * @var resource
+     */
+    protected $filePointer;
 
-	/**
-	 * @param string $subject
-	 * @param boolean $exclusiveLock TRUE to, acquire an exclusive (write) lock, FALSE for a shared (read) lock.
-	 * @throws LockNotAcquiredException
-	 * @throws \TYPO3\Flow\Utility\Exception
-	 * @return void
-	 */
-	public function acquire($subject, $exclusiveLock) {
-		if ($this->isWindowsOS()) {
-			return;
-		}
-		if (self::$temporaryDirectory === NULL) {
-			if (Bootstrap::$staticObjectManager === NULL || !Bootstrap::$staticObjectManager->isRegistered('TYPO3\Flow\Utility\Environment')) {
-				throw new LockNotAcquiredException('Environment object could not be accessed', 1386680952);
-			}
-			$environment = Bootstrap::$staticObjectManager->get('TYPO3\Flow\Utility\Environment');
-			$temporaryDirectory = Files::concatenatePaths(array($environment->getPathToTemporaryDirectory(), 'Lock'));
-			Files::createDirectoryRecursively($temporaryDirectory);
-			self::$temporaryDirectory = $temporaryDirectory;
-		}
-		$this->lockFileName = Files::concatenatePaths(array(self::$temporaryDirectory, md5($subject)));
+    /**
+     * @param string $subject
+     * @param boolean $exclusiveLock TRUE to, acquire an exclusive (write) lock, FALSE for a shared (read) lock.
+     * @return void
+     * @throws LockNotAcquiredException
+     */
+    public function acquire($subject, $exclusiveLock)
+    {
+        if (self::$temporaryDirectory === null) {
+            $this->configureTemporaryDirectory();
+        }
 
-		if (($this->filePointer = @fopen($this->lockFileName, 'r')) === FALSE) {
-			if (($this->filePointer = @fopen($this->lockFileName, 'w')) === FALSE) {
-				throw new LockNotAcquiredException(sprintf('Lock file "%s" could not be opened', $this->lockFileName), 1386520596);
-			}
-		}
+        $this->lockFileName = Files::concatenatePaths([self::$temporaryDirectory, md5($subject)]);
+        $aquiredLock = false;
+        $i = 0;
+        while ($aquiredLock === false) {
+            $aquiredLock = $this->tryToAcquireLock($exclusiveLock);
+            $i++;
+            if ($i > 10000) {
+                throw new LockNotAcquiredException(sprintf('After 10000 attempts a lock could not be aquired for subject "%s".', $subject), 1449829188);
+            }
+        }
+    }
 
-		if ($exclusiveLock === FALSE && flock($this->filePointer, LOCK_SH) === TRUE) {
-			//Shared lock acquired
-		} elseif ($exclusiveLock === TRUE && flock($this->filePointer, LOCK_EX) === TRUE) {
-			//Exclusive lock acquired
-		} else {
-			throw new LockNotAcquiredException(sprintf('Could not lock file "%s"', $this->lockFileName), 1386520597);
-		}
-	}
+    /**
+     * Sets the temporaryDirectory as static variable for the lock class.
+     *
+     * @throws LockNotAcquiredException
+     * @throws \TYPO3\Flow\Utility\Exception
+     * return void;
+     */
+    protected function configureTemporaryDirectory()
+    {
+        if (Bootstrap::$staticObjectManager === null || !Bootstrap::$staticObjectManager->isRegistered(\TYPO3\Flow\Utility\Environment::class)) {
+            throw new LockNotAcquiredException('Environment object could not be accessed', 1386680952);
+        }
+        $environment = Bootstrap::$staticObjectManager->get('TYPO3\Flow\Utility\Environment');
+        $temporaryDirectory = Files::concatenatePaths([$environment->getPathToTemporaryDirectory(), 'Lock']);
+        Files::createDirectoryRecursively($temporaryDirectory);
+        self::$temporaryDirectory = $temporaryDirectory;
+    }
 
-	/**
-	 * Releases the lock
-	 * @return boolean TRUE on success, FALSE otherwise
-	 */
-	public function release() {
-		$success = TRUE;
-		if ($this->isWindowsOS()) {
-			return $success;
-		}
-		if (is_resource($this->filePointer)) {
-			if (flock($this->filePointer, LOCK_UN) === FALSE) {
-				$success = FALSE;
-			}
-			fclose($this->filePointer);
-		}
+    /**
+     * Tries to open a lock file and apply the lock to it.
+     *
+     * @param boolean $exclusiveLock
+     * @return boolean Was a lock aquired?
+     * @throws LockNotAcquiredException
+     */
+    protected function tryToAcquireLock($exclusiveLock)
+    {
+        $this->filePointer = @fopen($this->lockFileName, 'w');
+        if ($this->filePointer === false) {
+            throw new LockNotAcquiredException(sprintf('Lock file "%s" could not be opened', $this->lockFileName), 1386520596);
+        }
 
-		return $success;
-	}
+        $this->applyFlock($exclusiveLock);
 
-	/**
-	 * @return string
-	 */
-	public function getLockFileName() {
-		return $this->lockFileName;
-	}
+        $fstat = fstat($this->filePointer);
+        $stat = @stat($this->lockFileName);
+        // Make sure that the file did not get unlinked between the fopen and the actual flock
+        // This will always be TRUE on windows, because 'ino' stat will always be 0, but unlink is not possible on opened files anyway
+        if ($stat !== false && $stat['ino'] === $fstat['ino']) {
+            return true;
+        }
 
-	/**
-	 * @return boolean
-	 */
-	protected function isWindowsOS() {
-		return strncasecmp(PHP_OS, 'WIN', 3) == 0;
-	}
+        flock($this->filePointer, LOCK_UN);
+        fclose($this->filePointer);
+        $this->filePointer = null;
+
+        usleep(100 + rand(0, 100));
+        return false;
+    }
+
+    /**
+     * apply flock to the opened lock file.
+     *
+     * @param boolean $exclusiveLock
+     * @throws LockNotAcquiredException
+     */
+    protected function applyFlock($exclusiveLock)
+    {
+        $lockOption = $exclusiveLock === true ? LOCK_EX : LOCK_SH;
+
+        if (flock($this->filePointer, $lockOption) !== true) {
+            throw new LockNotAcquiredException(sprintf('Could not lock file "%s"', $this->lockFileName), 1386520597);
+        }
+    }
+
+    /**
+     * Releases the lock
+     *
+     * @return boolean TRUE on success, FALSE otherwise
+     */
+    public function release()
+    {
+        $success = true;
+        if (is_resource($this->filePointer)) {
+            // FIXME: The lockfile should be unlocked at this point but this will again lead to race conditions,
+            // so we need to find out how to do this in a safe way. Keeping the lock files is very inode intensive
+            // and should therefore change ASAP.
+            if (flock($this->filePointer, LOCK_UN) === false) {
+                $success = false;
+            }
+            fclose($this->filePointer);
+        }
+
+        return $success;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLockFileName()
+    {
+        return $this->lockFileName;
+    }
 }

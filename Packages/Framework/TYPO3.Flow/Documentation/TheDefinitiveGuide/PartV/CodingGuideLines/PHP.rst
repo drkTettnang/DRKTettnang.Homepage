@@ -34,8 +34,8 @@ The most important parts of our :download:`Coding Guidelines in a one page docum
 you can print out and hang on your wall for easy reference.
 Does it get any easier than that?
 
-Code Formatting and Layout aka "beautiful code"
-===============================================
+Code Formatting and Layout
+==========================
 
 The visual style of programming code is very important. In the TYPO3 project we want many
 programmers to contribute, but in the same style. This will help us to:
@@ -53,6 +53,7 @@ as similar in style and as secure as possible.
 General considerations
 ----------------------
 
+* Follow the PSR-2 standard for code formatting
 * Almost every PHP file in TYPO3 Flow contains exactly one class and does not output anything
   if it is called directly. Therefore you start your file with a ``<?php`` tag and must not end it
   with the closing ``?>``.
@@ -62,19 +63,16 @@ General considerations
   * The copyright header itself must not start with ``/**``, as this may confuse
     documentation generators!
 
-*The TYPO3 Flow standard file header*::
+*The Flow standard file header*::
 
  <?php
  namespace YourCompany\Package\Stuff\Here;
 
  /*                                                                        *
-  * This script belongs to the TYPO3 Flow package "Vendor.Package".        *
+  * This script belongs to the Flow framework.                             *
   *                                                                        *
   * It is free software; you can redistribute it and/or modify it under    *
-  * the terms of the GNU Lesser General Public License, either version 3   *
-  * of the License, or (at your option) any later version.                 *
-  *                                                                        *
-  * The TYPO3 project - inspiring people to share!                         *
+  * the terms of the MIT license.                                          *
   *                                                                        */
 
 * Code lines are of arbitrary length, no strict limitations to 80 characters or something
@@ -83,36 +81,36 @@ General considerations
 * Lines end with a newline a.k.a ``chr(10)`` - UNIX style
 * Files must be encoded in UTF-8 without byte order mark (BOM)
 
-Make sure you use the correct license and mention the correct package in the header, we
-have some `some boilerplate text`_.
+Make sure you use the correct license and mention the correct package in the header
 
-.. _`some boilerplate text`: http://wiki.typo3.org/Flow_Licensing_Boilerplate
+PSR-2
+-----
+
+We follow the PSR-2 standard which is defined by PHP FIG. You can read the full standard
+on `psr-2 standard`_.
+
+.. _`_psr-2 standard`: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 
 Indentation and line formatting
 _______________________________
 
-Indentation is done with tabs - and not spaces! The beginning of a line is the only place
-where tabs are used, in all other places use spaces. Always trim whitespace off the end of
-a line.
+Since PSR-2 is adopted as coding standard in September 2015 we now use spaces for indentation
+and no tabs!
 
-Here's a code snippet which shows the correct usage of tabs and spaces.
+Here's a code snippet which shows the correct usage of spaces.
 
-*Correct use of tabs and spaces*::
+*Correct use of indentation*::
 
  /**
   * Returns the name of the currently set context.
   *
   * @return string Name of the current context
   */
- public function getContextName() {
- 	return $this->contextName;
+ public function getContextName()
+ {
+     return $this->contextName;
  }
 
-There seem to be very passionate opinions about whether TABs or spaces should be used for
-indentation of code blocks in the scripts. If you'd like to read more about this religious
-discussion, you find some nice arguments in the `Joel on Software`_ forum.
-
-.. _`Joel on Software`: http://discuss.fogcreek.com/joelonsoftware/default.asp?cmd=show&ixPost=3978
 
 Naming
 ------

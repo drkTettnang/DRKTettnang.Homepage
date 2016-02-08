@@ -203,8 +203,8 @@ Evaluate any value as a TypoScript object
 
 Example::
 
-	myValue = Value {
-		myValue.value = 'Hello World'
+	myValue = TYPO3.TypoScript:Value {
+		value = 'Hello World'
 	}
 
 .. note:: Most of the time this can be simplified by directly assigning the value instead of using the ``Value`` object.
@@ -704,7 +704,7 @@ ImageUri
 
 Get a URI to a (thumbnail) image for an asset.
 
-:asset: (Asset) An asset object (``Image``, ``ImageVariant`` or other ``AssetInterface``)
+:asset: (Asset) An asset object (``Image``, ``ImageInterface`` or other ``AssetInterface``)
 :maximumWidth: (integer) Desired maximum height of the image
 :maximumHeight: (integer) Desired maximum width of the image
 :allowCropping: (boolean) Whether the image should be cropped if the given sizes would hurt the aspect ratio, defaults to ``FALSE``
@@ -751,6 +751,7 @@ overriding the target attribute for external links and resource links.
 :externalLinkTarget: (string) Override the target attribute for external links, defaults to ``_blank``. Can be disabled with an empty value.
 :resourceLinkTarget: (string) Override the target attribute for resource links, defaults to ``_blank``. Can be disabled with an empty value.
 :forceConversion: (boolean) Whether to convert URIs in a non-live workspace, defaults to ``FALSE``
+:absolute: (boolean) Can be used to convert node URIs to absolute links, defaults to ``FALSE``
 
 Example::
 

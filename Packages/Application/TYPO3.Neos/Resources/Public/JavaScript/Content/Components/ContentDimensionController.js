@@ -67,35 +67,7 @@ function(
 		 */
 		_loadConfiguration: function() {
 			var that = this;
-			HttpRestClient.getResource('neos-service-contentdimensions-index').then(function(result) {
-				var configuration = {};
-
-				$.each($('.contentdimensions', result.resource).children('li'), function(key, contentDimensionSnippet) {
-
-					var presets = {};
-					$.each($('.contentdimension-preset', contentDimensionSnippet), function(key, contentDimensionPresetSnippet) {
-
-						var values = [];
-						$.each($('.contentdimension-preset-values li', contentDimensionPresetSnippet), function(key, contentDimensionPresetValuesSnippet) {
-							values.push($(contentDimensionPresetValuesSnippet).text());
-						});
-
-						var presetIdentifier = $('.contentdimension-preset-identifier', contentDimensionPresetSnippet).text();
-						presets[presetIdentifier] = {
-							label: $('.contentdimension-preset-label', contentDimensionPresetSnippet).text(),
-							values: values,
-							disabled: false
-						};
-					});
-
-					var dimensionIdentifier = $('.contentdimension-identifier', contentDimensionSnippet).text();
-					configuration[dimensionIdentifier] = {
-						label: $('.contentdimension-label', contentDimensionSnippet).text(),
-						icon: $('.contentdimension-icon', contentDimensionSnippet).text(),
-						defaultPreset: $('.contentdimension-defaultpreset .contentdimension-preset-identifier', contentDimensionSnippet).text(),
-						presets: presets
-					};
-				});
+			ResourceCache.getItem(Configuration.get('ContentDimensionsUri')).then(function(configuration) {
 				that.set('configuration', configuration);
 			}, function(error) {
 				console.error('Failed loading dimension presets data.', error);
@@ -131,7 +103,7 @@ function(
 			var passedChangedDimension = false;
 			$.each(dimensions, function(key, dimension) {
 				if (passedChangedDimension) {
-					HttpRestClient.getResource('neos-service-contentdimensions-index', dimension.get('identifier'), {data: {chosenDimensionPresets: chosenDimensionPresets}}).then(function (result) {
+					HttpRestClient.getResource('neos-service-contentdimensions', dimension.get('identifier'), {data: {chosenDimensionPresets: chosenDimensionPresets}}).then(function (result) {
 						$.each(dimension.get('presets'), function (key, preset) {
 							if ($('.contentdimension-preset-identifier:contains("' + preset.get('identifier') + '")', result.resource).length === 0) {
 								preset.set('disabled', true);

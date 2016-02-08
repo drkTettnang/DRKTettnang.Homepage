@@ -1,7 +1,7 @@
 #                                                                        #
-# Configuration for the TYPO3 Flow Framework                             #
+# Configuration for the Flow Framework                                   #
 #                                                                        #
-# This file contains the default base configuration for the TYPO3 Flow   #
+# This file contains the default base configuration for the Flow         #
 # Framework. Don't modify this file but add configuration options to     #
 # the Settings.yaml file in the in global Configuration/ directory       #
 # instead.                                                               #
@@ -31,9 +31,13 @@ TYPO3:
 
     core:
 
-      # TYPO3 Flow's application context
+      # Flow's application context
       # This setting is automatically set by the configuration manager and can't be set manually.
       context: ''
+
+      # Key of the "main" package of the application. This package's meta data is used for displaying the application
+      # name, version etc. in the ./flow command line help and where else needed.
+      applicationPackageKey: 'TYPO3.Flow'
 
       # Path and filename of the PHP binary
       # The constant PHP_BINDIR usually contains the path, but on Windows this doesn't work reliably
@@ -120,6 +124,17 @@ TYPO3:
           '.+Repository$': TRUE
           'PHPUnit_Framework_MockObject_InvocationMocker': TRUE
 
+    mvc:
+      # Defines routes that should be included after existing routes defined in the main Routes.yaml (if any)
+      # Note: This only allows to include existing Routes.yaml files from other packages, you can't adjust the routes via Settings.
+      #
+      # Syntax:
+      # 'Some.Package': TRUE
+      # 'SomeOther.Package':
+      #   position: 'after Some.Package'
+      #
+      routes: []
+
     http:
       # Defines an explicit base URI that should be used. This affects
       # resource management, routing and all other parts accessing
@@ -155,7 +170,7 @@ TYPO3:
 
     log:
 
-      # Settings for TYPO3 Flow's default loggers
+      # Settings for Flow's default loggers
       systemLogger:
         logger: TYPO3\Flow\Log\Logger
         backend: TYPO3\Flow\Log\Backend\FileBackend
@@ -234,6 +249,7 @@ TYPO3:
       # This can be used to make packages inactive, even though they would be
       # activated automatically otherwise.
       inactiveByDefault:
+        - 'neos.composerplugin'
         - 'Composer.Installers'
       # Option for the PackageManager::Create to map the packagesPath by package type
       packagesPathByType:
@@ -318,6 +334,22 @@ TYPO3:
 
     resource:
 
+      # A list of filename extensions that must not be uploaded through the resource
+      # management.
+      uploadExtensionBlacklist: &uploadExtensionBlacklist
+        'aspx': TRUE
+        'cgi': TRUE
+        'php3': TRUE
+        'php4': TRUE
+        'php5': TRUE
+        'phtml': TRUE
+        'php': TRUE
+        'pl': TRUE
+        'py': TRUE
+        'pyc': TRUE
+        'pyo': TRUE
+        'rb': TRUE
+
       # Definition of resource storages provided by the Flow core.
       # Storages are used for storing and retrieving resources.
       storages:
@@ -351,12 +383,14 @@ TYPO3:
 
       # Definition of the basic resource publication targets.
       targets:
+
         # Target for publishing static resources to the local web directory
         localWebDirectoryStaticResourcesTarget:
           target: 'TYPO3\Flow\Resource\Target\FileSystemSymlinkTarget'
           targetOptions:
             path: '%FLOW_PATH_WEB%_Resources/Static/Packages/'
             baseUri: '_Resources/Static/Packages/'
+            extensionBlacklist: *uploadExtensionBlacklist
 
         # Target for publishing persistent resources to the local web directory
         localWebDirectoryPersistentResourcesTarget:
@@ -364,6 +398,7 @@ TYPO3:
           targetOptions:
             path: '%FLOW_PATH_WEB%_Resources/Persistent/'
             baseUri: '_Resources/Persistent/'
+            extensionBlacklist: *uploadExtensionBlacklist
 
             # If the generated URI path segment containing the sha1 should be divided into multiple segments (recommended if you expect many resources):
             subdivideHashPathSegment: false
@@ -555,14 +590,6 @@ TYPO3:
         domain: NULL
 
     utility:
-      environment:
-
-        # Defines the base directory which Flow may use for storing different kinds
-        # of temporary files.
-        # The directory must be writable and Flow will automatically create a sub
-        # directory (named after the context) which will contain the actual temporary files.
-        temporaryDirectoryBase: '%FLOW_PATH_DATA%Temporary/'
-
       lockStrategyClassName: 'TYPO3\Flow\Utility\Lock\FlockLockStrategy'
 
   # DocTools is a tool used by Flow Developers to help with a variety of documentation tasks.
