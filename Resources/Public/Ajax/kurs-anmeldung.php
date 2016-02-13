@@ -9,7 +9,11 @@ $content = file_get_contents('https://www.kurs-anmeldung.de/go.dll?'.$query);
 $content = preg_replace_callback(
    '#<url_anmeldung>(.+)</url_anmeldung>#',
    function ($matches) {
-      return '<url_anmeldung>'.htmlspecialchars($matches[1]).'</url_anmeldung>';
+      $url = $matches[1];
+      $url = htmlspecialchars_decode($url); //prevents double encoding
+      $url = htmlspecialchars($url);
+      
+      return '<url_anmeldung>'.$url.'</url_anmeldung>';
    },
    $content);
 
