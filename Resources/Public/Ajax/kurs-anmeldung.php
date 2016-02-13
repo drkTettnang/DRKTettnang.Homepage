@@ -1,7 +1,16 @@
 <?php
+
 header('Content-Type: text/html; charset=ISO-8859-1');
 
 $query = parse_url($_SERVER[REQUEST_URI], PHP_URL_QUERY);
 
-echo file_get_contents('https://www.kurs-anmeldung.de/go.dll?'.$query);
-?>
+$content = file_get_contents('https://www.kurs-anmeldung.de/go.dll?'.$query);
+
+$content = preg_replace_callback(
+   '#<url_anmeldung>(.+)</url_anmeldung>#',
+   function ($matches) {
+      return '<url_anmeldung>'.htmlspecialchars($matches[1]).'</url_anmeldung>';
+   },
+   $content);
+
+echo $content;
