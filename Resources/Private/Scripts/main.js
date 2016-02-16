@@ -41,6 +41,15 @@ if (!$('body').hasClass('neos-backend')) {
          },
          image: {
             tError: '<a href="%url%">Das Foto</a> konnte nicht geladen werden.'
+         },
+         callbacks: {
+            imageLoadComplete: function() {
+               var src = this.currItem.src;
+
+               if (Piwik) {
+                  Piwik.getTracker().trackLink(src, 'download');
+               }
+            }
          }
       });
    });

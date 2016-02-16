@@ -171,6 +171,7 @@ if (drk && drk.config && drk.config.piwikUrl) {
    if (typeof drkException === 'string' && drkException === 'notFoundExceptions') {
       _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(document.location.pathname+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
    }
+   _paq.push(['removeDownloadExtensions', "jpeg|jpg"]);
    _paq.push(['trackPageView']);
    _paq.push(['enableLinkTracking']);
    (function() {
@@ -274,6 +275,15 @@ if (!$('body').hasClass('neos-backend')) {
          },
          image: {
             tError: '<a href="%url%">Das Foto</a> konnte nicht geladen werden.'
+         },
+         callbacks: {
+            imageLoadComplete: function() {
+               var src = this.currItem.src;
+
+               if (Piwik) {
+                  Piwik.getTracker().trackLink(src, 'download');
+               }
+            }
          }
       });
    });
