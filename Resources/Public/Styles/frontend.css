@@ -468,14 +468,6 @@ figure figcaption p {
   margin-right: 3px;
   opacity: 0.5;
 }
-.operation .images {
-  float: right;
-  padding-top: 10px;
-}
-.operation .images img {
-  /*height: 50px;
-  width: 50px;*/
-}
 .operation .more {
   margin-top: 15px;
   text-align: right;

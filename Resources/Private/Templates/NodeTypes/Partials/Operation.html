@@ -16,6 +16,18 @@
 		<p class="description">
 			{operation.description -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}
 		</p>
+		
+		<f:if condition="{operation.assets}">
+			<div class="images gallery">
+	         <f:for each="{operation.assets}" as="image">
+	            <a href="{f:uri.resource(resource:image.resource)}" 
+	               data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
+	               data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
+	               data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
+	               style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
+	         </f:for>
+	      </div> 
+		</f:if>
 	</div>
 
 	<div class="footer">
@@ -28,16 +40,6 @@
 		</div>
 		
 		<div style="clear:both"></div>
-		
-		<f:if condition="{operation.assets}">
-			<div class="images">
-				<f:for each="{operation.assets}" as="asset" iteration="iterator">
-					<a href="{f:uri.resource(resource:asset.resource)}">
-						<media:image asset="{asset}" maximumHeight="40" allowCropping="true" alt="a sample image without scaling" />
-					</a>
-				</f:for>
-			</div> 
-		</f:if>
 		
 		<f:if condition="{operation.bos}">
 			<!--<br />-->

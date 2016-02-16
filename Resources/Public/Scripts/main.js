@@ -259,7 +259,7 @@ if (!$('body').hasClass('neos-backend')) {
       type: 'image'
    });
 
-   $('article').each(function() {
+   $('article, .operation').each(function() {
       var self = $(this);
       var images = self.find('.images a').add(self.find('a:has(img)'));
 
