@@ -68,7 +68,7 @@ function displayEvents(container, xml, options) {
       var adresse = ausbildungsort.find('adresse').text();
       var gebuehr = lehrgang.find('tn_gebuehr').text();
       var plaetze = lehrgang.find('freie_plaetze').text();
-      
+
       plaetze = parseInt(plaetze);
       plaetze = (!isNaN(plaetze) && plaetze > 0) ? plaetze : 0;
       
@@ -115,7 +115,7 @@ function displayEvents(container, xml, options) {
    });
    
    container.empty();
-   
+
    if (table.find('tr').length > 0) {
       container.append(table);
    } else {
@@ -258,12 +258,22 @@ if (!$('body').hasClass('neos-backend')) {
       type: 'image'
    });
 
-   $('.images').each(function() {
-      $(this).magnificPopup({
-         delegate: 'a',
+   $('article').each(function() {
+      var images = $(this).find('.images a');
+      images.add($(this).find('a:has(img)'));
+
+      images.magnificPopup({
+         tClose: 'Schließen (ESC)',
+         tLoading: 'Lade Foto...',
          type: 'image',
          gallery: {
-            enabled: true
+            enabled: true,
+            tPrev: 'Vorheriges (Linke Pfeiltaste)',
+            tNext: 'Nächstes (Rechte Pfeiltaste)',
+            tCounter: '<span class="mfp-counter">%curr%. von %total% Fotos in diesem Beitrag</span>'
+         },
+         image: {
+            tError: '<a href="%url%">Das Foto</a> konnte nicht geladen werden.'
          }
       });
    });
@@ -292,6 +302,7 @@ $('.gallery').each(function() {
       }
    }
 
+   a.attr('data-width', (100 / r) - 1);
    a.css('width', ((100 / r) - 1) + '%');
    a.css('marginRight', '1%');
 
