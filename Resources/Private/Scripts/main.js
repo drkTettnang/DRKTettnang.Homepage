@@ -26,8 +26,8 @@ if (!$('body').hasClass('neos-backend')) {
    });
 
    $('article').each(function() {
-      var images = $(this).find('.images a');
-      images.add($(this).find('a:has(img)'));
+      var self = $(this);
+      var images = self.find('.images a').add(self.find('a:has(img)'));
 
       images.magnificPopup({
          tClose: 'Schließen (ESC)',
