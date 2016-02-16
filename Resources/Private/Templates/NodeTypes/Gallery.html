@@ -3,7 +3,11 @@
    <f:then>
       <div class="images gallery {alignment}"  style="{f:if(condition: width, then: 'width: {width}px;')}">
          <f:for each="{images}" as="image">
-            <a href="{f:uri.resource(resource:image.resource)}" data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
+            <a href="{f:uri.resource(resource:image.resource)}" 
+               data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
+               data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
+               data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
+               style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
          </f:for>
       </div> 
    </f:then>
@@ -14,7 +18,7 @@
 
 <f:comment>
 <f:switch expression="{f:count(subject: images)}">
-   <f:case value="1"><a href="{f:uri.resource(resource:image.resource)}" style="background-image:url({media:uri.image(asset: image, height: 180, width: 720, allowCropping: true)})"></a></f:case>
+   <f:case value="1"><a href="{f:uri.resource(resource:image.resource)}" style="background-image:url({media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)})"></a></f:case>
    <f:case value="2"><a href="{f:uri.resource(resource:image.resource)}" style="background-image:url({media:uri.image(asset: image, height: 180, width: 360, allowCropping: true)})"></a></f:case>
    <f:case value="3"><a href="{f:uri.resource(resource:image.resource)}" style="background-image:url({media:uri.image(asset: image, height: 180, width: 180, allowCropping: true)})"></a></f:case>
    <f:defaultCase><a href="{f:uri.resource(resource:image.resource)}" style="background-image:url({media:uri.image(asset: image, height: 100, width: 100, allowCropping: true)})"></a></f:defaultCase>

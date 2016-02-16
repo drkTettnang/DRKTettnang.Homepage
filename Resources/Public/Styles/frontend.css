@@ -582,6 +582,7 @@ article p:before {
 
 .gallery {
   text-align: center;
+  margin-bottom: 10px;
 }
 .gallery.right {
   text-align: right;
