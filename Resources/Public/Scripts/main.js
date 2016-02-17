@@ -316,7 +316,9 @@ $('.gallery').each(function() {
    a.css('width', ((100 / r) - 1) + '%');
    a.css('marginRight', '1%');
 
-   a.slice(0, (n % r)).css('width', ((100 / (n % r)) - 1) + '%').addClass('square');
+   var remaining = (small) ? a.slice(0, (n % r)) : a;
+
+   remaining.css('width', ((100 / (n % r)) - 1) + '%').addClass('square');
 
    a.each(function(){
       var self = $(this);
