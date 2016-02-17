@@ -255,13 +255,9 @@ $('input[data-toggle="tooltip"]').tooltip({
 });
 
 if (!$('body').hasClass('neos-backend')) {
-   $('a[href$=".jpg"]:has(img)').not('.images a').magnificPopup({
-      type: 'image'
-   });
-
    $('article, .operation').each(function() {
       var self = $(this);
-      var images = self.find('.images a').add(self.find('a:has(img)'));
+      var images = self.find('.images a').add(self.find('a[href$=".jpg"]:has(img)'));
 
       images.magnificPopup({
          tClose: 'Schließen (ESC)',
