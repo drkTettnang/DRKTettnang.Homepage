@@ -61,18 +61,48 @@ function fitGallery(galleries) {
 
       remaining.css('width', ((100 / (n % r)) - 1) + '%').addClass('square');
 
-      a.each(function(){
+      a.each(function() {
          var self = $(this);
-         
+
          if (self.hasClass('square') && self.attr('data-bg-url-square')) {
             self.css('height', self.width());
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-square') +')');
-         } else if(self.width() > 240 && self.attr('data-bg-url-large')) {
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-large') +')');
-         } else if(self.width() > 120 && self.attr('data-bg-url-medium')) {
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-medium') +')');
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-square') + ')');
+         } else if (self.width() > 240 && self.attr('data-bg-url-large')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-large') + ')');
+         } else if (self.width() > 120 && self.attr('data-bg-url-medium')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-medium') + ')');
          }
       });
+
+      // display only the following amount of rows by default
+      var VISIBLE_ROWS = 3;
+
+      if (Math.ceil(n / r) >= VISIBLE_ROWS) {
+         // index of the last visible image
+         var last = (n % r) + ((VISIBLE_ROWS - 1) * r) - 1;
+
+         // check if there are more images
+         if (last < n - 1) {
+            // clear previous attached classes
+            a.removeClass('lastImage hiddenImage');
+
+            // need overlay to prevent gallery action
+            var more = $('<div>');
+            more.addClass('more');
+            more.text('+' + (n - last - 1));
+            more.click(function(ev) {
+               ev.preventDefault();
+               ev.stopPropagation();
+
+               a.removeClass('lastImage hiddenImage');
+
+               $(this).remove();
+            });
+
+            self.find('a:eq(' + last + ')').addClass('lastImage').empty().append(more);
+            self.find('a:gt(' + last + ')').addClass('hiddenImage');
+         }
+      }
    });
 }
 

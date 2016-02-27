@@ -593,22 +593,37 @@ article p:before {
   height: 100px;
   background-size: cover;
   background-position: center center;
+  transition: height 0.5s;
 }
-.gallery.img-1 a {
-  width: 100%;
-  margin-right: 0;
+.gallery .square {
+  transition: height 0s;
 }
-.gallery.img-2 a {
-  width: 49%;
-  margin-right: 1%;
+.gallery .more {
+  display: none;
 }
-.gallery.img-3 a {
-  width: 32.333333%;
-  margin-right: 1%;
+.gallery .lastImage {
+  position: relative;
 }
-.gallery.img-4 a {
-  width: 24%;
-  margin-right: 1%;
+.gallery .lastImage .more {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 35px;
+  color: #fff;
+  line-height: 100px;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+.gallery .lastImage .more:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.gallery .hiddenImage {
+  height: 0px;
+  transition: height 0s;
 }
 
 .icon {

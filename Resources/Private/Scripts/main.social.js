@@ -1,6 +1,6 @@
 var socialUri;
 
-if(drk && drk.config && drk.config.facebookUrl) {
+if (drk && drk.config && drk.config.facebookUrl) {
    socialUri = function() {
       return drk.config.facebookUrl;
    };

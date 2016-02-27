@@ -19,6 +19,7 @@
     "grunt-contrib-uglify": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-css-url-relative": "0.0.6",
+    "grunt-jsbeautifier": "^0.2.10",
     "grunt-json": "^0.1.5"
   }
 }

@@ -238,6 +238,36 @@ function fitGallery(galleries) {
             self.css('backgroundImage', 'url('+ self.attr('data-bg-url-medium') +')');
          }
       });
+      
+      // display only the following amount of rows by default
+      var VISIBLE_ROWS = 3;
+
+      if (Math.ceil(n / r) >= VISIBLE_ROWS) {
+         // index of the last visible image
+         var last = (n % r) + ((VISIBLE_ROWS - 1) * r) - 1;
+
+         // check if there are more images
+         if (last < n - 1) {
+            // clear previous attached classes
+            a.removeClass('lastImage hiddenImage');
+            
+            // need overlay to prevent gallery action
+            var more = $('<div>');
+            more.addClass('more');
+            more.text('+' + (n - last - 1));
+            more.click(function(ev) {
+               ev.preventDefault();
+               ev.stopPropagation();
+               
+               a.removeClass('lastImage hiddenImage');
+               
+               $(this).remove();
+            });
+            
+            self.find('a:eq('+last+')').addClass('lastImage').empty().append(more);
+            self.find('a:gt('+last+')').addClass('hiddenImage');
+         }
+      }
    });
 }
 

@@ -32,32 +32,32 @@ module.exports = function(grunt) {
                cwd: 'Resources/Private/Vendor/bootstrap/dist',
                src: ['**'],
                dest: 'Resources/Public/Vendor/bootstrap'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/Clockpicker/dist',
                src: ['bootstrap-clockpicker.css', 'bootstrap-clockpicker.js'],
                dest: 'Resources/Public/Vendor/Clockpicker'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/CSS3-animate-it',
                src: ['css/*.css', 'js/*.js'],
                dest: 'Resources/Public/Vendor/CSS3-animate-it'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/Datepicker/dist',
                src: ['**'],
                dest: 'Resources/Public/Vendor/Datepicker'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/Font-Awesome',
                src: ['css/*.css', 'fonts/*'],
                dest: 'Resources/Public/Vendor/Font-Awesome'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/Magnific-Popup/dist',
                src: ['*.css', '*.js'],
                dest: 'Resources/Public/Vendor/Magnific-Popup'
-            },{
+            }, {
                expand: true,
                cwd: 'Resources/Private/Vendor/socialshareprivacy',
                src: ['lang/*', 'images/*', 'socialshareprivacy.css', 'jquery.socialshareprivacy.js'],
@@ -105,29 +105,35 @@ module.exports = function(grunt) {
          target: {
             files: {
                'Resources/Public/Vendor/_vendor.min.css': ['Resources/Public/Vendor/_vendor.css']
-             }
-        }
-     },
-     css_url_relative: {
-       styles: {
-         options: {
-           staticRoot: 'Resources/Public/Vendor/'
-         },
-         files: [{
-            src: ['Resources/Public/Vendor/bootstrap/css/bootstrap.css', 'Resources/Public/Vendor/socialshareprivacy/socialshareprivacy.css', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.css', 'Resources/Public/Vendor/CSS3-animate-it/css/animations.css', 'Resources/Public/Vendor/Datepicker/css/bootstrap-datepicker.css', 'Resources/Public/Vendor/Font-Awesome/css/font-awesome.css', 'Resources/Public/Vendor/Magnific-Popup/magnific-popup.css'],
-            dest: 'Resources/Public/Vendor/_vendor.css'
-         }]
-      }
-   },
-   json: {
-       config: {
-           options: {
+            }
+         }
+      },
+      css_url_relative: {
+         styles: {
+            options: {
+               staticRoot: 'Resources/Public/Vendor/'
+            },
+            files: [{
+               src: ['Resources/Public/Vendor/bootstrap/css/bootstrap.css', 'Resources/Public/Vendor/socialshareprivacy/socialshareprivacy.css', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.css', 'Resources/Public/Vendor/CSS3-animate-it/css/animations.css', 'Resources/Public/Vendor/Datepicker/css/bootstrap-datepicker.css', 'Resources/Public/Vendor/Font-Awesome/css/font-awesome.css', 'Resources/Public/Vendor/Magnific-Popup/magnific-popup.css'],
+               dest: 'Resources/Public/Vendor/_vendor.css'
+            }]
+         }
+      },
+      json: {
+         config: {
+            options: {
                namespace: 'drk'
-           },
-           src: ['config.json'],
-           dest: 'Resources/Private/Scripts/main.config.js'
-       }
-   }
+            },
+            src: ['config.json'],
+            dest: 'Resources/Private/Scripts/main.config.js'
+         }
+      },
+      jsbeautifier: {
+         files: ['Gruntfile.js', 'Resources/Private/Scripts/*.js'],
+         options: {
+            config: '.jsbeautifyrc'
+         }
+      }
    });
 
    grunt.loadNpmTasks('grunt-contrib-clean');
@@ -139,8 +145,11 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-css-url-relative');
    grunt.loadNpmTasks('grunt-json');
+   grunt.loadNpmTasks('grunt-jsbeautifier');
 
    grunt.registerTask('default', ['sass', 'json:config', 'concat:core', 'uglify:core', 'watch']);
-   
+
+   grunt.registerTask('commit', ['jsbeautifier']);
+
    grunt.registerTask('build', ['clean', 'json', 'copy', 'css_url_relative', 'cssmin', 'concat', 'uglify']);
 };

@@ -1,10 +1,9 @@
-
 if (drk && drk.config && drk.config.piwikUrl) {
    var currentUser = window.location.pathname.replace(/.+@user-([a-z]+)\.html/i, '$1');
    currentUser = (currentUser !== window.location.pathname) ? currentUser : null;
    var _paq = _paq || [];
    if (typeof drkException === 'string' && drkException === 'notFoundExceptions') {
-      _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(document.location.pathname+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
+      _paq.push(['setDocumentTitle', '404/URL = ' + encodeURIComponent(document.location.pathname + document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
    }
    _paq.push(['removeDownloadExtensions', "jpeg|jpg"]);
    _paq.push(['trackPageView']);
