@@ -106,7 +106,13 @@ function fitGallery(galleries) {
    });
 }
 
+var prevW = $(window).width();
+
 fitGallery($('.gallery'));
 $(window).resize(function() {
-   fitGallery($('.gallery'));
+   if (prevW !== $(window).width()) {
+      fitGallery($('.gallery'));
+
+      prevW = $(window).width();
+   }
 });

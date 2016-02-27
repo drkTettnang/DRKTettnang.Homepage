@@ -3,31 +3,31 @@ drk["config"] = {  "facebookUrl": "https://facebook.com/drkTettnang",  "piwikUrl
 function buildFromToString(datum, von, bis) {
    var datestring = '';
    var lang = 'de-DE';
-   
-   if(!datum.match(/^(0?[1-9]|[12][0-9]|3[01])\.(0?[1-9]|1[012])\.\d{4}$/)) {
+
+   if (!datum.match(/^(0?[1-9]|[12][0-9]|3[01])\.(0?[1-9]|1[012])\.\d{4}$/)) {
       return;
    }
-   
-   if(!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
+
+   if (!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
       return;
    }
-   
-   if(!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
+
+   if (!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
       return;
    }
-   
+
    datum = datum.split('.');
    von = von.split(':');
    bis = bis.split(':');
-   
-   von = new Date(datum[2], datum[1]-1, datum[0], von[0], von[1], von[2], 0);
-   bis = new Date(datum[2], datum[1]-1, datum[0], bis[0], bis[1], bis[2], 0);
-   
+
+   von = new Date(datum[2], datum[1] - 1, datum[0], von[0], von[1], von[2], 0);
+   bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2], 0);
+
    if (typeof von.toLocaleString === 'function') {
       datestring += von.toLocaleString(lang, {
-         weekday: 'short', 
-         year: 'numeric', 
-         month: 'numeric', 
+         weekday: 'short',
+         year: 'numeric',
+         month: 'numeric',
          day: 'numeric'
       });
       datestring += ' von ' + von.toLocaleString(lang, {
@@ -45,23 +45,23 @@ function buildFromToString(datum, von, bis) {
       datestring += ' bis ' + bis.toLocaleTimeString(lang);
       datestring += ' Uhr';
    }
-   
+
    return datestring;
 }
 
 function displayEvents(container, xml, options) {
    options = options || {};
-   
+
    var table = $('<table>');
-   
+
    $(xml).find('lehrgang').each(function(index) {
       if (typeof options.maxEvents === 'number' && options.maxEvents > 0 && index >= options.maxEvents) {
          return false;
       }
-      
+
       var lehrgang = $(this);
       var tr = $('<tr>');
-      
+
       var lehrgangstyp = lehrgang.find('lehrgangstyp bezeichnung').text();
       var ausbildungsort = lehrgang.find('ausbildungsort');
       var ort = ausbildungsort.find('plz').text() + ' ' + ausbildungsort.find('ort').text();
@@ -71,33 +71,33 @@ function displayEvents(container, xml, options) {
 
       plaetze = parseInt(plaetze);
       plaetze = (!isNaN(plaetze) && plaetze > 0) ? plaetze : 0;
-      
+
       if (options.bezeichnung) {
          $('<td>').addClass('bezeichnung').text(lehrgangstyp).appendTo(tr);
       }
-      
+
       var details = [];
-      
+
       var termine = lehrgang.find('termine termin');
       termine.each(function() {
          var termin = $(this);
          var datum = termin.find('datum').text();
          var von = termin.find('uhrzeit_von').text();
          var bis = termin.find('uhrzeit_bis').text();
-         
+
          details.push('<span class="fromTo">' + buildFromToString(datum, von, bis) + '</span>');
       });
-      
+
       details.push('<span class="ort">' + ort + ', ' + adresse + '</span>');
-      
+
       if (plaetze === 0) {
          details.push('<span class="plaetze">Leider sind alle Plätze vergeben.</small>');
       } else {
          details.push('<span class="preis">Preis: <em>' + gebuehr + '€</em>,</span> <span class="plaetze">Freie Plätze: <em>' + plaetze + '</em></span>');
       }
-      
+
       $('<td>').html(details.join('<br />')).appendTo(tr);
-      
+
       var url = lehrgang.find('url_anmeldung').text();
       if (url) {
          var link = $('<a>');
@@ -108,12 +108,12 @@ function displayEvents(container, xml, options) {
       } else {
          $('<td>').appendTo(tr);
       }
-      
+
       tr.attr('data-plaetze', plaetze);
-      
+
       tr.appendTo(table);
    });
-   
+
    container.empty();
 
    if (table.find('tr').length > 0) {
@@ -125,7 +125,7 @@ function displayEvents(container, xml, options) {
 
 $('.events').each(function() {
    var dom = $(this);
-   
+
    var options = {
       bezeichnung: dom.data('bezeichnung') || false,
       maxEvents: dom.data('maxevents') || 0,
@@ -136,16 +136,16 @@ $('.events').each(function() {
       Lic: dom.data('lic'),
       XML: 'J',
       LgTyp: dom.data('lgtyp') || '0',
-      Mon: (typeof dom.data('mon') === 'number' && dom.data('mon') >= 0)? dom.data('mon') : '',
+      Mon: (typeof dom.data('mon') === 'number' && dom.data('mon') >= 0) ? dom.data('mon') : '',
       Ort: (typeof dom.data('location') === 'string') ? dom.data('location') : ''
    };
-   
+
    if (!options.url) {
       return;
    }
-   
+
    dom.html('<p>(Lade Kurstermine)</p>');
-   
+
    options.url += '?' + $.param(params);
 
    $.ajax({
@@ -157,7 +157,7 @@ $('.events').each(function() {
       },
       error: function() {
          console.log('error', arguments);
-         
+
          dom.html('<p>(Termine konnten nicht geladen werden)</p>');
       }
    });
@@ -226,19 +226,19 @@ function fitGallery(galleries) {
 
       remaining.css('width', ((100 / (n % r)) - 1) + '%').addClass('square');
 
-      a.each(function(){
+      a.each(function() {
          var self = $(this);
-         
+
          if (self.hasClass('square') && self.attr('data-bg-url-square')) {
             self.css('height', self.width());
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-square') +')');
-         } else if(self.width() > 240 && self.attr('data-bg-url-large')) {
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-large') +')');
-         } else if(self.width() > 120 && self.attr('data-bg-url-medium')) {
-            self.css('backgroundImage', 'url('+ self.attr('data-bg-url-medium') +')');
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-square') + ')');
+         } else if (self.width() > 240 && self.attr('data-bg-url-large')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-large') + ')');
+         } else if (self.width() > 120 && self.attr('data-bg-url-medium')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-medium') + ')');
          }
       });
-      
+
       // display only the following amount of rows by default
       var VISIBLE_ROWS = 3;
 
@@ -250,7 +250,7 @@ function fitGallery(galleries) {
          if (last < n - 1) {
             // clear previous attached classes
             a.removeClass('lastImage hiddenImage');
-            
+
             // need overlay to prevent gallery action
             var more = $('<div>');
             more.addClass('more');
@@ -258,31 +258,36 @@ function fitGallery(galleries) {
             more.click(function(ev) {
                ev.preventDefault();
                ev.stopPropagation();
-               
+
                a.removeClass('lastImage hiddenImage');
-               
+
                $(this).remove();
             });
-            
-            self.find('a:eq('+last+')').addClass('lastImage').empty().append(more);
-            self.find('a:gt('+last+')').addClass('hiddenImage');
+
+            self.find('a:eq(' + last + ')').addClass('lastImage').empty().append(more);
+            self.find('a:gt(' + last + ')').addClass('hiddenImage');
          }
       }
    });
 }
 
+var prevW = $(window).width();
+
 fitGallery($('.gallery'));
 $(window).resize(function() {
-   fitGallery($('.gallery'));
-});
+   if (prevW !== $(window).width()) {
+      fitGallery($('.gallery'));
 
+      prevW = $(window).width();
+   }
+});
 
 if (drk && drk.config && drk.config.piwikUrl) {
    var currentUser = window.location.pathname.replace(/.+@user-([a-z]+)\.html/i, '$1');
    currentUser = (currentUser !== window.location.pathname) ? currentUser : null;
    var _paq = _paq || [];
    if (typeof drkException === 'string' && drkException === 'notFoundExceptions') {
-      _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(document.location.pathname+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
+      _paq.push(['setDocumentTitle', '404/URL = ' + encodeURIComponent(document.location.pathname + document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
    }
    _paq.push(['removeDownloadExtensions', "jpeg|jpg"]);
    _paq.push(['trackPageView']);
@@ -313,7 +318,7 @@ if (drk && drk.config && drk.config.piwikUrl) {
 
 var socialUri;
 
-if(drk && drk.config && drk.config.facebookUrl) {
+if (drk && drk.config && drk.config.facebookUrl) {
    socialUri = function() {
       return drk.config.facebookUrl;
    };
