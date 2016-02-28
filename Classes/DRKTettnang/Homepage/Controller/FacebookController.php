@@ -47,10 +47,11 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
            'limit' => $this->fb['limit'],
            'locale' => 'de_DE'
         ));
+
         $response = file_get_contents($postUrl);
 
         try {
-            $json = json_decode($response);
+           $json = json_decode($response);
         } catch (Exception $e) {
         }
 
@@ -137,6 +138,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                 $this->view->assign('link', $post->link);
             }
 
+            // (https?:\/\/([-\w\.]+)+(\/[\w\/_\.%\-,=#?]*[\w\/%\-,=#?])?\/?)
             // $this->view->assign('story', $story);
             $this->view->assign('message', $message);
             $this->view->assign('created_time', $post->created_time);
