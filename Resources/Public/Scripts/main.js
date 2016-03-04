@@ -244,7 +244,8 @@ function fitGallery(galleries) {
 
       if (Math.ceil(n / r) >= VISIBLE_ROWS) {
          // index of the last visible image
-         var last = (n % r) + ((VISIBLE_ROWS - 1) * r) - 1;
+         var last = (n % r === 0) ? (VISIBLE_ROWS * r) : ((n % r) + (VISIBLE_ROWS - 1) * r);
+         last -= 1; // index starts at zero
 
          // check if there are more images
          if (last < n - 1) {
