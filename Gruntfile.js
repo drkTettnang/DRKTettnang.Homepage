@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       watch: {
          css: {
             files: ['Resources/Private/Styles/*.scss'],
-            tasks: ['sass']
+            tasks: ['sass', 'autoprefixer']
          },
          js: {
             files: ['Resources/Private/Scripts/*.js'],
@@ -133,6 +133,11 @@ module.exports = function(grunt) {
          options: {
             config: '.jsbeautifyrc'
          }
+      },
+      autoprefixer: {
+         no_dest: {
+            src: ['Resources/Public/Styles/frontend.css', 'Resources/Public/Styles/backend.css']
+         }
       }
    });
 
@@ -146,8 +151,9 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-css-url-relative');
    grunt.loadNpmTasks('grunt-json');
    grunt.loadNpmTasks('grunt-jsbeautifier');
+   grunt.loadNpmTasks('grunt-autoprefixer');
 
-   grunt.registerTask('default', ['sass', 'json:config', 'concat:core', 'uglify:core', 'watch']);
+   grunt.registerTask('default', ['sass', 'autoprefixer', 'json:config', 'concat:core', 'uglify:core', 'watch']);
 
    grunt.registerTask('commit', ['jsbeautifier']);
 

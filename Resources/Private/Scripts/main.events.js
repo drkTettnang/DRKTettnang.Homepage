@@ -47,7 +47,7 @@ function buildFromToString(datum, von, bis) {
    return datestring;
 }
 
-function displayEvents(container, xml, options) {
+function displayTrainingEvents(container, xml, options) {
    options = options || {};
 
    var table = $('<table>');
@@ -121,7 +121,7 @@ function displayEvents(container, xml, options) {
    }
 }
 
-$('.events').each(function() {
+function loadTrainingEvents() {
    var dom = $(this);
 
    var options = {
@@ -142,7 +142,7 @@ $('.events').each(function() {
       return;
    }
 
-   dom.html('<p>(Lade Kurstermine)</p>');
+   dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Kurstermine)</p>');
 
    options.url += '?' + $.param(params);
 
@@ -151,7 +151,7 @@ $('.events').each(function() {
       method: 'GET',
       dataType: 'xml',
       success: function(xml) {
-         displayEvents(dom, xml, options);
+         displayTrainingEvents(dom, xml, options);
       },
       error: function() {
          console.log('error', arguments);
@@ -159,4 +159,123 @@ $('.events').each(function() {
          dom.html('<p>(Termine konnten nicht geladen werden)</p>');
       }
    });
+}
+
+function displayHiorgEvents(container, html, options) {
+   options = options || {};
+
+   var i = 0;
+   var table = $('<table>');
+
+   html.find('tbody tr').each(function() {
+      var eventRow = $(this);
+      var tr = $('<tr>');
+      var details = [];
+
+      if (i >= options.limit && options.limit > 0) {
+         return false;
+      }
+
+      var dayString = eventRow.find('td:eq(0)').text().trim().replace(/\s\s+/g, ' ');
+      dayString = dayString.replace(/.*(\d{2}\.\d{1,2}\.\d{2,4}).*/, '$1');
+
+      var timeString = eventRow.find('td:eq(1)').text().trim().replace(/\s\s+/g, ' ');
+      timeStringSplit = timeString.split('-');
+      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]) + ':00', $.trim(timeStringSplit[1]) + ':00');
+
+      var locationString = eventRow.find('td:eq(2)').text().trim().replace(/\s\s+/g, ' ');
+      var titleString = eventRow.find('td:eq(3)').text().trim().replace(/\s\s+/g, ' ');
+      var detailUrl = eventRow.find('td:eq(4) a').attr('href');
+
+      if (!locationString.match(options.locationRegex) || !titleString.match(options.titleRegex)) {
+         return;
+      }
+
+      details.push('<span class="title">' + titleString + '</span>');
+      details.push('<span class="fromTo">' + fromToString + '</span>');
+      details.push('<span class="location">' + locationString + '</span>');
+
+      $('<td>').html(details.join('<br />')).appendTo(tr);
+
+      table.append(tr);
+      i++;
+   });
+
+   container.empty();
+
+   if (table.find('tr').length > 0) {
+      container.append(table);
+   } else {
+      container.append('<p>(Keine Termine gefunden)</p>');
+   }
+}
+
+function loadHiorgEvents() {
+   var dom = $(this);
+
+   var options = {
+      limit: dom.data('limit') || 0,
+      title: dom.data('title') || '.*',
+      location: dom.data('location') || '.*',
+      ov: dom.data('ov') || '',
+      url: dom.data('url')
+   };
+
+   options.locationRegex = new RegExp(options.location, 'i');
+   options.titleRegex = new RegExp(options.title, 'i');
+
+   if (typeof options.ov !== 'string' || options.ov.length === 0 || typeof options.url !== 'string' || options.url.length === 0) {
+      return;
+   }
+
+   options.url += '?' + $.param({
+      ov: options.ov
+   });
+
+   dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Termine)</p>');
+
+   var cache = '';
+
+   try {
+      cache = JSON.parse(localStorage.getItem(options.url)) || '';
+   } catch (err) {}
+
+   if (cache.time && (new Date().getTime() - cache.time) < 1000 * 60 * 60 && !$('body').hasClass('neos-backend')) {
+      displayHiorgEvents(dom, $(cache.content), options);
+
+      return;
+   }
+
+   $.ajax({
+      url: options.url,
+      method: 'GET',
+      dataType: 'text',
+      success: function(text) {
+         text = text.replace(/<img[^>]*src=[^>]*>/gi, '');
+
+         localStorage.setItem(options.url, JSON.stringify({
+            time: new Date().getTime(),
+            content: text
+         }));
+
+         displayHiorgEvents(dom, $(text), options);
+      },
+      error: function() {
+         console.log('error', arguments);
+
+         dom.html('<p>(Termine konnten nicht geladen werden)</p>');
+      }
+   });
+}
+
+$('.events').each(function() {
+   switch ($(this).data('type')) {
+      case 'hiorg':
+         loadHiorgEvents.call(this);
+         break;
+      case 'training':
+      default:
+         loadTrainingEvents.call(this);
+         break;
+   }
 });

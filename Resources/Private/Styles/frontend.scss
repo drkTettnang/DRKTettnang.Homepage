@@ -82,18 +82,28 @@ a[target="_blank"]:before {
          padding-top:15px;
          padding-bottom: 15px;
       }
-      .bezeichnung {
-         width: 15%;
-      }
-      .fromTo {
-         font-weight: bold;
-      }
-      .ort, .plaetze, .preis {
-         font-size: 85%;
-      }
-      [data-plaetze='0'] {
+      &[data-type='training'] {
+         .bezeichnung {
+            width: 15%;
+         }
          .fromTo {
-            font-weight: normal;
+            font-weight: bold;
+         }
+         .ort, .plaetze, .preis {
+            font-size: 85%;
+         }
+         [data-plaetze='0'] {
+            .fromTo {
+               font-weight: normal;
+            }
+         }
+      }
+      &[data-type='hiorg'] {
+         .title {
+            font-weight: bold;
+         }
+         .location {
+            font-size: 85%;
          }
       }
    }
@@ -797,6 +807,58 @@ article {
       border-top: 1px solid black;
       font-style: italic;
    }
+}
+
+.spinner {
+   width: 1.5em;
+   height: 1em;
+   position: relative;
+   display:inline-block;
+}
+.loader,
+.loader:before,
+.loader:after {
+  background: #999;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+  opacity: 0.8;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  animation-delay: -0.32s;
+}
+.loader {
+  text-indent: -9999em;
+  position: absolute;
+  left: 2em;
+  top: 0;
+  font-size: 4px;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@keyframes load1 {
+  0%,
+  40%,
+  100% {
+    box-shadow: 0 0 #999;
+    height: 4em;
+    opacity: 0.8;
+  }
+  20% {
+    box-shadow: 0 -2em #999;
+    height: 5em;
+    opacity: 1;
+  }
 }
 
 @media print {
