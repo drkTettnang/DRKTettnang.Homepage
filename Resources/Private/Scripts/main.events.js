@@ -6,20 +6,26 @@ function buildFromToString(datum, von, bis) {
       return;
    }
 
-   if (!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
+   if (!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9])(:(0?[0-9]|[1-5][0-9]))?$/)) {
       return;
    }
 
-   if (!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
-      return;
+   if (typeof bis === 'string' && bis.length > 0) {
+      if (!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9])(:(0?[0-9]|[1-5][0-9]))?$/)) {
+         return;
+      }
+   } else {
+      bis = null;
    }
 
    datum = datum.split('.');
    von = von.split(':');
-   bis = bis.split(':');
+   von = new Date(datum[2], datum[1] - 1, datum[0], von[0], von[1], von[2] || 0, 0);
 
-   von = new Date(datum[2], datum[1] - 1, datum[0], von[0], von[1], von[2], 0);
-   bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2], 0);
+   if (bis) {
+      bis = bis.split(':');
+      bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2] || 0, 0);
+   }
 
    if (typeof von.toLocaleString === 'function') {
       datestring += von.toLocaleString(lang, {
@@ -28,19 +34,34 @@ function buildFromToString(datum, von, bis) {
          month: 'numeric',
          day: 'numeric'
       });
-      datestring += ' von ' + von.toLocaleString(lang, {
-         hour: 'numeric',
-         minute: 'numeric'
-      });
-      datestring += ' bis ' + bis.toLocaleString(lang, {
-         hour: 'numeric',
-         minute: 'numeric'
-      });
+
+      if (bis) {
+         datestring += ' von ' + von.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+         datestring += ' bis ' + bis.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+      } else {
+         datestring += ' um ' + von.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+      }
+
       datestring += ' Uhr';
    } else {
-      datestring += von.toLocaleDateString(lang);
-      datestring += ' von ' + von.toLocaleTimeString(lang);
-      datestring += ' bis ' + bis.toLocaleTimeString(lang);
+      datestring += von.getDate() + '.' + (von.getMonth() + 1) + '.' + von.getFullYear();
+
+      if (bis) {
+         datestring += ' von ' + von.getHours() + ':' + von.getMinutes();
+         datestring += ' bis ' + bis.getHours() + ':' + bis.getMinutes();
+      } else {
+         datestring += ' um ' + von.getHours() + ':' + von.getMinutes();
+      }
+
       datestring += ' Uhr';
    }
 
@@ -181,7 +202,7 @@ function displayHiorgEvents(container, html, options) {
 
       var timeString = eventRow.find('td:eq(1)').text().trim().replace(/\s\s+/g, ' ');
       timeStringSplit = timeString.split('-');
-      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]) + ':00', $.trim(timeStringSplit[1]) + ':00');
+      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]), $.trim(timeStringSplit[1]));
 
       var locationString = eventRow.find('td:eq(2)').text().trim().replace(/\s\s+/g, ' ');
       var titleString = eventRow.find('td:eq(3)').text().trim().replace(/\s\s+/g, ' ');

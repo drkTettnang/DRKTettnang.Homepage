@@ -8,20 +8,26 @@ function buildFromToString(datum, von, bis) {
       return;
    }
 
-   if (!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
+   if (!von.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9])(:(0?[0-9]|[1-5][0-9]))?$/)) {
       return;
    }
 
-   if (!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9]):(0?[0-9]|[1-5][0-9])$/)) {
-      return;
+   if (typeof bis === 'string' && bis.length > 0) {
+      if (!bis.match(/^(0?[0-9]|1[0-9]|2[0-4]):(0?[0-9]|[1-5][0-9])(:(0?[0-9]|[1-5][0-9]))?$/)) {
+         return;
+      }
+   } else {
+      bis = null;
    }
 
    datum = datum.split('.');
    von = von.split(':');
-   bis = bis.split(':');
+   von = new Date(datum[2], datum[1] - 1, datum[0], von[0], von[1], von[2] || 0, 0);
 
-   von = new Date(datum[2], datum[1] - 1, datum[0], von[0], von[1], von[2], 0);
-   bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2], 0);
+   if (bis) {
+      bis = bis.split(':');
+      bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2] || 0, 0);
+   }
 
    if (typeof von.toLocaleString === 'function') {
       datestring += von.toLocaleString(lang, {
@@ -30,19 +36,34 @@ function buildFromToString(datum, von, bis) {
          month: 'numeric',
          day: 'numeric'
       });
-      datestring += ' von ' + von.toLocaleString(lang, {
-         hour: 'numeric',
-         minute: 'numeric'
-      });
-      datestring += ' bis ' + bis.toLocaleString(lang, {
-         hour: 'numeric',
-         minute: 'numeric'
-      });
+
+      if (bis) {
+         datestring += ' von ' + von.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+         datestring += ' bis ' + bis.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+      } else {
+         datestring += ' um ' + von.toLocaleString(lang, {
+            hour: 'numeric',
+            minute: 'numeric'
+         });
+      }
+
       datestring += ' Uhr';
    } else {
-      datestring += von.toLocaleDateString(lang);
-      datestring += ' von ' + von.toLocaleTimeString(lang);
-      datestring += ' bis ' + bis.toLocaleTimeString(lang);
+      datestring += von.getDate() + '.' + (von.getMonth() + 1) + '.' + von.getFullYear();
+
+      if (bis) {
+         datestring += ' von ' + von.getHours() + ':' + von.getMinutes();
+         datestring += ' bis ' + bis.getHours() + ':' + bis.getMinutes();
+      } else {
+         datestring += ' um ' + von.getHours() + ':' + von.getMinutes();
+      }
+
       datestring += ' Uhr';
    }
 
@@ -165,26 +186,26 @@ function loadTrainingEvents() {
 
 function displayHiorgEvents(container, html, options) {
    options = options || {};
-   
+
    var i = 0;
    var table = $('<table>');
-   
+
    html.find('tbody tr').each(function() {
       var eventRow = $(this);
       var tr = $('<tr>');
       var details = [];
-      
+
       if (i >= options.limit && options.limit > 0) {
          return false;
       }
-      
+
       var dayString = eventRow.find('td:eq(0)').text().trim().replace(/\s\s+/g, ' ');
       dayString = dayString.replace(/.*(\d{2}\.\d{1,2}\.\d{2,4}).*/, '$1');
-      
+
       var timeString = eventRow.find('td:eq(1)').text().trim().replace(/\s\s+/g, ' ');
       timeStringSplit = timeString.split('-');
-      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]) + ':00', $.trim(timeStringSplit[1]) + ':00');
-      
+      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]), $.trim(timeStringSplit[1]));
+
       var locationString = eventRow.find('td:eq(2)').text().trim().replace(/\s\s+/g, ' ');
       var titleString = eventRow.find('td:eq(3)').text().trim().replace(/\s\s+/g, ' ');
       var detailUrl = eventRow.find('td:eq(4) a').attr('href');
@@ -196,13 +217,13 @@ function displayHiorgEvents(container, html, options) {
       details.push('<span class="title">' + titleString + '</span>');
       details.push('<span class="fromTo">' + fromToString + '</span>');
       details.push('<span class="location">' + locationString + '</span>');
-      
+
       $('<td>').html(details.join('<br />')).appendTo(tr);
-      
+
       table.append(tr);
       i++;
    });
-   
+
    container.empty();
 
    if (table.find('tr').length > 0) {
@@ -214,7 +235,7 @@ function displayHiorgEvents(container, html, options) {
 
 function loadHiorgEvents() {
    var dom = $(this);
-   
+
    var options = {
       limit: dom.data('limit') || 0,
       title: dom.data('title') || '.*',
@@ -222,14 +243,14 @@ function loadHiorgEvents() {
       ov: dom.data('ov') || '',
       url: dom.data('url')
    };
-   
+
    options.locationRegex = new RegExp(options.location, 'i');
    options.titleRegex = new RegExp(options.title, 'i');
 
    if (typeof options.ov !== 'string' || options.ov.length === 0 || typeof options.url !== 'string' || options.url.length === 0) {
       return;
    }
-   
+
    options.url += '?' + $.param({
       ov: options.ov
    });
@@ -237,12 +258,12 @@ function loadHiorgEvents() {
    dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Termine)</p>');
 
    var cache = '';
-   
+
    try {
       cache = JSON.parse(localStorage.getItem(options.url)) || '';
-   } catch(err) {}
-   
-   if (cache.time && (new Date().getTime() - cache.time) < 1000*60*60 && !$('body').hasClass('neos-backend')) {
+   } catch (err) {}
+
+   if (cache.time && (new Date().getTime() - cache.time) < 1000 * 60 * 60 && !$('body').hasClass('neos-backend')) {
       displayHiorgEvents(dom, $(cache.content), options);
 
       return;
