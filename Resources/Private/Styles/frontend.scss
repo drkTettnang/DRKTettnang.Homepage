@@ -101,6 +101,11 @@ a[target="_blank"]:before {
       &[data-type='hiorg'] {
          .title {
             font-weight: bold;
+            display: inline-block;
+            margin-right: 6px;
+         }
+         .fromTo {
+            display: inline-block;
          }
          .location {
             font-size: 85%;
