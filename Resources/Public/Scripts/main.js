@@ -240,7 +240,7 @@ function displayHiorgEvents(container, html, options) {
 
       details.push('<div class="title">' + titleString + '</div>');
       details.push('<div class="fromTo">' + fromToString + '</div>');
-      details.push('<div class="location">' + locationString + '</div>');
+      details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
 
       $('<td>').html(details.join('')).appendTo(tr);
 
