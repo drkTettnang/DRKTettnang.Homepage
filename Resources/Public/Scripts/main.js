@@ -1,5 +1,21 @@
 var drk = drk || {};
 drk["config"] = {  "facebookUrl": "https://facebook.com/drkTettnang",  "piwikUrl": "/piwik/"};
+function hashStr(str) {
+   var hash = 0,
+      i;
+
+   if (str.length === 0) {
+      return hash;
+   }
+
+   for (i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash |= 0; // Convert to 32bit integer
+   }
+
+   return hash;
+}
+
 function buildFromToString(datum, von, bis) {
    var datestring = '';
    var lang = 'de-DE';
@@ -207,18 +223,46 @@ function displayHiorgEvents(container, html, options) {
       var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]), $.trim(timeStringSplit[1]));
 
       var locationString = eventRow.find('td:eq(2)').text().trim().replace(/\s\s+/g, ' ');
-      var titleString = eventRow.find('td:eq(3)').text().trim().replace(/\s\s+/g, ' ');
+      var title = eventRow.find('td:eq(3)');
       var detailUrl = eventRow.find('td:eq(4) a').attr('href');
+
+      var categories = title.find('.katlabel').map(function() {
+         return $(this).text().trim().replace(/\s\s+/g, ' ');
+      }).toArray();
+      var categoryClasses = $.map(categories, function(category) {
+         return category.replace(/ /g, '-').toLowerCase();
+      });
+      var titleString = title.find('.katlabel').remove().end().text().trim().replace(/\s\s+/g, ' ');
 
       if (!locationString.match(options.locationRegex) || !titleString.match(options.titleRegex)) {
          return;
       }
 
-      details.push('<span class="title">' + titleString + '</span>');
-      details.push('<span class="fromTo">' + fromToString + '</span>');
-      details.push('<span class="location">' + locationString + '</span>');
+      details.push('<div class="title">' + titleString + '</div>');
+      details.push('<div class="fromTo">' + fromToString + '</div>');
+      details.push('<div class="location">' + locationString + '</div>');
 
-      $('<td>').html(details.join('<br />')).appendTo(tr);
+      $('<td>').html(details.join('')).appendTo(tr);
+
+      tr.addClass(categoryClasses.join(' '));
+
+      /*$.each(categories, function(index, category){
+         var hash = hashStr(category);
+         var hue = Math.abs(hash) % 360;
+         var saturation = 90;
+         var lightness = 65;
+
+         var span = $('<span>');
+         span.addClass(categoryClasses[index]);
+         span.addClass('category');
+         span.css({
+            'background-color': 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)',
+            'color': '#fff'
+         });
+         span.text(category);
+
+         tr.find('.title').append(span);
+      });*/
 
       table.append(tr);
       i++;
