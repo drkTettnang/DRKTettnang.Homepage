@@ -485,8 +485,11 @@ figure figcaption p {
 }
 
 @media (min-width: 768px) {
-  .col-sm-4 .operation .body, .col-sm-4 .operation .footer {
+  .col-sm-4 .operation .body {
     padding-left: 0px;
+  }
+  .col-sm-4 .operation .footer {
+    margin-left: 0px;
   }
 }
 article.highlight h1 {

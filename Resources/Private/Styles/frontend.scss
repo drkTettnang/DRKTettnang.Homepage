@@ -546,8 +546,11 @@ figure{
 
 @media (min-width: 768px) {
    .col-sm-4 .operation {
-      .body, .footer {
+      .body {
          padding-left: 0px;
+      }
+      .footer {
+         margin-left: 0px;
       }
    }
 }
