@@ -103,6 +103,15 @@ a[target="_blank"]:before {
             font-weight: bold;
             display: inline-block;
             margin-right: 6px;
+            span.category {
+                display: inline-block;
+                height: 1em;
+                width: 1em;
+                border-radius: 0.3em;
+                margin-right: 0.5em;
+                vertical-align: text-top;
+                margin-left: -2px;
+           }
          }
          .fromTo {
             display: inline-block;

@@ -244,11 +244,11 @@ function displayHiorgEvents(container, html, options) {
 
       tr.addClass(categoryClasses.join(' '));
 
-      /*$.each(categories, function(index, category){
+      $.each(categories, function(index, category) {
          var hash = hashStr(category);
          var hue = Math.abs(hash) % 360;
          var saturation = 90;
-         var lightness = 65;
+         var lightness = 55;
 
          var span = $('<span>');
          span.addClass(categoryClasses[index]);
@@ -257,10 +257,10 @@ function displayHiorgEvents(container, html, options) {
             'background-color': 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)',
             'color': '#fff'
          });
-         span.text(category);
+         span.attr('title', category);
 
-         tr.find('.title').append(span);
-      });*/
+         tr.find('.title').prepend(span);
+      });
 
       table.append(tr);
       i++;

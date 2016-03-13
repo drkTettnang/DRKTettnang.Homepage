@@ -85,6 +85,15 @@ a[target="_blank"]:before {
   display: inline-block;
   margin-right: 6px;
 }
+#main-content .events[data-type='hiorg'] .title span.category {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.3em;
+  margin-right: 0.5em;
+  vertical-align: text-top;
+  margin-left: -2px;
+}
 #main-content .events[data-type='hiorg'] .fromTo {
   display: inline-block;
 }
