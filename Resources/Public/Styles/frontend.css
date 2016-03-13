@@ -439,7 +439,7 @@ figure figcaption p {
   font-size: 1.2em;
   border: 3px solid #fff;
   margin-top: -30px;
-  margin-left: -10px;
+  margin-left: -20px;
 }
 .operation:before {
   content: ' ';
@@ -454,6 +454,7 @@ figure figcaption p {
 }
 .operation .type {
   padding-left: 0px;
+  margin-top: 40px;
   margin-left: 10px;
 }
 .operation .footer {
@@ -483,6 +484,11 @@ figure figcaption p {
   text-align: right;
 }
 
+@media (min-width: 768px) {
+  .col-sm-4 .operation .body, .col-sm-4 .operation .footer {
+    padding-left: 0px;
+  }
+}
 article.highlight h1 {
   background-color: #e30613 !important;
 }

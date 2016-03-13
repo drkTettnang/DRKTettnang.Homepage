@@ -491,7 +491,7 @@ figure{
       font-size: 1.2em;
       border: 3px solid #fff;
       margin-top: -30px;
-      margin-left: -10px;
+      margin-left: -20px;
    }
    &:before {
       content: ' ';
@@ -506,6 +506,7 @@ figure{
    }
    .type {
       padding-left: 0px;
+      margin-top: 40px;
       margin-left: 10px;
    }
    .description {
@@ -540,6 +541,14 @@ figure{
    .more {
       margin-top: 15px;
       text-align: right;
+   }
+}
+
+@media (min-width: 768px) {
+   .col-sm-4 .operation {
+      .body, .footer {
+         padding-left: 0px;
+      }
    }
 }
 
