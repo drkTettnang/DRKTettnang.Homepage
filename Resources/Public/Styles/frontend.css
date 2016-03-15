@@ -94,6 +94,67 @@ a[target="_blank"]:before {
   vertical-align: text-top;
   margin-left: -2px;
 }
+#main-content .events[data-type='hiorg'] .title span.category.cat1 {
+  background-color: #fafafa;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat2 {
+  background-color: #f3f3f3;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat3 {
+  background-color: #f0f0f0;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat4 {
+  background-color: #ff0099 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat5 {
+  background-color: #fad165 !important;
+  color: #000000;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat6 {
+  background-color: #ffad47 !important;
+  color: #000000;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat7 {
+  background-color: #fb573c !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat8 {
+  background-color: #ff99cc !important;
+  color: #000000;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat9 {
+  background-color: #ff3399 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat10 {
+  background-color: #cd73e4 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat11 {
+  background-color: #9966cc !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat12 {
+  background-color: #4a86e8 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat13 {
+  background-color: #0055cc !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat14 {
+  background-color: #009999 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat15 {
+  background-color: #33cc99 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat16 {
+  background-color: #7bd148 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat17 {
+  background-color: #b4dc6c !important;
+  color: #000000;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat18 {
+  background-color: #b69659 !important;
+}
+#main-content .events[data-type='hiorg'] .title span.category.cat19 {
+  background-color: #ac725e !important;
+}
 #main-content .events[data-type='hiorg'] .fromTo {
   display: inline-block;
 }

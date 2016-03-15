@@ -227,6 +227,9 @@ function displayHiorgEvents(container, html, options) {
       var categories = title.find('.katlabel').map(function() {
          return $(this).text().trim().replace(/\s\s+/g, ' ');
       }).toArray();
+      var categoryNumber = title.find('.katlabel').map(function() {
+         return $(this).attr('class').replace(/(.*col([0-9]{1,3}))?.*/, '$2');
+      }).toArray();
       var categoryClasses = $.map(categories, function(category) {
          return category.replace(/ /g, '-').toLowerCase();
       });
@@ -258,6 +261,10 @@ function displayHiorgEvents(container, html, options) {
             'color': '#fff'
          });
          span.attr('title', category);
+
+         if (categoryNumber && categoryNumber[index]) {
+            span.addClass('cat' + categoryNumber[index]);
+         }
 
          tr.find('.title').prepend(span);
       });

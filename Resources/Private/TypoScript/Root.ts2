@@ -8,7 +8,7 @@ root.operation {
 }
 
 page = Page {
-   httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
+   httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' platform.twitter.com www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
    httpResponseHead.headers.Content-Security-Policy.@if.1 = ${node.context.workspaceName == 'live'}
    
    head {

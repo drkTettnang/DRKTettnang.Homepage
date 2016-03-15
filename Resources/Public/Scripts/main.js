@@ -229,6 +229,9 @@ function displayHiorgEvents(container, html, options) {
       var categories = title.find('.katlabel').map(function() {
          return $(this).text().trim().replace(/\s\s+/g, ' ');
       }).toArray();
+      var categoryNumber = title.find('.katlabel').map(function() {
+         return $(this).attr('class').replace(/(.*col([0-9]{1,3}))?.*/, '$2');
+      }).toArray();
       var categoryClasses = $.map(categories, function(category) {
          return category.replace(/ /g, '-').toLowerCase();
       });
@@ -246,7 +249,7 @@ function displayHiorgEvents(container, html, options) {
 
       tr.addClass(categoryClasses.join(' '));
 
-      $.each(categories, function(index, category){
+      $.each(categories, function(index, category) {
          var hash = hashStr(category);
          var hue = Math.abs(hash) % 360;
          var saturation = 90;
@@ -260,6 +263,10 @@ function displayHiorgEvents(container, html, options) {
             'color': '#fff'
          });
          span.attr('title', category);
+         
+         if (categoryNumber && categoryNumber[index]) {
+            span.addClass('cat' + categoryNumber[index]);
+         }
 
          tr.find('.title').prepend(span);
       });
@@ -521,7 +528,9 @@ $('#socialmedia').socialSharePrivacy({
          'dummy_img': '/_Resources/Static/Packages/DRKTettnang.Homepage/Vendor/socialshareprivacy/images/dummy_facebook_like.png'
       },
       twitter: {
-         'status': 'off'
+         'status': 'off',
+         'perma_option': 'off',
+         'dummy_img': '/_Resources/Static/Packages/DRKTettnang.Homepage/Vendor/socialshareprivacy/images/dummy_twitter.png'
       },
       gplus: {
          'perma_option': 'off',

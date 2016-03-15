@@ -18,7 +18,9 @@ $('#socialmedia').socialSharePrivacy({
          'dummy_img': '/_Resources/Static/Packages/DRKTettnang.Homepage/Vendor/socialshareprivacy/images/dummy_facebook_like.png'
       },
       twitter: {
-         'status': 'off'
+         'status': 'off',
+         'perma_option': 'off',
+         'dummy_img': '/_Resources/Static/Packages/DRKTettnang.Homepage/Vendor/socialshareprivacy/images/dummy_twitter.png'
       },
       gplus: {
          'perma_option': 'off',

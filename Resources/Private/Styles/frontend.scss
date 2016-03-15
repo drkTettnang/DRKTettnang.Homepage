@@ -111,6 +111,25 @@ a[target="_blank"]:before {
                 margin-right: 0.5em;
                 vertical-align: text-top;
                 margin-left: -2px;
+                &.cat1 { background-color:#fafafa; }
+               &.cat2 { background-color:#f3f3f3; }
+               &.cat3 { background-color:#f0f0f0; } 
+               &.cat4 { background-color:#ff0099 !important; }
+               &.cat5{ background-color:#fad165 !important; color:#000000; }
+               &.cat6{ background-color:#ffad47 !important; color:#000000; }
+               &.cat7{ background-color:#fb573c !important; }
+               &.cat8{ background-color:#ff99cc !important; color:#000000; }
+               &.cat9{ background-color:#ff3399 !important; }
+               &.cat10 { background-color:#cd73e4 !important; }
+               &.cat11 { background-color:#9966cc !important; }
+               &.cat12 { background-color:#4a86e8 !important; }
+               &.cat13 { background-color:#0055cc !important; }
+               &.cat14 { background-color:#009999 !important; }
+               &.cat15 { background-color:#33cc99 !important; }
+               &.cat16 { background-color:#7bd148 !important; }
+               &.cat17 { background-color:#b4dc6c !important; color:#000000; }
+               &.cat18 { background-color:#b69659 !important; }
+               &.cat19 { background-color:#ac725e !important; }
            }
          }
          .fromTo {
