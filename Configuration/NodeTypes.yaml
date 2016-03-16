@@ -103,7 +103,7 @@
 'Weissheiten.Neos.Bootstrap:ResponsiveImage': []
 'Weissheiten.Neos.Bootstrap:NavTab': []
 'Weissheiten.Neos.Bootstrap:NavTabPanel': []
-'Weissheiten.Neos.Bootstrap:Carousel': []
+# 'Weissheiten.Neos.Bootstrap:Carousel': []
 'Flowpack.Neos.FrontendLogin:LoginForm': []
 'TYPO3.Neos.NodeTypes:TextWithImage': []
 #'TYPO3.Neos.NodeTypes:Html': []
