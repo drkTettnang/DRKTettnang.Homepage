@@ -40,3 +40,6 @@
 .neos-backend [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] * {
   float: none;
 }
+.neos-backend .neos-contentelement.neos-contentelement-hidden > * {
+  opacity: 0.5;
+}

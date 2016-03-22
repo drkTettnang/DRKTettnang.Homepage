@@ -239,6 +239,14 @@ function displayHiorgEvents(container, html, options) {
          return;
       }
 
+      var categoryFilter = function(val) {
+         return val.match(options.categoryRegex);
+      };
+
+      if ((categories.length > 0 && categories.filter(categoryFilter).length === 0) || (options.category !== '.*' && categories.length === 0)) {
+         return;
+      }
+
       details.push('<div class="title">' + titleString + '</div>');
       details.push('<div class="fromTo">' + fromToString + '</div>');
       details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
@@ -289,12 +297,14 @@ function loadHiorgEvents() {
       limit: dom.data('limit') || 0,
       title: dom.data('title') || '.*',
       location: dom.data('location') || '.*',
+      category: dom.data('category') || '.*',
       ov: dom.data('ov') || '',
       url: dom.data('url')
    };
 
    options.locationRegex = new RegExp(options.location, 'i');
    options.titleRegex = new RegExp(options.title, 'i');
+   options.categoryRegex = new RegExp(options.category, 'i');
 
    if (typeof options.ov !== 'string' || options.ov.length === 0 || typeof options.url !== 'string' || options.url.length === 0) {
       return;

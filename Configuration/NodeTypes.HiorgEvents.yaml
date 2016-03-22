@@ -54,3 +54,13 @@
                group: 'filter'
                editorOptions:
                   placeholder: 'Zeige alle Termine'
+      category:
+         type: string
+         defaultValue: ''
+         ui:
+            reloadPageIfChanged: true
+            label: 'Kategorie'
+            inspector:
+               group: 'filter'
+               editorOptions:
+                  placeholder: 'Zeige alle Termine'

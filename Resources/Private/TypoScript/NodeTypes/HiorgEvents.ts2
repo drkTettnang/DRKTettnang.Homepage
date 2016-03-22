@@ -3,5 +3,6 @@ prototype(DRKTettnang.Homepage:HiorgEvents) < prototype(TYPO3.Neos:Content) {
    limit = ${q(node).property('limit')}
    location = ${q(node).property('location')}
    title = ${q(node).property('title')}
+   category = ${q(node).property('category')}
    ov = ${q(node).property('ov')}
 }
