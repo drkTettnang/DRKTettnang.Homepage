@@ -892,6 +892,10 @@ article p:before {
     opacity: 1;
   }
 }
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+}
+
 @media print {
   .flashmessages {
     display: none;

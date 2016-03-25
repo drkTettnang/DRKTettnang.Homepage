@@ -688,3 +688,17 @@ $('.date input').datepicker({
    autoclose: true,
    todayHighlight: true
 });
+
+/**
+ * Workaround until Weissheiten/Weissheiten.Neos.Bootstrap#7 is merged.
+ * 
+ * https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap/pull/7
+ */
+
+$(".icon-next").each(function(){
+  $(this).removeClass('icon-next').addClass('glyphicon glyphicon-chevron-right');
+});
+
+$(".icon-prev").each(function(){
+  $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
+});
