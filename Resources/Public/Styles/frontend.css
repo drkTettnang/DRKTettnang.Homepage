@@ -301,7 +301,6 @@ header .header-content-inner {
 
 footer {
   margin-top: 50px;
-  overflow: hidden;
 }
 
 @media (min-width: 768px) {
