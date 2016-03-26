@@ -94,72 +94,101 @@ a[target="_blank"]:before {
   vertical-align: text-top;
   margin-left: -2px;
 }
-#main-content .events[data-type='hiorg'] .title span.category.cat1 {
-  background-color: #fafafa;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat2 {
-  background-color: #f3f3f3;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat3 {
-  background-color: #f0f0f0;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat4 {
-  background-color: #ff0099 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat5 {
-  background-color: #fad165 !important;
-  color: #000000;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat6 {
-  background-color: #ffad47 !important;
-  color: #000000;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat7 {
-  background-color: #fb573c !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat8 {
-  background-color: #ff99cc !important;
-  color: #000000;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat9 {
-  background-color: #ff3399 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat10 {
-  background-color: #cd73e4 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat11 {
-  background-color: #9966cc !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat12 {
-  background-color: #4a86e8 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat13 {
-  background-color: #0055cc !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat14 {
-  background-color: #009999 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat15 {
-  background-color: #33cc99 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat16 {
-  background-color: #7bd148 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat17 {
-  background-color: #b4dc6c !important;
-  color: #000000;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat18 {
-  background-color: #b69659 !important;
-}
-#main-content .events[data-type='hiorg'] .title span.category.cat19 {
-  background-color: #ac725e !important;
-}
 #main-content .events[data-type='hiorg'] .fromTo {
   display: inline-block;
 }
 #main-content .events[data-type='hiorg'] .location {
   font-size: 85%;
+}
+#main-content .events .keys {
+  font-size: 90%;
+  text-align: right;
+}
+#main-content .events .keys span.category {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.3em;
+  margin-right: 0.2em;
+  vertical-align: text-top;
+  margin-left: 0;
+}
+#main-content .events .keys span.key {
+  display: inline-block;
+  margin-right: 1em;
+}
+#main-content .events .cat1 {
+  background-color: #fafafa;
+}
+#main-content .events .cat2 {
+  background-color: #f3f3f3;
+}
+#main-content .events .cat3 {
+  background-color: #f0f0f0;
+}
+#main-content .events .cat4 {
+  background-color: #ff0099 !important;
+  color: #ffffff;
+}
+#main-content .events .cat5 {
+  background-color: #fad165 !important;
+  color: #000000;
+}
+#main-content .events .cat6 {
+  background-color: #ffad47 !important;
+  color: #000000;
+}
+#main-content .events .cat7 {
+  background-color: #fb573c !important;
+  color: #ffffff;
+}
+#main-content .events .cat8 {
+  background-color: #ff99cc !important;
+  color: #000000;
+}
+#main-content .events .cat9 {
+  background-color: #ff3399 !important;
+  color: #ffffff;
+}
+#main-content .events .cat10 {
+  background-color: #cd73e4 !important;
+  color: #ffffff;
+}
+#main-content .events .cat11 {
+  background-color: #9966cc !important;
+  color: #ffffff;
+}
+#main-content .events .cat12 {
+  background-color: #4a86e8 !important;
+  color: #ffffff;
+}
+#main-content .events .cat13 {
+  background-color: #0055cc !important;
+  color: #ffffff;
+}
+#main-content .events .cat14 {
+  background-color: #009999 !important;
+  color: #ffffff;
+}
+#main-content .events .cat15 {
+  background-color: #33cc99 !important;
+  color: #000000;
+}
+#main-content .events .cat16 {
+  background-color: #7bd148 !important;
+  color: #000000;
+}
+#main-content .events .cat17 {
+  background-color: #b4dc6c !important;
+  color: #000000;
+}
+#main-content .events .cat18 {
+  background-color: #b69659 !important;
+  color: #ffffff;
+}
+#main-content .events .cat19 {
+  background-color: #ac725e !important;
+  color: #ffffff;
 }
 
 #main-sidebar h2 {

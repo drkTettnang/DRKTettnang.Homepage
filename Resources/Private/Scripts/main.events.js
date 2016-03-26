@@ -201,6 +201,7 @@ function loadTrainingEvents() {
 function displayHiorgEvents(container, html, options) {
    options = options || {};
 
+   var globalCategories = {};
    var i = 0;
    var table = $('<table>');
 
@@ -275,6 +276,14 @@ function displayHiorgEvents(container, html, options) {
          }
 
          tr.find('.title').prepend(span);
+
+         if (!globalCategories[categoryClasses[index]]) {
+            globalCategories[categoryClasses[index]] = {
+               'name': category,
+               'number': categoryNumber[index],
+               'cat': 'cat' + categoryNumber[index]
+            };
+         }
       });
 
       table.append(tr);
@@ -285,6 +294,33 @@ function displayHiorgEvents(container, html, options) {
 
    if (table.find('tr').length > 0) {
       container.append(table);
+
+      if (Object && Object.keys && Object.keys(globalCategories).length > 1) {
+         var keys = $('<div>');
+         keys.addClass('keys');
+
+         var p = $('<p>');
+         keys.append(p);
+
+         $.each(globalCategories, function(className, category) {
+            var cat = $('<span>');
+
+            cat.addClass(category.cat);
+            cat.addClass(className);
+            cat.addClass('category');
+            cat.attr('title', category.name);
+            //cat.text(category.name);
+
+            var key = $('<span>');
+            key.addClass('key');
+            key.append(cat);
+            key.append(document.createTextNode(category.name));
+
+            p.append(key);
+         });
+
+         container.append(keys);
+      }
    } else {
       container.append('<p>(Keine Termine gefunden)</p>');
    }

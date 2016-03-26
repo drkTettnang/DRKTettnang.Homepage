@@ -139,10 +139,10 @@ $('.date input').datepicker({
  * https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap/pull/7
  */
 
-$(".icon-next").each(function(){
-  $(this).removeClass('icon-next').addClass('glyphicon glyphicon-chevron-right');
+$(".icon-next").each(function() {
+   $(this).removeClass('icon-next').addClass('glyphicon glyphicon-chevron-right');
 });
 
-$(".icon-prev").each(function(){
-  $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
+$(".icon-prev").each(function() {
+   $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
 });
