@@ -117,6 +117,9 @@ operation.body.content {
    main =  TYPO3.TypoScript:Template {
       templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
       
+      total = ${q(node).property('uriPathSegment')}
+      index = 0
+
       operation {
          type = ${q(node).property('type')}
          description = ${q(node).property('description')}
