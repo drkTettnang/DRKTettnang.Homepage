@@ -64,7 +64,18 @@ function fitGallery(galleries) {
       a.each(function() {
          var self = $(this);
 
-         if (self.hasClass('square') && self.attr('data-bg-url-square')) {
+         if (n === 1 && typeof Image === 'function' && self.attr('data-bg-url-max')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-max') + ')');
+
+            var image = new Image();
+            image.onload = function() {
+               var scale = image.width / image.height;
+               var height = self.width() / scale;
+
+               self.css('height', (height > self.width()) ? self.width() : height);
+            };
+            image.src = self.attr('data-bg-url-max');
+         } else if (self.hasClass('square') && self.attr('data-bg-url-square')) {
             self.css('height', self.width());
             self.css('backgroundImage', 'url(' + self.attr('data-bg-url-square') + ')');
          } else if (self.width() > 240 && self.attr('data-bg-url-large')) {

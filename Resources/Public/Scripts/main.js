@@ -278,7 +278,7 @@ function displayHiorgEvents(container, html, options) {
          }
 
          tr.find('.title').prepend(span);
-         
+
          if (!globalCategories[categoryClasses[index]]) {
             globalCategories[categoryClasses[index]] = {
                'name': category,
@@ -296,31 +296,31 @@ function displayHiorgEvents(container, html, options) {
 
    if (table.find('tr').length > 0) {
       container.append(table);
-      
+
       if (Object && Object.keys && Object.keys(globalCategories).length > 1) {
          var keys = $('<div>');
          keys.addClass('keys');
-         
+
          var p = $('<p>');
          keys.append(p);
-         
-         $.each(globalCategories, function(className, category){
+
+         $.each(globalCategories, function(className, category) {
             var cat = $('<span>');
-            
+
             cat.addClass(category.cat);
             cat.addClass(className);
             cat.addClass('category');
             cat.attr('title', category.name);
             //cat.text(category.name);
-            
+
             var key = $('<span>');
             key.addClass('key');
             key.append(cat);
             key.append(document.createTextNode(category.name));
-             
+
             p.append(key);
          });
-         
+
          container.append(keys);
       }
    } else {
@@ -466,7 +466,18 @@ function fitGallery(galleries) {
       a.each(function() {
          var self = $(this);
 
-         if (self.hasClass('square') && self.attr('data-bg-url-square')) {
+         if (n === 1 && typeof Image === 'function' && self.attr('data-bg-url-max')) {
+            self.css('backgroundImage', 'url(' + self.attr('data-bg-url-max') + ')');
+
+            var image = new Image();
+            image.onload = function() {
+               var scale = image.width / image.height;
+               var height = self.width() / scale;
+
+               self.css('height', (height > self.width()) ? self.width() : height);
+            };
+            image.src = self.attr('data-bg-url-max');
+         } else if (self.hasClass('square') && self.attr('data-bg-url-square')) {
             self.css('height', self.width());
             self.css('backgroundImage', 'url(' + self.attr('data-bg-url-square') + ')');
          } else if (self.width() > 240 && self.attr('data-bg-url-large')) {
@@ -731,10 +742,10 @@ $('.date input').datepicker({
  * https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap/pull/7
  */
 
-$(".icon-next").each(function(){
-  $(this).removeClass('icon-next').addClass('glyphicon glyphicon-chevron-right');
+$(".icon-next").each(function() {
+   $(this).removeClass('icon-next').addClass('glyphicon glyphicon-chevron-right');
 });
 
-$(".icon-prev").each(function(){
-  $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
+$(".icon-prev").each(function() {
+   $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
 });

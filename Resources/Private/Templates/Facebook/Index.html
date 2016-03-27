@@ -12,7 +12,8 @@
       <f:if condition="{images}">
          <div class="images gallery">
             <f:for each="{images}" as="image">
-               <a href="{f:uri.resource(resource:image.resource)}" 
+               <a href="{media:uri.image(asset: image, maximumHeight: 2000, maximumWidth: 2000, allowCropping: false)}" 
+                  data-bg-url-max="{media:uri.image(asset: image, maximumWidth: 720, allowCropping: false)}" 
                   data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
                   data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
                   data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
