@@ -303,6 +303,11 @@ footer {
   margin-top: 50px;
 }
 
+@media (max-width: 768px) {
+  #socialmedia {
+    overflow: hidden;
+  }
+}
 @media (min-width: 768px) {
   .affix {
     width: 212px;
