@@ -16,3 +16,6 @@
 [submodule "Resources/Private/Vendor/CSS3-animate-it"]
 	path = Resources/Private/Vendor/CSS3-animate-it
 	url = https://github.com/Jack-McCourt/css3-animate-it
+[submodule "Resources/Private/Vendor/rangeslider.js"]
+	path = Resources/Private/Vendor/rangeslider.js
+	url = https://github.com/andreruffert/rangeslider.js

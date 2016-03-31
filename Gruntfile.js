@@ -62,12 +62,17 @@ module.exports = function(grunt) {
                cwd: 'Resources/Private/Vendor/socialshareprivacy',
                src: ['lang/*', 'images/*', 'socialshareprivacy.css', 'jquery.socialshareprivacy.js'],
                dest: 'Resources/Public/Vendor/socialshareprivacy'
+            }, {
+               expand: true,
+               cwd: 'Resources/Private/Vendor/rangeslider.js/dist',
+               src: ['*'],
+               dest: 'Resources/Public/Vendor/rangeslider.js'
             }]
          }
       },
       concat: {
          vendor: {
-            src: ['Resources/Public/Vendor/bootstrap/js/bootstrap.js', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.js', 'Resources/Public/Vendor/CSS3-animate-it/js/css3-animate-it.js', 'Resources/Public/Vendor/Datepicker/js/bootstrap-datepicker.js', 'Resources/Public/Vendor/Magnific-Popup/jquery.magnific-popup.js', 'Resources/Public/Vendor/socialshareprivacy/jquery.socialshareprivacy.js'],
+            src: ['Resources/Public/Vendor/bootstrap/js/bootstrap.js', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.js', 'Resources/Public/Vendor/CSS3-animate-it/js/css3-animate-it.js', 'Resources/Public/Vendor/Datepicker/js/bootstrap-datepicker.js', 'Resources/Public/Vendor/Magnific-Popup/jquery.magnific-popup.js', 'Resources/Public/Vendor/socialshareprivacy/jquery.socialshareprivacy.js', 'Resources/Public/Vendor/rangeslider.js/rangeslider.js'],
             dest: 'Resources/Public/Vendor/_vendor.js'
          },
          core: {
@@ -114,7 +119,7 @@ module.exports = function(grunt) {
                staticRoot: 'Resources/Public/Vendor/'
             },
             files: [{
-               src: ['Resources/Public/Vendor/bootstrap/css/bootstrap.css', 'Resources/Public/Vendor/socialshareprivacy/socialshareprivacy.css', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.css', 'Resources/Public/Vendor/CSS3-animate-it/css/animations.css', 'Resources/Public/Vendor/Datepicker/css/bootstrap-datepicker.css', 'Resources/Public/Vendor/Font-Awesome/css/font-awesome.css', 'Resources/Public/Vendor/Magnific-Popup/magnific-popup.css'],
+               src: ['Resources/Public/Vendor/bootstrap/css/bootstrap.css', 'Resources/Public/Vendor/socialshareprivacy/socialshareprivacy.css', 'Resources/Public/Vendor/Clockpicker/bootstrap-clockpicker.css', 'Resources/Public/Vendor/CSS3-animate-it/css/animations.css', 'Resources/Public/Vendor/Datepicker/css/bootstrap-datepicker.css', 'Resources/Public/Vendor/Font-Awesome/css/font-awesome.css', 'Resources/Public/Vendor/Magnific-Popup/magnific-popup.css', 'Resources/Public/Vendor/rangeslider.js/rangeslider.css'],
                dest: 'Resources/Public/Vendor/_vendor.css'
             }]
          }

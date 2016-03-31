@@ -1,0 +1,33 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<form class="paypal form-inline" style="{f:if(condition: width, then: 'width: {width};')}{f:if(condition: float, then: 'float: {float};')}" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+   <f:if condition="{slider}">
+      <div class="form-group">
+         <input class="form-control" type="range" value="20" step="5" min="5" max="100" />
+      </div>
+   </f:if>
+
+   <div class="form-group amount-group">
+      <label class="sr-only" for="{node.identifier}-inputAmount">Amount (in euro)</label>
+      <input type="text" class="form-control" id="{node.identifier}-inputAmount" name="amount" value="20" min="5" pattern="[0-9]+" placeholder="Betrag">
+      <input type="submit" class="btn btn-primary" value="€ spenden">
+      <p class="help-block">weiter über  
+         <img src="{f:uri.resource(path: 'Images/de-pp-logo-100px.png', package: 'DRKTettnang.Homepage')}" alt="Logo" />
+      </p>
+   </div>
+   
+   <input type="hidden" name="cmd" value="_donations">
+   <input type="hidden" name="business" value="{receiver}">
+   <input type="hidden" name="lc" value="DE">
+   <f:if condition="{purpose}">
+      <input type="hidden" name="item_name" value="{purpose}">
+   </f:if>
+   <!-- <input type="hidden" name="item_number" value="donate-25"> -->
+   <input type="hidden" name="no_note" value="1">
+   <input type="hidden" name="no_shipping" value="1">
+   <input type="hidden" name="currency_code" value="EUR">
+   <f:if condition="{return}">
+      <input type="hidden" name="return" value="{return}">
+   </f:if>
+   <!-- <input type="hidden" name="notify_url" value=""> -->
+</form>

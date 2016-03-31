@@ -1,0 +1,83 @@
+'DRKTettnang.Homepage:Paypal':
+   superTypes: ['TYPO3.Neos:Content']
+   ui:
+      icon: 'icon-money'
+      group: 'plugins'
+      label: 'Spende Paypal'
+      inspector:
+         groups:
+            paypal:
+               label: 'Paypal'
+               position: 10
+            layout:
+               label: 'Layout'
+               position: 20
+   properties:
+      receiver:
+         type: string
+         defaultValue: ''
+         validation: 
+            'TYPO3.Neos/Validation/EmailAddressValidator': []
+            'TYPO3.Neos/Validation/NotEmptyValidator': []
+         ui:
+            reloadPageIfChanged: false
+            label: 'Empfänger'
+            inspector:
+               group: 'paypal'
+               editorOptions:
+                  placeholder: 'E-Mail Adresse'
+      purpose:
+         type: string
+         defaultValue: ''
+         ui:
+            reloadPageIfChanged: false
+            label: 'Verwendungszweck'
+            inspector:
+               group: 'paypal'
+      return:
+         type: string
+         defaultValue: ''
+         ui:
+            reloadPageIfChanged: false
+            label: 'Danksagungsseite'
+            inspector:
+               group: 'paypal'
+               editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+               editorOptions:
+                  assets: FALSE
+      slider:
+         type: boolean
+         defaultValue: TRUE
+         ui:
+            reloadPageIfChanged: true
+            label: 'Schieberegler'
+            inspector:
+               group: 'paypal'
+      width:
+         type: string
+         validation:
+            'TYPO3.Neos/Validation/RegularExpressionValidator':
+               regularExpression: '/^[0-9]+(px|%)$/'
+         ui:
+            reloadPageIfChanged: true
+            label: 'Breite'
+            inspector:
+               group: 'layout'
+               editorOptions:
+                  placeholder: 'Breite in px oder %'
+      float:
+         type: string
+         ui:
+            reloadPageIfChanged: true
+            label: 'Ausrichtung'
+            inspector:
+               group: 'layout'
+               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+               editorOptions:
+                  multiple: false
+                  allowEmpty: true
+                  values:
+                     left:
+                        label: 'Links'
+                     right:
+                        label: 'Rechts'

@@ -933,6 +933,93 @@ article {
    background-image:none;
 }
 
+form.paypal {
+   overflow: hidden;
+   
+   .form-group {
+      width: 100%;
+   }
+}
+
+.rangeslider.rangeslider--horizontal {
+   margin: 12px 0px;
+   height: 10px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+   box-shadow: none;
+   box-sizing: border-box;
+   background-color: #fff;
+   
+   .rangeslider__handle {
+      top: -15px;
+      background: transparent;
+      box-shadow: none;
+      border: 0;
+      &:after {
+         background: #eee;
+         border:1px solid #ccc;
+         height: 34px;
+         border-radius: 4px;
+         width: 40px;
+         transition: background 0.5s, color 0.5s;
+         
+         content: "\e079 \e080";
+         font-family: 'Glyphicons Halflings';
+         font-weight: 400;
+         line-height: 31px;
+         text-align: center;
+         color: #ccc;
+      }
+      &:active:after {
+         background-color: #ddd;
+         color: #aaa;
+      }
+   }
+   
+   .rangeslider__fill {
+      border-radius: 4px;
+      background: #e30613;
+      box-shadow: none;
+      /*opacity: 0.5;*/
+   }
+}
+
+.amount-group {
+   clear: both;
+   padding-top: 10px;
+   
+   [type="text"] {
+      width: 50%;
+       float: left;
+       border-radius: 4px 0px 0px 4px;
+       text-align: right;
+       border:1px solid #b3000a;
+       border-right: 0px;
+   }
+   [type="submit"] {
+      width: 50%;
+      border-radius: 0px 4px 4px 0px;
+      margin-left: -1px;
+      background: #e30613;
+      border:1px solid #b3000a;
+      border-left: 0px;
+      text-align: left;
+      transition: background 0.5s;
+      
+      &:hover {
+         background: #c7000b;
+      }
+   }
+   .help-block {
+      text-align: right;
+      img {
+         height: 1.3em;
+         margin-left: 0.5em;
+         vertical-align: sub;
+      }
+   }
+}
+
 @media print {
    .flashmessages {
       display: none;
