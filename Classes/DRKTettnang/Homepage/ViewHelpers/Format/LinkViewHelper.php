@@ -8,6 +8,7 @@ use TYPO3\Fluid\Core\ViewHelper\Facets\CompilableInterface;
 class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
 
    const EMAILPATTERN = '/[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/';
+   const PEMAILPATTERN = '/(<p>.*?)([a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)(.*?<\/p>)/';
 
         /**
          * @var boolean
@@ -42,7 +43,7 @@ class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
                 if (is_string($value) || (is_object($value) && method_exists($value, '__toString'))) {
                      $html = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/i', array('self', 'encode_link'), $value);
                      $html = preg_replace_callback('#<a ([^>]*)href=(?:\'([^\']*)\'|"([^"]*)")([^>]*)>([^<]*)</ ?a>#i', array('self', 'check_link'), $html);
-                     $html = preg_replace_callback(self::EMAILPATTERN, array('self', 'encode_email'), $html);
+                     $html = preg_replace_callback(self::PEMAILPATTERN, array('self', 'encode_email'), $html);
                    
                      return $html;
                 }
@@ -87,12 +88,12 @@ class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
         }
         
         static public function encode_email($matches){
-           $mail = $matches[0];
+           $mail = $matches[2];
            
            $attr = preg_replace_callback('/(.+)@(.+)/i', array('self', 'obfuscate_mailto'), $mail);
            $mail = self::obfuscate_email(array($mail));
            
-           return "<a $attr>$mail</a>";
+           return $matches[1]."<a $attr>$mail</a>".$matches[3];
         }
         
         static public function encode_link($matches){
