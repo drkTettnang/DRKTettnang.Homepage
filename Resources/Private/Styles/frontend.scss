@@ -935,9 +935,14 @@ article {
 
 form.paypal {
    overflow: hidden;
+   max-width: 100%;
    
    .form-group {
       width: 100%;
+   }
+   
+   .jumbotron &{
+      margin: auto;
    }
 }
 
@@ -1017,6 +1022,14 @@ form.paypal {
          margin-left: 0.5em;
          vertical-align: sub;
       }
+   }
+}
+
+.jumbotron.design-2 {
+   border: 1px solid #b3000a;
+   background-color: transparent;
+   hr {
+      border-color: #b3000a;
    }
 }
 

@@ -1,0 +1,40 @@
+'DRKTettnang.Homepage:Jumbotron':
+   superTypes:
+      'TYPO3.Neos:Content': TRUE
+   ui:
+      label: 'Jumbotron'
+      icon: 'icon-sign-blank'
+      group: 'general'
+      inlineEditable: TRUE
+      inspector:
+         groups:
+            layout:
+               label: 'Aussehen'
+               position: 10
+   childNodes:
+      content:
+         type: 'TYPO3.Neos:ContentCollection'
+         constraints:
+            nodeTypes:
+               'Flowpack.Neos.FrontendLogin:LoginForm': false
+               'TYPO3.Neos:PluginView': false
+               'TYPO3.Neos.NodeTypes:TextWithImage': false
+               'DRKTettnang.Homepage:SideBox': false
+               'DRKTettnang.Homepage:MainBox': false
+   properties:
+      design:
+         type: string
+         ui:
+            reloadPageIfChanged: true
+            label: 'Design'
+            inspector:
+               group: 'layout'
+               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+               editorOptions:
+                  multiple: false
+                  allowEmpty: false
+                  values:
+                     design-1:
+                        label: 'Design 1'
+                     design-2:
+                        label: 'Design 2'

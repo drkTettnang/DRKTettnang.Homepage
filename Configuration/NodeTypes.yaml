@@ -92,10 +92,7 @@
    ui:
       group: 'general'
 
-'Weissheiten.Neos.Bootstrap:Jumbotron':
-   ui:
-      group: 'general'
-
+'Weissheiten.Neos.Bootstrap:Jumbotron': []
 'Weissheiten.Neos.Bootstrap:PanelGroup': []
 'Weissheiten.Neos.Bootstrap:Panel': []
 'Weissheiten.Neos.Bootstrap:MediaList': []

@@ -931,9 +931,13 @@ article p:before {
 
 form.paypal {
   overflow: hidden;
+  max-width: 100%;
 }
 form.paypal .form-group {
   width: 100%;
+}
+.jumbotron form.paypal {
+  margin: auto;
 }
 
 .rangeslider.rangeslider--horizontal {
@@ -1010,6 +1014,14 @@ form.paypal .form-group {
   height: 1.3em;
   margin-left: 0.5em;
   vertical-align: sub;
+}
+
+.jumbotron.design-2 {
+  border: 1px solid #b3000a;
+  background-color: transparent;
+}
+.jumbotron.design-2 hr {
+  border-color: #b3000a;
 }
 
 @media print {

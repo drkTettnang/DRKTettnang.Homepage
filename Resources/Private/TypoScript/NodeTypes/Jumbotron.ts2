@@ -1,0 +1,6 @@
+prototype(DRKTettnang.Homepage:Jumbotron) {
+   //headlineRenderer = TYPO3.Neos.NodeTypes:Headline
+   contentRenderer = TYPO3.Neos:ContentCollection
+
+   content = ${q(node).children('content').get(0)}
+}
