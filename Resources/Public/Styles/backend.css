@@ -43,3 +43,14 @@
 .neos-backend .neos-contentelement.neos-contentelement-hidden > * {
   opacity: 0.5;
 }
+.neos-backend .carousel:before {
+  content: 'Carousel Auswahl';
+  margin-bottom: 10px;
+  text-align: center;
+  display: block;
+  background-color: gray;
+  border-radius: 3px;
+}
+.neos-backend .carousel .carousel-inner {
+  overflow: visible !important;
+}

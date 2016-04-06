@@ -925,7 +925,10 @@ article p:before {
     opacity: 1;
   }
 }
-.carousel-control.left, .carousel-control.right {
+.carousel {
+  margin-bottom: 30px;
+}
+.carousel .carousel-control.left, .carousel .carousel-control.right {
   background-image: none;
 }
 

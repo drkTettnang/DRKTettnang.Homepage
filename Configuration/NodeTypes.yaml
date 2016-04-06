@@ -50,6 +50,7 @@
             nodeTypes:            
                '*': false
                'DRKTettnang.Homepage:MainBox': true
+               'Weissheiten.Neos.Bootstrap:Carousel': true
                'TYPO3.Neos.NodeTypes:Column': true
                'TYPO3.Neos.NodeTypes:ContentReferences': true
                'DRKTettnang.Homepage:OperationOverview': true

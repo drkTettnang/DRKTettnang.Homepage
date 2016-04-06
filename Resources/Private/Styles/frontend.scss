@@ -929,8 +929,12 @@ article {
   }
 }
 
-.carousel-control.left, .carousel-control.right {
-   background-image:none;
+.carousel {
+   margin-bottom: 30px;
+   
+   .carousel-control.left, .carousel-control.right {
+      background-image:none;
+   }
 }
 
 form.paypal {

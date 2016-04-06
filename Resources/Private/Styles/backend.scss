@@ -42,4 +42,17 @@
    .neos-contentelement.neos-contentelement-hidden > * {
       opacity: 0.5;
    }
+   .carousel {
+      &:before {
+         content: 'Carousel Auswahl';
+         margin-bottom: 10px;
+         text-align: center;
+         display: block;
+         background-color: gray;
+         border-radius: 3px;
+      }
+      .carousel-inner {
+         overflow: visible !important;
+      }
+   }
 }
