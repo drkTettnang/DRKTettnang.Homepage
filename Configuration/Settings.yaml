@@ -79,3 +79,5 @@ DRKTettnang:
                label: 'Malteser'
             johanniter:
                label: 'Johanniter'
+            dlrg:
+               label: 'DLRG'
