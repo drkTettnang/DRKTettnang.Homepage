@@ -47,6 +47,8 @@ DRKTettnang:
                sanStart: ['required']
                sanEnd: ['required']
                eventCounterpart: ['required']
+               eventCounterpartPhone: ['required']
+               note: []
                agreement: ['required', 'agree']
       operation:
          types:
