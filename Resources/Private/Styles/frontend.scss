@@ -1040,6 +1040,19 @@ form.paypal {
    }
 }
 
+.box {
+   padding: 15px;
+   background-color: #EAEAEA;
+   margin-bottom: 15px;
+
+   .row > div {
+      border-left: 1px solid #000;
+   }
+   .row > :first-child {
+      border: 0;
+   }
+}
+
 @media print {
    .flashmessages {
       display: none;

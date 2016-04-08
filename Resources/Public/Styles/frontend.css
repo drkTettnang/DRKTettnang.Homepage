@@ -1031,6 +1031,18 @@ form.paypal .form-group {
   border-color: #b3000a;
 }
 
+.box {
+  padding: 15px;
+  background-color: #EAEAEA;
+  margin-bottom: 15px;
+}
+.box .row > div {
+  border-left: 1px solid #000;
+}
+.box .row > :first-child {
+  border: 0;
+}
+
 @media print {
   .flashmessages {
     display: none;
