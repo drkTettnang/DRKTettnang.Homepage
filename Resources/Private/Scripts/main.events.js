@@ -1,3 +1,81 @@
+function formatDate(format, date) {
+   var escaped = [];
+
+   var weekdayShort = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+   var weekdayLong = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+   /** D	A textual representation of a day, three letters **/
+   format = format.replace(/D/g, function() {
+      return '{' + weekdayShort[date.getDay()] + '}';
+   });
+
+   /** l A full textual representation of the day of the week **/
+   format = format.replace(/l/g, function() {
+      return '{' + weekdayLong[date.getDay()] + '}';
+   });
+
+   format = format.replace(/\{(.+?)\}/g, function(match, $1) {
+      escaped.push($1);
+
+      return '{}';
+   });
+
+   /** d	Day of the month, 2 digits with leading zeros **/
+   format = format.replace(/d/g, function() {
+      d = date.getDate();
+      return (d < 10) ? '0' + d : d;
+   });
+
+   /** j	Day of the month without leading zeros **/
+   format = format.replace(/j/g, function() {
+      return date.getDate();
+   });
+
+   /** m	Numeric representation of a month, with leading zeros **/
+   format = format.replace(/m/g, function() {
+      m = date.getMonth() + 1;
+      return (d < 10) ? '0' + m : m;
+   });
+
+   /** n Numeric representation of a month, without leading zeros **/
+   format = format.replace(/n/g, function() {
+      return date.getMonth() + 1;
+   });
+
+   /** Y	A full numeric representation of a year, 4 digits **/
+   format = format.replace(/Y/g, function() {
+      return date.getFullYear();
+   });
+
+   /** y	A two digit representation of a year **/
+   format = format.replace(/y/g, function() {
+      return (date.getFullYear() + '').slice(2);
+   });
+
+   /** G	24-hour format of an hour without leading zeros **/
+   format = format.replace(/G/g, function() {
+      return date.getHours();
+   });
+
+   /** H	24-hour format of an hour with leading zero **/
+   format = format.replace(/H/g, function() {
+      H = date.getHours();
+      return (H < 10) ? '0' + H : H;
+   });
+
+   /** i	Minutes with leading zeros **/
+   format = format.replace(/i/g, function() {
+      i = date.getMinutes();
+      return (i < 10) ? '0' + i : i;
+   });
+
+   format = format.replace(/\{\}/g, function() {
+      return escaped.shift();
+   });
+
+   return format;
+};
+
 function hashStr(str) {
    var hash = 0,
       i;
@@ -43,42 +121,13 @@ function buildFromToString(datum, von, bis) {
       bis = new Date(datum[2], datum[1] - 1, datum[0], bis[0], bis[1], bis[2] || 0, 0);
    }
 
-   if (typeof von.toLocaleString === 'function') {
-      datestring += von.toLocaleString(lang, {
-         weekday: 'short',
-         year: 'numeric',
-         month: 'numeric',
-         day: 'numeric'
-      });
+   datestring += formatDate('D., j.n.Y ', von);
 
-      if (bis) {
-         datestring += ' von ' + von.toLocaleString(lang, {
-            hour: 'numeric',
-            minute: 'numeric'
-         });
-         datestring += ' bis ' + bis.toLocaleString(lang, {
-            hour: 'numeric',
-            minute: 'numeric'
-         });
-      } else {
-         datestring += ' um ' + von.toLocaleString(lang, {
-            hour: 'numeric',
-            minute: 'numeric'
-         });
-      }
-
-      datestring += ' Uhr';
+   if (bis) {
+      datestring += formatDate('{von} H:i ', von);
+      datestring += formatDate('{bis} H:i {Uhr}', bis);
    } else {
-      datestring += von.getDate() + '.' + (von.getMonth() + 1) + '.' + von.getFullYear();
-
-      if (bis) {
-         datestring += ' von ' + von.getHours() + ':' + von.getMinutes();
-         datestring += ' bis ' + bis.getHours() + ':' + bis.getMinutes();
-      } else {
-         datestring += ' um ' + von.getHours() + ':' + von.getMinutes();
-      }
-
-      datestring += ' Uhr';
+      datestring += formatDate('{um} H:i {Uhr}', von);
    }
 
    return datestring;
