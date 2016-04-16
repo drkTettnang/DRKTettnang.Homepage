@@ -64,7 +64,7 @@ function fitGallery(galleries) {
       a.each(function() {
          var self = $(this);
 
-         if (n === 1 && typeof Image === 'function' && self.attr('data-bg-url-max')) {
+         if ((n === 1 || (remaining.length === 1 && self.hasClass('square'))) && typeof Image === 'function' && self.attr('data-bg-url-max')) {
             self.css('backgroundImage', 'url(' + self.attr('data-bg-url-max') + ')');
 
             var image = new Image();
