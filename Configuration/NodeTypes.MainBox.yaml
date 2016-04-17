@@ -45,6 +45,17 @@
                'list': []
                'alignment': []
                'formatlesspaste': []
+      pubdate:
+         type: string
+         ui:
+            reloadPageIfChanged: false
+            label: 'Veröffentlicht am'
+            inlineEditable: false
+            inspector:
+               group: 'layout'
+               editor: 'TYPO3.Neos/Inspector/Editors/DateTimeEditor'
+               editorOptions:
+                  format: 'd.m.Y H:i'
    childNodes:
       content:
          type: 'TYPO3.Neos:ContentCollection'

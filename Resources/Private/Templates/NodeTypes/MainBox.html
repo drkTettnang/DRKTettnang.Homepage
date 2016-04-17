@@ -4,5 +4,11 @@
    <article class="col-xs-12 {class}">
       {neos:contentElement.editable(property: 'headline', tag: 'h1')}
       <ts:render path="contentRenderer" context="{node: content}" />
+
+      <f:if condition="{pubdate}">
+         <footer>
+            <p>Veröffentlicht am <time datetime="{pubdate}">{pubdate -> f:format.date(cldrFormat: 'd. MMMM, H:mm', forceLocale:'de_DE')} Uhr</time>.</p>
+         </footer>
+      </f:if>
    </article>
 </div>

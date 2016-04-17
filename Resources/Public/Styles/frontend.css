@@ -611,6 +611,10 @@ article p:before {
   overflow: hidden;
   width: 10em;
 }
+article footer {
+  margin: 0;
+  display: none;
+}
 
 .fb-post .Like:before {
   content: "\f164";
