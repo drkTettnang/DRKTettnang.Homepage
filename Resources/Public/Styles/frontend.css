@@ -1047,6 +1047,49 @@ form.paypal .form-group {
   border: 0;
 }
 
+.your-name-container {
+  position: relative;
+  display: inline-block;
+}
+.your-name-container .your-name {
+  position: absolute;
+  left: 51%;
+  background-color: #d3d5e2;
+  color: #656b7d;
+  display: block;
+  width: 31%;
+  font-size: 20px;
+  text-align: center;
+  height: 11%;
+  top: 26%;
+  -webkit-transform: skew(0deg, -13deg) perspective(150px) rotateY(-26deg);
+          transform: skew(0deg, -13deg) perspective(150px) rotateY(-26deg);
+  overflow: hidden;
+}
+.your-name-container .your-name:after {
+  content: '|';
+  font-weight: 100;
+  -webkit-animation: 1.5s blink step-end infinite;
+          animation: 1.5s blink step-end infinite;
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #656b7d;
+  }
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #656b7d;
+  }
+}
 @media print {
   .flashmessages {
     display: none;

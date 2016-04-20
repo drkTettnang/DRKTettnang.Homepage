@@ -146,3 +146,73 @@ $(".icon-next").each(function() {
 $(".icon-prev").each(function() {
    $(this).removeClass('icon-prev').addClass('glyphicon glyphicon-chevron-left');
 });
+
+var typeTimeout;
+
+function typeNames(el, names, i, j) {
+   if (i >= names.length) return;
+
+   if (j >= names[i].length) {
+      typeTimeout = setTimeout(function() {
+         typeNames(el, names, i + 1, 0);
+      }, 3000);
+
+      return;
+   }
+
+   var n = el.text() || '';
+
+   if (j === 0) n = '';
+
+   typeTimeout = setTimeout(function() {
+      el.text(n + names[i][j]);
+
+      if (el.prop('scrollHeight') > el.height()) {
+         var fontSize = parseInt(el.css('font-size'));
+
+         while (fontSize > 14 && el.prop('scrollHeight') > el.height()) {
+            el.css('font-size', (--fontSize) + 'px');
+         }
+      }
+
+      typeNames(el, names, i, j + 1);
+   }, Math.random() * 800);
+}
+
+if ('transform' in $('body')[0].style) {
+   (function() {
+      var container = $('[alt$="animated"]').parent();
+      container.addClass('your-name-container');
+
+      if (container.length === 0) {
+         return;
+      }
+
+      var yourName = $('<div>');
+      yourName.addClass('your-name');
+      yourName.appendTo(container);
+      yourName.css('line-height', yourName.height() + 'px');
+      yourName.click(function(ev) {
+         ev.stopPropagation();
+
+         clearTimeout(typeTimeout);
+
+         var name = prompt('Wie ist dein Name?');
+         localStorage.setItem('name', name || '');
+
+         if (name) {
+            typeNames(yourName, [name], 0, 0);
+         }
+
+         return false;
+      });
+
+      var names = ['Ursula', 'Peter', 'Dein Name?'];
+
+      if (localStorage && localStorage.getItem('name')) {
+         names = [localStorage.getItem('name')];
+      }
+
+      typeNames(yourName, names, 0, 0);
+   }());
+}

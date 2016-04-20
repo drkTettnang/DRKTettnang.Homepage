@@ -1057,6 +1057,41 @@ form.paypal {
    }
 }
 
+.your-name-container {
+   position: relative;
+   display: inline-block;
+
+   .your-name {
+      position: absolute;
+      left: 51%;
+      background-color: #d3d5e2;
+      color: #656b7d;
+      display: block;
+      width: 31%;
+      font-size: 20px;
+      text-align: center;
+      height: 11%;
+      top: 26%;
+      transform: skew(0deg, -13deg) perspective( 150px ) rotateY( -26deg );
+      overflow: hidden;
+      
+      &:after {
+         content: '|';
+         font-weight: 100;
+         animation: 1.5s blink step-end infinite;
+      }
+   }
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #656b7d;
+  }
+}
+
 @media print {
    .flashmessages {
       display: none;
