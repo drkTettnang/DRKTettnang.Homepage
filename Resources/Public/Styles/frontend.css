@@ -1050,6 +1050,7 @@ form.paypal .form-group {
 .your-name-container {
   position: relative;
   display: inline-block;
+  max-width: 100%;
 }
 .your-name-container .your-name {
   position: absolute;
