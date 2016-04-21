@@ -852,6 +852,8 @@ function typeNames(el, names, i, j) {
 
    if (j === 0) n = '';
 
+   el.css('line-height', el.height() + 'px');
+
    typeTimeout = setTimeout(function() {
       el.text(n + names[i][j]);
 
@@ -897,7 +899,7 @@ if ('transform' in $('body')[0].style) {
 
       var names = ['Ursula', 'Peter', 'Dein Name?'];
 
-      if (localStorage && localStorage.getItem('name')) {
+      if (localStorage && typeof localStorage.getItem('name') === 'string') {
          names = [localStorage.getItem('name')];
       }
 
