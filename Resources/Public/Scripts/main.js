@@ -899,7 +899,7 @@ if ('transform' in $('body')[0].style) {
 
       var names = ['Ursula', 'Peter', 'Dein Name?'];
 
-      if (localStorage && typeof localStorage.getItem('name') === 'string') {
+      if (localStorage && localStorage.getItem('name') && typeof localStorage.getItem('name') === 'string') {
          names = [localStorage.getItem('name')];
       }
 
