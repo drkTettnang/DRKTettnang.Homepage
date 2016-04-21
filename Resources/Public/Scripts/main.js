@@ -886,6 +886,10 @@ if ('transform' in $('body')[0].style) {
          ev.stopPropagation();
 
          clearTimeout(typeTimeout);
+         
+         if (Piwik) {
+            Piwik.getTracker().trackEvent('Participate', 'change');
+         }
 
          var name = prompt('Wie ist dein Name?');
          localStorage.setItem('name', name || '');
