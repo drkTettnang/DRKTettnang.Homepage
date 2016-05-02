@@ -767,6 +767,15 @@ $('.cache input').change(function() {
    localStorage.setItem(key, input.val());
 });
 
+$('form input').on('invalid', function() {
+   var el = $(this);
+   var name = el.attr('name') || el.attr('id');
+
+   if (Piwik && name) {
+      Piwik.getTracker().trackEvent('Form', 'invalid', name);
+   }
+});
+
 $('form').on('reset', function() {
    var form = $(this);
 
