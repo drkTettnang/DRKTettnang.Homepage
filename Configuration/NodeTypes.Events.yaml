@@ -2,7 +2,7 @@
    superTypes: ['TYPO3.Neos:Content']
    ui:
       icon: 'icon-calendar'
-      group: 'general'
+      group: 'plugins'
       label: 'Kurs Termine'
       inspector:
          groups:
