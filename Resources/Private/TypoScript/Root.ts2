@@ -2,12 +2,17 @@
 
 include: NodeTypes/*
 
+prototype(Portachtzig.Neos.Piwik:TrackingCode){
+	templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/TrackingCode.html'
+}
+
 root.operation {
    condition = ${q(node).is('[instanceof DRKTettnang.Homepage:Operation]')}
    renderPath = '/operation'
 }
 
 page = Page {
+
    httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' platform.twitter.com www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
    httpResponseHead.headers.Content-Security-Policy.@if.1 = ${node.context.workspaceName == 'live'}
    

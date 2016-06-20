@@ -76,7 +76,7 @@ module.exports = function(grunt) {
             dest: 'Resources/Public/Vendor/_vendor.js'
          },
          core: {
-            src: ['Resources/Private/Scripts/main.config.js', 'Resources/Private/Scripts/main.*.js', 'Resources/Private/Scripts/main.js'],
+            src: ['Resources/Private/Scripts/main.*.js', 'Resources/Private/Scripts/main.js'],
             dest: 'Resources/Public/Scripts/main.js'
          }
       },
@@ -124,15 +124,6 @@ module.exports = function(grunt) {
             }]
          }
       },
-      json: {
-         config: {
-            options: {
-               namespace: 'drk'
-            },
-            src: ['config.json'],
-            dest: 'Resources/Private/Scripts/main.config.js'
-         }
-      },
       jsbeautifier: {
          files: ['Gruntfile.js', 'Resources/Private/Scripts/*.js'],
          options: {
@@ -154,13 +145,12 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-cssmin');
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-css-url-relative');
-   grunt.loadNpmTasks('grunt-json');
    grunt.loadNpmTasks('grunt-jsbeautifier');
    grunt.loadNpmTasks('grunt-autoprefixer');
 
-   grunt.registerTask('default', ['sass', 'autoprefixer', 'json:config', 'concat:core', 'uglify:core', 'watch']);
+   grunt.registerTask('default', ['sass', 'autoprefixer', 'concat:core', 'uglify:core', 'watch']);
 
    grunt.registerTask('commit', ['jsbeautifier']);
 
-   grunt.registerTask('build', ['clean', 'json', 'copy', 'css_url_relative', 'cssmin', 'concat', 'uglify']);
+   grunt.registerTask('build', ['clean', 'copy', 'css_url_relative', 'cssmin', 'concat', 'uglify']);
 };
