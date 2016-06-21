@@ -16,6 +16,7 @@ $(function() {
    _paq.push(['enableLinkTracking']);
 
    var u = $('#trackingCode').attr('data-host');
+   u='//'+u+'/';
 
    _paq.push(['setTrackerUrl', u + 'piwik.php']);
    _paq.push(['setSiteId', $('#trackingCode').attr('data-siteId')]);
