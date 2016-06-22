@@ -40,6 +40,7 @@ page = Page {
 		sectionName = 'body'
       
       brand = ${Configuration.setting('DRKTettnang.Homepage.brand')}
+		backgroundImage = ${q(node).property('backgroundImage') != null && q(node).property('backgroundImage') != '' ? q(node).property('backgroundImage') : q(node).parents('[backgroundImage!=""][backgroundImage]').first().property('backgroundImage')}
       
       hasSecondMenu = ${q(node).siblings('[instanceof TYPO3.Neos.NodeTypes:Page]') && q(node).parents('[instanceof TYPO3.Neos.NodeTypes:Page]')}
       
