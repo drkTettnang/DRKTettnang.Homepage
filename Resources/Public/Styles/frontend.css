@@ -80,12 +80,12 @@ a[target="_blank"]:before {
 #main-content .events[data-type='training'] [data-plaetze='0'] .fromTo {
   font-weight: normal;
 }
-#main-content .events[data-type='hiorg'] .title {
+#main-content .events[data-type='hiorg'] .title, #main-content .events[data-type='bloodDonation'] .title {
   font-weight: bold;
   display: inline-block;
   margin-right: 6px;
 }
-#main-content .events[data-type='hiorg'] .title span.category {
+#main-content .events[data-type='hiorg'] .title span.category, #main-content .events[data-type='bloodDonation'] .title span.category {
   display: inline-block;
   height: 1em;
   width: 1em;
@@ -94,10 +94,10 @@ a[target="_blank"]:before {
   vertical-align: text-top;
   margin-left: -2px;
 }
-#main-content .events[data-type='hiorg'] .fromTo {
+#main-content .events[data-type='hiorg'] .fromTo, #main-content .events[data-type='bloodDonation'] .fromTo {
   display: inline-block;
 }
-#main-content .events[data-type='hiorg'] .location {
+#main-content .events[data-type='hiorg'] .location, #main-content .events[data-type='bloodDonation'] .location {
   font-size: 85%;
 }
 #main-content .events .keys {

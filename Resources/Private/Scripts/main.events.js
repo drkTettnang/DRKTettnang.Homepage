@@ -435,10 +435,125 @@ function loadHiorgEvents() {
    });
 }
 
+function displayBloodDonationEvents(container, html, options) {
+   options = options || {};
+
+   var i = 0;
+   var table = $('<table>');
+
+   html.find('item').each(function() {
+      var item = $(this);
+      var tr = $('<tr>');
+      var details = [];
+
+      if (i >= options.limit && options.limit > 0) {
+         return false;
+      } // 88069 Tettnang-Laimnau am 21.07.2016, 14:45 bis 19:30 Uhr
+
+      var dayString = item.find('title').text().trim().replace(/\s\s+/g, ' ');
+      dayString = dayString.replace(/.*(\d{2}\.\d{1,2}\.\d{2,4}).*/, '$1');
+
+      var timeString = item.find('title').text().trim().replace(/\s\s+/g, ' ');
+      timeStringSplit = timeString.replace(/.*((\d{2}:\d{2}) ?bis ?(\d{2}:\d{2})).*/, '$2-$3');
+      timeStringSplit = timeStringSplit.split('-');
+      var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]), $.trim(timeStringSplit[1]));
+
+      var locationString = item.find('title').text().trim().replace(/\s\s+/g, ' ');
+      locationString = locationString.replace(/^([0-9]{5}.*?) am.+/i, '$1');
+
+      var titleString = 'Blutspende: ' + locationString.replace(/^[0-9]{5} /, '');
+
+      locationString += ', ' + item.find('description').text().trim().replace(/\s\s+/g, ' ');
+
+      var detailUrl = item.find('guid').text().trim();
+      detailUrl = detailUrl.replace(/ergebnisse\.php/, 'detail.php');
+      detailUrl = detailUrl.replace(/donor_id=/, 'id=');
+
+      details.push('<div class="title">' + titleString + '</div>');
+      details.push('<div class="fromTo">' + fromToString + '</div>');
+      details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
+
+      $('<td>').html(details.join('')).appendTo(tr);
+      
+      if (detailUrl.match(/^https?:\/\/www.drk-blutspende.de/)) {
+         var link = $('<a>');
+         link.text('Mehr');
+         link.attr('href', detailUrl);
+         link.attr('target', '_blank');
+         $('<td>').append(link).appendTo(tr);
+      }
+
+      table.append(tr);
+      i++;
+   });
+
+   container.empty();
+
+   if (table.find('tr').length > 0) {
+      container.append(table);
+   } else {
+      container.append('<p>(Keine Termine gefunden)</p>');
+   }
+}
+
+function loadBloodDonationEvents() {
+   var dom = $(this);
+
+   var options = {
+      limit: dom.data('limit') || 0,
+      location: dom.data('location') || null,
+      url: dom.data('url') || null
+   };
+
+   if (typeof options.location !== 'string' || options.location.length === 0 || typeof options.url !== 'string' || options.url.length === 0) {
+      return;
+   }
+
+   options.url += '?' + $.param({
+      location: options.location
+   });
+
+   dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Termine)</p>');
+
+   var cache = '';
+
+   try {
+      cache = JSON.parse(localStorage.getItem(options.url)) || '';
+   } catch (err) {}
+
+   if (cache.time && (new Date().getTime() - cache.time) < 1000 * 60 * 60 && !$('body').hasClass('neos-backend')) {
+      displayBloodDonationEvents(dom, $(cache.content), options);
+
+      return;
+   }
+
+   $.ajax({
+      url: options.url,
+      method: 'GET',
+      dataType: 'text',
+      success: function(text) {
+         localStorage.setItem(options.url, JSON.stringify({
+            time: new Date().getTime(),
+            content: text
+         }));
+
+         displayBloodDonationEvents(dom, $(text), options);
+      },
+      error: function() {
+         console.log('error', arguments);
+
+         dom.html('<p>(Termine konnten nicht geladen werden)</p>');
+      }
+   });
+}
+
 $('.events').each(function() {
    switch ($(this).data('type')) {
       case 'hiorg':
          loadHiorgEvents.call(this);
+         break;
+      case 'bloodDonation':
+         loadBloodDonationEvents.call(this);
          break;
       case 'training':
       default:

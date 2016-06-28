@@ -98,7 +98,7 @@ a[target="_blank"]:before {
             }
          }
       }
-      &[data-type='hiorg'] {
+      &[data-type='hiorg'], &[data-type='bloodDonation'] {
          .title {
             font-weight: bold;
             display: inline-block;
