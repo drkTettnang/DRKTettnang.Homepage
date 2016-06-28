@@ -28,23 +28,27 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
     */
    protected $resourceManager;
 
-  /**
-   * @Flow\InjectConfiguration(path="facebook")
-   *
-   * @var array
-   */
-  protected $fb = array();
-
     public function indexAction()
     {
-        $fb = $this->fb;
+        $fb = array(
+           'pageid' => $this->request->getInternalArgument('__pageid'),
+           'token' => $this->request->getInternalArgument('__token'),
+           'limit' => $this->request->getInternalArgument('__limit'),
+           'ignore' => $this->request->getInternalArgument('__ignore'),
+           'links' => $this->request->getInternalArgument('__links')
+        );
         $requestedPostNumber = 0;
+        
+        if (empty($fb['pageid']) || empty($fb['token'])) {
+           $this->view->assign('error', 'Empty pageid or token');
+           return;
+        }
 
-        $postUrl = 'https://graph.facebook.com/v2.4/'.$this->fb['pageid'].'/posts?';
+        $postUrl = 'https://graph.facebook.com/v2.4/'.$fb['pageid'].'/posts?';
         $postUrl .= http_build_query(array(
            'fields' => 'story,created_time,message,actions,likes{name},link',
-           'access_token' => $this->fb['token'],
-           'limit' => $this->fb['limit'],
+           'access_token' => $fb['token'],
+           'limit' => $fb['limit'],
            'locale' => 'de_DE'
         ));
 
@@ -78,7 +82,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
             $story = (isset($post->story)) ? $post->story : null;
             $message = (isset($post->message)) ? $post->message : $story;
 
-            if (!empty($this->fb['ignore']) && preg_match($this->fb['ignore'], $message)) {
+            if (!empty($fb['ignore']) && preg_match($fb['ignore'], $message)) {
                 continue;
             }
 
@@ -94,19 +98,17 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                    //@TODO use neos l18n
                     $action->label = $l18n[$action->name];
                 }
-                
-                $actions = array_merge($actions, array_filter($post->actions, function($v){
-                   global $fb;
 
-                   return in_array(strtolower($v->name), $this->fb['links']);
+                $actions = array_merge($actions, array_filter($post->actions, function($v) use ($fb){
+                   return in_array(strtolower($v->name), $fb['links']);
                 }));
             }
             
-            if (in_array('more', $this->fb['links'])) {
+            if (in_array('more', $fb['links'])) {
                $actions = array_merge($actions, array(array(
                   'label' => 'Mehr',
                   'name' => 'more',
-                  'link' => 'https://facebook.com/'.$this->fb['pageid']
+                  'link' => 'https://facebook.com/'.$fb['pageid']
                )));
             }
             
@@ -145,7 +147,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
             $attachmentUrl = 'https://graph.facebook.com/v2.4/'.$post->id.'/attachments?';
             $attachmentUrl .= http_build_query(array(
-             'access_token' => $this->fb['token'],
+             'access_token' => $fb['token'],
            ));
 
             $attachmentResponse = file_get_contents($attachmentUrl);

@@ -2,6 +2,12 @@
 {namespace drk=DRKTettnang\Homepage\ViewHelpers}
 <div class="fb-post">
    <div class="fb-body">
+      <f:if condition="{node.context.workspace.name} != 'live'">
+         <f:if condition="{error}">
+            <p>{error -> f:format.htmlspecialchars() -> f:format.raw()}</p>
+         </f:if>
+      </f:if>
+
       <f:if condition="{story}">
          <p class="story">{story -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
       </f:if>

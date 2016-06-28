@@ -2,7 +2,7 @@ prototype(DRKTettnang.Homepage:FacebookPost) < prototype(TYPO3.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Facebook'
       action = 'index'
-      
+
       @cache {
          mode = 'cached'
 

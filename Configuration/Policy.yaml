@@ -4,6 +4,9 @@ privilegeTargets:
       matcher: 'method(DRKTettnang\Homepage\Controller\FacebookController->(index)Action())'
     'DRKTettnang.Homepage:Form':
       matcher: 'method(DRKTettnang\Homepage\Controller\FormController->(step1|step2)Action())'
+  TYPO3\TYPO3CR\Security\Authorization\Privilege\Node\EditNodePrivilege:
+    'DRKTettnang.Homepage:EditFacebookPost':
+      matcher: 'nodeIsOfType("DRKTettnang.Homepage:FacebookPost")'
       
 roles:
   'TYPO3.Flow:Everybody':
@@ -13,4 +16,9 @@ roles:
         permission: GRANT
       -
         privilegeTarget: 'DRKTettnang.Homepage:Form'
+        permission: GRANT
+  'DRKTettnang.Homepage:FacebookAdministrator':
+    privileges:
+      -
+        privilegeTarget: 'DRKTettnang.Homepage:EditFacebookPost'
         permission: GRANT
