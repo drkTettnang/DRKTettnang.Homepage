@@ -44,6 +44,12 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
            return;
         }
 
+        if (!$this->request->getInternalArgument('__ajax')) {
+           $this->view->assign('identifier', $this->request->getInternalArgument('__identifier'));
+
+           return;
+        }
+
         $postUrl = 'https://graph.facebook.com/v2.4/'.$fb['pageid'].'/posts?';
         $postUrl .= http_build_query(array(
            'fields' => 'story,created_time,message,actions,likes{name},link',
@@ -52,6 +58,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
            'locale' => 'de_DE'
         ));
 
+        $this->systemLogger->log('Query facebook API.', LOG_DEBUG);
         $response = file_get_contents($postUrl);
 
         try {
@@ -66,11 +73,15 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
         );
 
         if ($json === null || !isset($json)) {
+           $this->systemLogger->log('Could not parse JSON.', LOG_DEBUG);
+
             //@TODO report error
            return;
         }
 
         if (isset($json->error)) {
+           $this->systemLogger->log('JSON error: '.$json->error->message, LOG_DEBUG);
+
             //@TODO report error $json->error->message;
            return;
         }

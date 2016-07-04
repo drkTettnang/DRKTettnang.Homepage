@@ -231,3 +231,26 @@ if ('transform' in $('body')[0].style) {
       typeNames(yourName, names, 0, 0);
    }());
 }
+
+$('div[data-identifier]').each(function(){
+   var el = $(this);
+   
+   el.html('<p><div class="spinner"><div class="loader"/></div> (Lade Daten)</p>');
+   
+   $.ajax({
+      method: 'GET',
+      data: {
+         nodeId: el.attr('data-identifier'),
+         ajax: true
+      },
+      success: function(response) {
+         var html = $(response);
+         el.after(html);
+
+         initPreviews(html);
+         fitGallery(html.find('.gallery'));
+
+         el.remove();
+      }
+   });
+});

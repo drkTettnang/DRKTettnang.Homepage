@@ -2,6 +2,9 @@ prototype(DRKTettnang.Homepage:FacebookPost) < prototype(TYPO3.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Facebook'
       action = 'index'
+      
+      identifier =  ${node.identifier}
+      ajax = ${request.arguments.ajax == 'true'}
 
       @cache {
          mode = 'cached'

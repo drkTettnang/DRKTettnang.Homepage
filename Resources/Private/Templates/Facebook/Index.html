@@ -1,52 +1,59 @@
 {namespace media=TYPO3\Media\ViewHelpers}
 {namespace drk=DRKTettnang\Homepage\ViewHelpers}
-<div class="fb-post">
-   <div class="fb-body">
-      <f:if condition="{node.context.workspace.name} != 'live'">
-         <f:if condition="{error}">
-            <p>{error -> f:format.htmlspecialchars() -> f:format.raw()}</p>
-         </f:if>
-      </f:if>
-
-      <f:if condition="{story}">
-         <p class="story">{story -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
-      </f:if>
-      <f:if condition="{message}">
-         <p>{message -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
-      </f:if>
-
-      <f:if condition="{images}">
-         <div class="images gallery">
-            <f:for each="{images}" as="image">
-               <a href="{media:uri.image(asset: image, maximumHeight: 2000, maximumWidth: 2000, allowCropping: false)}" 
-                  data-bg-url-max="{media:uri.image(asset: image, maximumWidth: 720, allowCropping: false)}" 
-                  data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
-                  data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
-                  data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
-                  style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
-            </f:for>
-         </div>
-      </f:if>
-   </div>
-
-   <div class="fb-meta">
-      <f:if condition="{likes}">
-         <f:if condition="{likes_count} > 0">
-            <p>{likes_first_concat}
-               <f:if condition="{likes_more_count} > 0">
-                  und  <span title="{likes_more_concat}" data-toggle="tooltip" data-placement="top">{likes_more_count} weiteren Personen</span>
+<f:if condition="{identifier}">
+   <f:then>
+      <div data-identifier="{identifier}">(Warte auf Daten)</div>
+   </f:then>
+   <f:else>
+      <div class="fb-post">
+         <div class="fb-body">
+            <f:if condition="{node.context.workspace.name} != 'live'">
+               <f:if condition="{error}">
+                  <p>{error -> f:format.htmlspecialchars() -> f:format.raw()}</p>
                </f:if>
-               gefällt das.
-            </p>
-         </f:if>
-      </f:if>
+            </f:if>
 
-      <f:if condition="{actions}">
-         <f:for each="{actions}" as="action" iteration="iterator">
-            <a class="{action.name}" href="{action.link}" target="_blank">{action.label}</a>
-         </f:for>
-      </f:if>
+            <f:if condition="{story}">
+               <p class="story">{story -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
+            </f:if>
+            <f:if condition="{message}">
+               <p>{message -> f:format.htmlspecialchars() -> drk:format.linebreak() -> f:format.raw()}</p>
+            </f:if>
 
-      <!-- <p>{created_time -> f:format.date(format: 'j. M Y, H:i')}</p> -->
-   </div>
-</div>
+            <f:if condition="{images}">
+               <div class="images gallery">
+                  <f:for each="{images}" as="image">
+                     <a href="{media:uri.image(asset: image, maximumHeight: 2000, maximumWidth: 2000, allowCropping: false)}" 
+                        data-bg-url-max="{media:uri.image(asset: image, maximumWidth: 720, allowCropping: false)}" 
+                        data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
+                        data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
+                        data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
+                        style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
+                  </f:for>
+               </div>
+            </f:if>
+         </div>
+
+         <div class="fb-meta">
+            <f:if condition="{likes}">
+               <f:if condition="{likes_count} > 0">
+                  <p>{likes_first_concat}
+                     <f:if condition="{likes_more_count} > 0">
+                        und  <span title="{likes_more_concat}" data-toggle="tooltip" data-placement="top">{likes_more_count} weiteren Personen</span>
+                     </f:if>
+                     gefällt das.
+                  </p>
+               </f:if>
+            </f:if>
+
+            <f:if condition="{actions}">
+               <f:for each="{actions}" as="action" iteration="iterator">
+                  <a class="{action.name}" href="{action.link}" target="_blank">{action.label}</a>
+               </f:for>
+            </f:if>
+
+            <!-- <p>{created_time -> f:format.date(format: 'j. M Y, H:i')}</p> -->
+         </div>
+      </div>
+   </f:else>
+</f:if>

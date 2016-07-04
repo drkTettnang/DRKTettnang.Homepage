@@ -1,35 +1,40 @@
 if (!$('body').hasClass('neos-backend')) {
    $('article, .operation').each(function() {
       var self = $(this);
-      var images = self.find('.images a').add(self.find('a[href$=".jpg"]:has(img)'));
-
-      images.magnificPopup({
-         tClose: 'Schließen (ESC)',
-         tLoading: 'Lade Foto...',
-         type: 'image',
-         gallery: {
-            enabled: true,
-            tPrev: 'Vorheriges (Linke Pfeiltaste)',
-            tNext: 'Nächstes (Rechte Pfeiltaste)',
-            tCounter: '<span class="mfp-counter">%curr%. von %total% Fotos in diesem Beitrag</span>'
-         },
-         image: {
-            tError: '<a href="%url%">Das Foto</a> konnte nicht geladen werden.'
-         },
-         callbacks: {
-            imageLoadComplete: function() {
-               var src = this.currItem.src;
-
-               if (Piwik) {
-                  Piwik.getTracker().trackLink(src, 'download');
-               }
-            }
-         }
-      });
+      
+      initPreviews(self);
    });
 } else {
    $('a[href$=".jpg"]:has(img)').each(function() {
       $(this).attr('href', '#');
+   });
+}
+
+function initPreviews(container) {
+   var images = container.find('.images a').add(container.find('a[href$=".jpg"]:has(img)'));
+
+   images.magnificPopup({
+      tClose: 'Schließen (ESC)',
+      tLoading: 'Lade Foto...',
+      type: 'image',
+      gallery: {
+         enabled: true,
+         tPrev: 'Vorheriges (Linke Pfeiltaste)',
+         tNext: 'Nächstes (Rechte Pfeiltaste)',
+         tCounter: '<span class="mfp-counter">%curr%. von %total% Fotos in diesem Beitrag</span>'
+      },
+      image: {
+         tError: '<a href="%url%">Das Foto</a> konnte nicht geladen werden.'
+      },
+      callbacks: {
+         imageLoadComplete: function() {
+            var src = this.currItem.src;
+
+            if (typeof Piwik !== 'undefined') {
+               Piwik.getTracker().trackLink(src, 'download');
+            }
+         }
+      }
    });
 }
 

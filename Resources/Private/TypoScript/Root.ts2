@@ -6,10 +6,25 @@ prototype(Portachtzig.Neos.Piwik:TrackingCode){
 	templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/TrackingCode.html'
 }
 
+prototype(DRKTettnang.Homepage:AjaxType) < prototype(TYPO3.TypoScript:Collection) {
+	collection = ${q(node).find('#' + request.arguments.nodeId)}
+	itemRenderer = TYPO3.Neos:ContentCase
+	itemName = 'node'
+	
+	//.children()
+}
+
 root.operation {
    condition = ${q(node).is('[instanceof DRKTettnang.Homepage:Operation]')}
    renderPath = '/operation'
 }
+
+root.ajax {
+	condition = ${request.arguments.ajax == 'true' && request.arguments.nodeId}
+	type = 'DRKTettnang.Homepage:AjaxType'
+	position = '10'
+}
+root.@cache.entryIdentifier.projects = ${'ajax' + request.arguments.nodeId + request.arguments.ajax}
 
 page = Page {
 
