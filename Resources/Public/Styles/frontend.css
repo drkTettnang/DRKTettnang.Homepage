@@ -616,18 +616,6 @@ article footer {
   display: none;
 }
 
-.fb-post .Like:before {
-  content: "\f164";
-}
-.fb-post .Comment:before {
-  content: "\f086";
-}
-.fb-post .Share:before {
-  content: "\f064";
-}
-.fb-post .more:before {
-  content: "\f082";
-}
 .fb-post .fb-body {
   overflow: hidden;
 }
@@ -652,6 +640,18 @@ article footer {
   padding-bottom: 3px;
   background-color: #f1f1f1;
   display: inline-block;
+}
+.fb-post .fb-meta .Like:before {
+  content: "\f164";
+}
+.fb-post .fb-meta .Comment:before {
+  content: "\f086";
+}
+.fb-post .fb-meta .Share:before {
+  content: "\f064";
+}
+.fb-post .fb-meta .more:before {
+  content: "\f082";
 }
 
 .mediaItem {

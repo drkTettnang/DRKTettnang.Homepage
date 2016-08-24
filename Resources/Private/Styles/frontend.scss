@@ -641,26 +641,6 @@ article {
    img {
    
    }
-   .Like {
-      &:before {
-         content: "\f164";
-      }
-   }
-   .Comment {
-      &:before {
-         content: "\f086";
-      }
-   }
-   .Share {
-      &:before {
-         content: "\f064";
-      }
-   }
-   .more {
-      &:before {
-         content: "\f082";
-      }
-   }
    .fb-body {
       overflow: hidden;
    }
@@ -683,6 +663,26 @@ article {
             padding-bottom: 3px;
             background-color: #f1f1f1;
             display: inline-block;
+         }
+      }
+      .Like {
+         &:before {
+            content: "\f164";
+         }
+      }
+      .Comment {
+         &:before {
+            content: "\f086";
+         }
+      }
+      .Share {
+         &:before {
+            content: "\f064";
+         }
+      }
+      .more {
+         &:before {
+            content: "\f082";
          }
       }
    }
