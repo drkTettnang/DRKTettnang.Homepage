@@ -6,6 +6,10 @@ TYPO3:
                notFoundExceptions:
                   options:
                      templatePathAndFilename: 'resource://DRKTettnang.Homepage/Private/Templates/Error/Index.html'
+   Neos:
+    typoScript:
+      autoInclude:
+        'DRKTettnang.OperationHistory': TRUE
 DRKTettnang:
    Homepage:
       brand: 'OV Tettnang e.V.'

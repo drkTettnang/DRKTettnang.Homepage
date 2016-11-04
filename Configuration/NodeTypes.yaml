@@ -49,6 +49,7 @@
          constraints:
             nodeTypes:            
                '*': false
+               'DRKTettnang.OperationHistory:Plugin': true
                'DRKTettnang.Homepage:MainBox': true
                'Weissheiten.Neos.Bootstrap:Carousel': true
                'TYPO3.Neos.NodeTypes:Column': true
