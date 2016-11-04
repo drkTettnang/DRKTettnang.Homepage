@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   color: #000;
   padding-top: 50px;
@@ -10,6 +11,11 @@ a[target="_blank"]:before {
   font-style: normal;
   margin-right: 3px;
   font-size: 0.9em;
+}
+
+.flashmessages {
+  list-style: none;
+  padding: 0;
 }
 
 #main-content h1 {
@@ -566,6 +572,35 @@ figure figcaption p {
   background-color: #f1f1f1;
   padding: 10px;
 }
+.operation .controls {
+  padding-left: 95px;
+  margin-top: 10px;
+  text-align: right;
+}
+.operation .controls a, .operation .controls button {
+  margin: 0 10px;
+  color: #888;
+}
+.operation .controls a:hover, .operation .controls button:hover {
+  color: #555;
+}
+.operation .controls form {
+  display: inline;
+}
+.operation .controls button {
+  display: inline;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  text-decoration: none;
+}
+.operation .controls button:hover {
+  text-decoration: underline;
+}
+.operation .controls .confirm, .operation .controls .confirm:hover {
+  color: red;
+  font-weight: bold;
+}
 .operation .location {
   opacity: 0.5;
   float: left;
@@ -769,11 +804,11 @@ article footer {
   display: none;
 }
 
-.icon-fw {
+.icon-fw, .icon-feuerwehr {
   background-image: url(../Images/icons/fw.svg);
 }
 
-.icon-thw {
+.icon-thw, .icon-technischesHilfswerk, .icon-THW, .icon-tHW {
   background-image: url(../Images/icons/thw.svg);
 }
 
@@ -781,19 +816,19 @@ article footer {
   background-image: url(../Images/icons/polizei.svg);
 }
 
-.icon-drk {
+.icon-drk, .icon-weitereDRKKraefte, .icon-weitereDRKGruppen {
   background-image: url(../Images/icons/drk.svg);
 }
 
-.icon-rd {
+.icon-rd, .icon-rettungsdienst {
   background-image: url(../Images/icons/rd.svg);
 }
 
-.icon-rhs {
+.icon-rhs, .icon-rettungshundeStaffel {
   background-image: url(../Images/icons/rhs.svg);
 }
 
-.icon-rth {
+.icon-rth, .icon-rettungshubschrauber {
   background-image: url(../Images/icons/rth.svg);
 }
 
@@ -805,7 +840,7 @@ article footer {
   background-image: url(../Images/icons/johanniter.svg);
 }
 
-.icon-dlrg {
+.icon-dlrg, .icon-DLRG, .icon-dLRG {
   background-image: url(../Images/icons/dlrg.svg);
 }
 
@@ -1072,6 +1107,98 @@ form.paypal .form-group {
   font-weight: 100;
   -webkit-animation: 1.5s blink step-end infinite;
           animation: 1.5s blink step-end infinite;
+}
+
+.operationBos input[type="checkbox"]:not(:checked) + span {
+  font-weight: normal;
+}
+.operationBos input[type="checkbox"]:checked + span {
+  font-weight: bold;
+}
+
+#uploaded > div {
+  display: inline-block;
+  margin: 0px 10px 10px 0px;
+  height: 100px;
+  width: 100px;
+  background-color: #e1e1e1;
+  position: relative;
+  overflow: hidden;
+}
+#uploaded > div img {
+  z-index: 5;
+  position: relative;
+}
+#uploaded > div .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5em;
+  margin-left: -0.7em;
+  z-index: 0;
+}
+#uploaded > div .remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  z-index: 10;
+  cursor: pointer;
+}
+#uploaded > div .remove.confirm {
+  left: 0;
+  width: auto;
+}
+#uploaded > div .remove:after {
+  content: '×';
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: bold;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  line-height: 0.5em;
+  text-shadow: 0px 0px 5px black;
+}
+#uploaded > div .remove.confirm:after {
+  color: red;
+  font-size: 1em;
+  line-height: 2.5em;
+  content: 'Entfernen?';
+  background-color: rgba(255, 255, 255, 0.7);
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-shadow: none;
+}
+
+#year-nav {
+  float: right;
+  margin-left: 15px;
+}
+
+.statistic {
+  background-color: #f1f1f1;
+  padding: 10px 10px 0 10px;
+}
+.statistic .type {
+  display: inline-block;
+  float: left;
+  width: 33%;
+  margin-bottom: 10px;
+}
+.statistic .type .value {
+  display: inline-block;
+  background-color: #999;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: content-box;
 }
 
 @-webkit-keyframes "blink" {
