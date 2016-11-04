@@ -74,7 +74,7 @@ function formatDate(format, date) {
    });
 
    return format;
-};
+}
 
 function hashStr(str) {
    var hash = 0,
@@ -923,6 +923,12 @@ if ($('button.reset').length && $('button[type="reset"]').length) {
 $('.time').clockpicker({
    donetext: 'Fertig',
    minutestep: 5,
+   autoclose: true
+});
+
+$('.exacttime').clockpicker({
+   donetext: 'Fertig',
+   minutestep: 1,
    autoclose: true
 });
 

@@ -132,6 +132,12 @@ $('.time').clockpicker({
    autoclose: true
 });
 
+$('.exacttime').clockpicker({
+   donetext: 'Fertig',
+   minutestep: 1,
+   autoclose: true
+});
+
 $('.date input').datepicker({
    format: "dd.mm.yyyy",
    weekStart: 1,
