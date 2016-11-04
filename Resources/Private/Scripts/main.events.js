@@ -74,7 +74,7 @@ function formatDate(format, date) {
    });
 
    return format;
-};
+}
 
 function hashStr(str) {
    var hash = 0,
