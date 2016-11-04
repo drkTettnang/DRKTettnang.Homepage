@@ -7,7 +7,13 @@ use TYPO3\Flow\Log\SystemLoggerInterface;
 
 class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 {
-    /**
+   /**
+    * @Flow\Inject
+    * @var \TYPO3\Media\Domain\Repository\AssetCollectionRepository
+    */
+   protected $assetCollectionRepository;
+
+   /**
     * @Flow\Inject
     *
     * @var TYPO3\Media\Domain\Repository\AssetRepository
@@ -38,7 +44,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
            'links' => $this->request->getInternalArgument('__links')
         );
         $requestedPostNumber = 0;
-        
+
         if (empty($fb['pageid']) || empty($fb['token'])) {
            $this->view->assign('error', 'Empty pageid or token');
            return;
@@ -101,7 +107,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                 ++$postNumber;
                 continue;
             }
-            
+
             $actions = array();
 
             if (isset($post->actions)) {
@@ -114,7 +120,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                    return in_array(strtolower($v->name), $fb['links']);
                 }));
             }
-            
+
             if (in_array('more', $fb['links'])) {
                $actions = array_merge($actions, array(array(
                   'label' => 'Mehr',
@@ -122,7 +128,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                   'link' => 'https://facebook.com/'.$fb['pageid']
                )));
             }
-            
+
             if (count($actions) > 0) {
                $this->view->assign('actions', $actions);
             }
@@ -166,6 +172,9 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
             if (isset($attachmentJson) && $attachmentJson !== null) {
                 if (isset($attachmentJson->data)) {
+                    $collection = $this->assetCollectionRepository->findByTitle('Facebook')->getFirst();
+                    $hasCollection = ($collection !== null);
+
                     $images = array();
                     $attachments = (isset($attachmentJson->data[0]->subattachments)) ? $attachmentJson->data[0]->subattachments->data : $attachmentJson->data;
 
@@ -179,21 +188,22 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
                         }
 
                         $src = $attachments[$j]->media->image->src;
-
                         $sha1 = sha1_file($src);
-                   //$resource = $this->resourceManager->getResourceBySha1($sha1);
-
-                   $image = $this->assetRepository->findOneByResourceSha1($sha1);
+                        $image = $this->assetRepository->findOneByResourceSha1($sha1);
 
                         if ($image === null) {
                             $resource = $this->resourceManager->importResource($src);
                             $image = new \TYPO3\Media\Domain\Model\Image($resource);
-                        } else {
-                            //$this->systemLogger->log('Image found', LOG_DEBUG);
+
+                            if ($hasCollection) {
+                               $collections = $image->getAssetCollections();
+                               $collections->add($collection);
+                               $image->setAssetCollections($collections);
+                            }
                         }
 
-                   // Allow image to be persisted even if this is a "safe" HTTP request:
-                   $this->persistenceManager->whiteListObject($image);
+                        // Allow image to be persisted even if this is a "safe" HTTP request:
+                        $this->persistenceManager->whiteListObject($image);
                         $this->persistenceManager->whiteListObject($image->getResource());
 
                         $images[] = $image;
