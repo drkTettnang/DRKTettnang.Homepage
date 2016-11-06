@@ -8,7 +8,7 @@ prototype(DRKTettnang.Homepage:FacebookPost) < prototype(TYPO3.Neos:Plugin) {
 
       @cache {
          mode = 'cached'
-
+         entryIdentifier.node = ${node}
          maximumLifetime = '21600'
       }
 }
