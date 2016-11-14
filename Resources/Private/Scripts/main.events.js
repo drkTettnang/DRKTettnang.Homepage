@@ -275,7 +275,7 @@ function displayHiorgEvents(container, html, options) {
       var detailUrl = eventRow.find('td:eq(4) a').attr('href');
 
       var categories = title.find('.katlabel').map(function() {
-         return $(this).text().trim().replace(/\s\s+/g, ' ');
+         return $(this).attr('title').replace(/^Kategorie: /, '').trim().replace(/\s\s+/g, ' ');
       }).toArray();
       var categoryNumber = title.find('.katlabel').map(function() {
          return $(this).attr('class').replace(/(.*col([0-9]{1,3}))?.*/, '$2');
