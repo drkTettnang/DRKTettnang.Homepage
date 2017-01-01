@@ -640,6 +640,7 @@ figure figcaption p {
   margin: 30px auto;
   display: block;
   line-height: 40px;
+  cursor: pointer;
 }
 .moreOperations:before {
   content: "\f01a";
@@ -673,7 +674,7 @@ figure figcaption p {
 }
 .moreOperations:hover span {
   opacity: 1;
-  color: #000;
+  color: #999;
 }
 
 @media (min-width: 768px) {

@@ -647,6 +647,7 @@ figure{
    margin: 30px auto;
    display: block;
    line-height: 40px;
+   cursor: pointer;
    &:before {
       content: "\f01a";
       font: normal normal normal 14px/1 FontAwesome;
@@ -674,7 +675,7 @@ figure{
       }
       span {
          opacity: 1;
-         color: #000;
+         color: #999;
       }
    }
 }
