@@ -42,7 +42,7 @@ a[target="_blank"]:before {
      font-size: 1em;
      font-weight: bold;
    }
-   
+
    form {
       h1 {
          text-align: right;
@@ -76,7 +76,7 @@ a[target="_blank"]:before {
          }
       }
    }
-   
+
    .events {
       table {
          margin: 0 0 10px;
@@ -128,7 +128,7 @@ a[target="_blank"]:before {
       .keys {
          font-size: 90%;
          text-align:right;
-         
+
          span.category {
              display: inline-block;
              height: 1em;
@@ -145,7 +145,7 @@ a[target="_blank"]:before {
       }
       .cat1 { background-color:#fafafa; }
       .cat2 { background-color:#f3f3f3; }
-      .cat3 { background-color:#f0f0f0; } 
+      .cat3 { background-color:#f0f0f0; }
       .cat4 { background-color:#ff0099 !important; color:#ffffff; }
       .cat5{ background-color:#fad165 !important; color:#000000; }
       .cat6{ background-color:#ffad47 !important; color:#000000; }
@@ -374,7 +374,7 @@ footer {
    @media #{$sm-dev} {
       height: 50px;
    }
-   
+
 }
 
 #footer-nav {
@@ -525,8 +525,10 @@ figure{
 }
 
 .operation {
-   margin-bottom: 30px;
    padding-bottom: 15px;
+   &+.operation {
+      margin-top: 30px;
+   }
    h1 {
       white-space: nowrap;
    }
@@ -566,7 +568,7 @@ figure{
       margin-left: 10px;
    }
    .description {
-      
+
    }
    .footer {
       overflow: hidden;
@@ -628,6 +630,15 @@ figure{
       text-align: right;
    }
 }
+.page-navigation {
+   ul {
+      list-style: none;
+      text-align: center;
+   }
+   li {
+      display: inline;
+   }
+}
 
 @media (min-width: 768px) {
    .col-sm-4 .operation {
@@ -673,7 +684,7 @@ article {
 
 .fb-post {
    img {
-   
+
    }
    .fb-body {
       overflow: hidden;
@@ -688,7 +699,7 @@ article {
       a {
          color: #000;
          opacity: 0.5;
-         margin-right: 10px; 
+         margin-right: 10px;
          &:before {
             font-family: FontAwesome;
             font-weight: normal;
@@ -972,7 +983,7 @@ article {
 
 .carousel {
    margin-bottom: 30px;
-   
+
    .carousel-control.left, .carousel-control.right {
       background-image:none;
    }
@@ -981,11 +992,11 @@ article {
 form.paypal {
    overflow: hidden;
    max-width: 100%;
-   
+
    .form-group {
       width: 100%;
    }
-   
+
    .jumbotron &{
       margin: auto;
    }
@@ -999,7 +1010,7 @@ form.paypal {
    box-shadow: none;
    box-sizing: border-box;
    background-color: #fff;
-   
+
    .rangeslider__handle {
       top: -15px;
       background: transparent;
@@ -1012,7 +1023,7 @@ form.paypal {
          border-radius: 4px;
          width: 40px;
          transition: background 0.5s, color 0.5s;
-         
+
          content: "\e079 \e080";
          font-family: 'Glyphicons Halflings';
          font-weight: 400;
@@ -1025,7 +1036,7 @@ form.paypal {
          color: #aaa;
       }
    }
-   
+
    .rangeslider__fill {
       border-radius: 4px;
       background: #e30613;
@@ -1037,7 +1048,7 @@ form.paypal {
 .amount-group {
    clear: both;
    padding-top: 10px;
-   
+
    [type="text"] {
       width: 50%;
        float: left;
@@ -1055,7 +1066,7 @@ form.paypal {
       border-left: 0px;
       text-align: left;
       transition: background 0.5s;
-      
+
       &:hover {
          background: #c7000b;
       }
@@ -1109,7 +1120,7 @@ form.paypal {
       top: 26%;
       transform: skew(0deg, -13deg) perspective( 150px ) rotateY( -26deg );
       overflow: hidden;
-      
+
       &:after {
          content: '|';
          font-weight: 100;
@@ -1120,7 +1131,7 @@ form.paypal {
 
 .operationBos {
    .checkbox-inline {
-      
+
    }
    input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
 
@@ -1201,6 +1212,9 @@ form.paypal {
       float:left;
       width: 33%;
       margin-bottom: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       .value {
          display: inline-block;
          background-color: #999;

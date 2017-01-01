@@ -527,8 +527,10 @@ figure figcaption p {
 }
 
 .operation {
-  margin-bottom: 30px;
   padding-bottom: 15px;
+}
+.operation + .operation {
+  margin-top: 30px;
 }
 .operation h1 {
   white-space: nowrap;
@@ -620,6 +622,14 @@ figure figcaption p {
 .operation .more {
   margin-top: 15px;
   text-align: right;
+}
+
+.page-navigation ul {
+  list-style: none;
+  text-align: center;
+}
+.page-navigation li {
+  display: inline;
 }
 
 @media (min-width: 768px) {
@@ -1187,6 +1197,9 @@ form.paypal .form-group {
   float: left;
   width: 33%;
   margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .statistic .type .value {
   display: inline-block;
