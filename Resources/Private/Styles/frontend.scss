@@ -639,6 +639,36 @@ figure{
       display: inline;
    }
 }
+.moreOperations {
+   text-align: center;
+   position: relative;
+   color: #000;
+   &:before {
+      content: "\f01a";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      transition: transform 0.5s;
+      color: #e30613;
+   }
+   span {
+      position: absolute;
+      left: 100%;
+      top: 40%;
+      opacity: 0;
+      transition: opacity 0.5s;
+      padding-left: 10px;
+   }
+   &:hover {
+      &:before {
+         transform: scale(1.2);
+      }
+      span {
+         opacity: 1;
+      }
+   }
+}
 
 @media (min-width: 768px) {
    .col-sm-4 .operation {

@@ -632,6 +632,38 @@ figure figcaption p {
   display: inline;
 }
 
+.moreOperations {
+  text-align: center;
+  position: relative;
+  color: #000;
+}
+.moreOperations:before {
+  content: "\f01a";
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+  color: #e30613;
+}
+.moreOperations span {
+  position: absolute;
+  left: 100%;
+  top: 40%;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+          transition: opacity 0.5s;
+  padding-left: 10px;
+}
+.moreOperations:hover:before {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.moreOperations:hover span {
+  opacity: 1;
+}
+
 @media (min-width: 768px) {
   .col-sm-4 .operation .body {
     padding-left: 0px;
