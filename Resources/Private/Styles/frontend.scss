@@ -81,6 +81,17 @@ a[target="_blank"]:before {
       table {
          margin: 0 0 10px;
       }
+      tr.more {
+         border-bottom: 0;
+         td {
+            text-align: center;
+            padding: 0;
+            cursor: pointer;
+            &:hover {
+               background-color: #d1d1d1;
+            }
+         }
+      }
       td {
          background-color: #f1f1f1;
          vertical-align: top;

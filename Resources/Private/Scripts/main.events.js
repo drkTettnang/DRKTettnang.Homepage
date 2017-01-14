@@ -342,6 +342,18 @@ function displayHiorgEvents(container, html, options) {
    container.empty();
 
    if (table.find('tr').length > 0) {
+      if (html.find('tbody tr').length > options.limit) {
+         var more = $('<tr><td><i class="fa fa-angle-down"></i></td></tr>');
+         more.addClass('more');
+         more.find('td').click(function(ev){
+            ev.preventDefault();
+
+            container.data('limit', options.limit + 3);
+            loadHiorgEvents.call(container);
+         });
+         more.appendTo(table);
+      }
+
       container.append(table);
 
       if (Object && Object.keys && Object.keys(globalCategories).length > 1) {
@@ -474,7 +486,7 @@ function displayBloodDonationEvents(container, html, options) {
       details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
 
       $('<td>').html(details.join('')).appendTo(tr);
-      
+
       if (detailUrl.match(/^https?:\/\/www.drk-blutspende.de/)) {
          var link = $('<a>');
          link.text('Mehr');

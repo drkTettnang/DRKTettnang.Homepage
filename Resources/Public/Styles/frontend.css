@@ -68,6 +68,17 @@ a[target="_blank"]:before {
 #main-content .events table {
   margin: 0 0 10px;
 }
+#main-content .events tr.more {
+  border-bottom: 0;
+}
+#main-content .events tr.more td {
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+#main-content .events tr.more td:hover {
+  background-color: #d1d1d1;
+}
 #main-content .events td {
   background-color: #f1f1f1;
   vertical-align: top;
