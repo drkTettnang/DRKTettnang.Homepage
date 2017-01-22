@@ -45,6 +45,10 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
       $this->view->assign('data', $data);	
       $this->view->assign('form', $form);
+
+      $this->view->assign('text1', $this->request->getInternalArgument('__text1'));
+      $this->view->assign('text2', $this->request->getInternalArgument('__text2'));
+      $this->view->assign('text3', $this->request->getInternalArgument('__text3'));
 	}
 
    /**
@@ -122,6 +126,10 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
       $template->setTemplatePathAndFilename('resource://DRKTettnang.Homepage/Private/Templates/Mail/'.$templateFile.'.html');
       $template->setPartialRootPath('resource://DRKTettnang.Homepage/Private/Partials/');
       $template->assign('data', $data);
+
+      $template->assign('text1', $this->request->getInternalArgument('__text1'));
+      $template->assign('text2', $this->request->getInternalArgument('__text2'));
+      $template->assign('text3', $this->request->getInternalArgument('__text3'));
       
       $subject = trim($template->renderSection('subject'));
       $html = $template->render();

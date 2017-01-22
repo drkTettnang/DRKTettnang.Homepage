@@ -1,3 +1,5 @@
+{namespace drk=DRKTettnang\Homepage\ViewHelpers}
+
 <form class="form-horizontal" method="post" action="{f:uri.action(action: 'step2')}">
    <div class="row">
       <h1 class="col-sm-4">Veranstalter</h1>
@@ -116,14 +118,14 @@
          <input type="text" name="eventCounterpart" value="{data.eventCounterpart}" required class="form-control" id="input14" placeholder="Vor Ort">
       </div>
    </div>
-   
+
    <div class="form-group">
       <label for="input16" class="col-sm-4 control-label">Telefon</label>
       <div class="col-sm-8">
          <input type="tel" name="eventCounterpartPhone" value="{data.eventCounterpartPhone}" required class="form-control" id="input16" placeholder="Telefonnummer des Ansprechpartners">
       </div>
    </div>
-   
+
    <div class="form-group">
       <label for="input17" class="col-sm-4 control-label">Anmerkung</label>
       <div class="col-sm-8">
@@ -145,7 +147,7 @@
       <div class="col-sm-offset-4 col-sm-8">
          <div class="checkbox">
             <label>
-               <input type="checkbox" name="agreement" value="true" required> Ich habe verstanden, dass eine Anforderung keine Buchung darstellt. Besonders bei kurzfristigen Anfragen können wir eine Abdeckung durch unsere ehrenamtlichen Helfer nicht garantieren.
+               <input type="checkbox" name="agreement" value="true" required> {text1 -> drk:format.linebreak() -> drk:format.link() -> f:format.raw()}
             </label>
          </div>
       </div>

@@ -1,3 +1,5 @@
+{namespace drk=DRKTettnang\Homepage\ViewHelpers}
+
 <f:layout name="EmailLayout" />
 
 <f:section name="subject">
@@ -7,43 +9,32 @@
 <f:section name="body">
    <div class="col-sm-8">
       <p>Guten Tag,</p>
-      
-      <p>Hiermit bestätigen wir Ihnen den Erhalt ihrer Sanitätsdienstanfrage mit 
-         den unten aufgelisteten Information. Soweit noch nicht geschehen, drucken 
-         Sie diese Informationen bitte aus und schicken sie Sie unterschrieben an 
-         die untenstehende Adresse.</p>
 
-      <p>Wir werden uns in den kommenden Tagen bei ihnen melden.</p>
-      
-      <p>Mit freundlichen Grüßen</p>
-      
+      <p>{text2 -> drk:format.linebreak() -> drk:format.link() -> f:format.raw()}</p>
+
       <f:render partial="BookingFormStep2Content" arguments="{data: data}" />
-      
-      <div class="signingArea">
+
+      <!-- <div class="signingArea">
          <p>Hiermit beauftrage ich den DRK Ortsverein Tettnang e.V. für den oben genannten
             Zeitraum ein Angebot für einen sanitätsdienstlichen Wachdienst zu erstellen.</p>
-         
+
          <div class="col-xs-5">
             Ort, Datum
          </div>
-         
+
          <div class="col-xs-offset-2 col-xs-5">
             Stempel, Unterschrift
          </div>
-      </div>
+      </div> -->
    </div>
-   
+
    <div class="col-sm-4 sidebar">
       <img src="{f:uri.resource(path: 'Images/DRK_Logo2.svg', package: 'DRKTettnang.Homepage')}" alt="DRK Logo" />
-      
+
       <div>
          <h3>Kontakt</h3>
-         
-            <p><b>Deutsches Rotes Kreuz<br/>Ortsverein Tettnang ev.</b>
-               <br/>Loretostr. 12
-               <br/>88069 Tettnang
-               <br/>Telefon 07542 9332 0
-               <br/>Telefax 07542 9332 19</p>
+
+            <p>{text3 -> drk:format.linebreak() -> drk:format.link() -> f:format.raw()}</p>
       </div>
    </div>
 </f:section>

@@ -1,3 +1,5 @@
+{namespace drk=DRKTettnang\Homepage\ViewHelpers}
+
 <f:layout name="EmailLayout" />
 
 <f:section name="subject">
@@ -9,21 +11,17 @@
       <p>Hey hey,</p>
 
       <p>Es gibt mal wieder eine Sanitätsdienstanfrage mit den untenstehenden Informationen.</p>
-      
+
       <f:render partial="BookingFormStep2Content" arguments="{data: data}" />
    </div>
-   
+
    <div class="col-sm-4 sidebar">
       <img src="{f:uri.resource(path: 'Images/DRK_Logo2.svg', package: 'DRKTettnang.Homepage')}" alt="DRK Logo" />
-      
+
       <div>
          <h3>Kontakt</h3>
-         
-            <p><b>Deutsches Rotes Kreuz<br/>Ortsverein Tettnang ev.</b>
-               <br/>Loretostr. 12
-               <br/>88069 Tettnang
-               <br/>Telefon 07542 9332 0
-               <br/>Telefax 07542 9332 19</p>
+
+            <p>{text3 -> drk:format.linebreak() -> drk:format.link() -> f:format.raw()}</p>
       </div>
    </div>
 </f:section>

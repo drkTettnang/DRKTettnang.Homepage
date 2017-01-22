@@ -349,6 +349,7 @@ function displayHiorgEvents(container, html, options) {
             ev.preventDefault();
 
             container.data('limit', options.limit + 3);
+
             loadHiorgEvents.call(container);
          });
          more.appendTo(table);

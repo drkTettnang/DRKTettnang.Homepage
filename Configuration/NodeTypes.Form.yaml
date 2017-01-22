@@ -1,4 +1,5 @@
 'DRKTettnang.Homepage:Form':
+  abstract: TRUE
   superTypes:
     'TYPO3.Neos:Plugin': TRUE
   ui:
@@ -10,16 +11,57 @@
           form:
              label: 'Formular'
              position: 0
+          custom:
+             label: 'Benutzerdefiniert'
+             position: 10
   properties:
-    form:
+   #  form:
+   #    type: string
+   #    ui:
+   #      reloadPageIfChanged: true
+   #      label: 'Formular'
+   #      inspector:
+   #        group: 'form'
+   #        editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+   #        editorOptions:
+   #          allowEmpty: false
+   #          dataSourceIdentifier: 'drktettnang-homepage-operation-forms'
+    text1:
       type: string
       ui:
-        reloadPageIfChanged: true
-        label: 'Formular'
+         reloadPageIfChanged: false
+         label: 'Text 1'
+         inlineEditable: false
+         inspector:
+            group: 'custom'
+            position: 10
+            editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+            editorOptions:
+               placeholder: 'Text 1'
+               rows: 12
+    text2:
+      type: string
+      ui:
+        reloadPageIfChanged: false
+        label: 'Text 2'
+        inlineEditable: false
         inspector:
-          group: 'form'
-          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-          editorOptions:
-            allowEmpty: false
-            dataSourceIdentifier: 'drktettnang-homepage-operation-forms'
-              
+           group: 'custom'
+           position: 20
+           editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+           editorOptions:
+              placeholder: 'Text 2'
+              rows: 12
+    text3:
+      type: string
+      ui:
+        reloadPageIfChanged: false
+        label: 'Text 3'
+        inlineEditable: false
+        inspector:
+           group: 'custom'
+           position: 30
+           editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
+           editorOptions:
+              placeholder: 'Text 3'
+              rows: 12
