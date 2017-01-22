@@ -27,7 +27,7 @@ DRKTettnang:
             label: 'Buchungsformular'
 #             actions:
 #                email:
-#                   from: 
+#                   from:
 #                      'no-reply@localhost': 'no-reply'
 #                   recipients:
 #                      Internal: ['internal@localhost']
@@ -52,19 +52,20 @@ DRKTettnang:
                sanEnd: ['required']
                eventCounterpart: ['required']
                eventCounterpartPhone: ['required']
+               eventCatering: ['required']
                note: []
                agreement: ['required', 'agree']
       operation:
          types:
-            segg: 
+            segg:
                label: 'SEG groß'
-            segk: 
+            segk:
                label: 'SEG klein'
-            btr: 
+            btr:
                label: 'Betreuung und Logistik'
-            hnr: 
+            hnr:
                label: 'Hausnotruf'
-            rdh: 
+            rdh:
                label: 'Rettungsdiensthintergrund'
          bos:
             fw:

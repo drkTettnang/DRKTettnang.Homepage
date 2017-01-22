@@ -127,6 +127,17 @@
    </div>
 
    <div class="form-group">
+      <label for="input18" class="col-sm-4 control-label">Verpflegung</label>
+      <div class="col-sm-8">
+         <f:form.select name="eventCatering" value="{data.eventCatering}"
+               additionalAttributes="{required: 'true'}" class="form-control" id="input18"
+               options="{yes: 'Verpflegung der Helfer wird übernommen', no: 'Selbstverpflegung'}"
+               prependOptionLabel="-- Bitte auswählen --">
+         </f:form.select>
+      </div>
+   </div>
+
+   <div class="form-group">
       <label for="input17" class="col-sm-4 control-label">Anmerkung</label>
       <div class="col-sm-8">
          <textarea name="note" rows="4" class="form-control" id="input17" placeholder="Sonstiges">{data.note}</textarea>

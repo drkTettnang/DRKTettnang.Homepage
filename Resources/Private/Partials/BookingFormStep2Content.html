@@ -68,6 +68,10 @@
       <td>{data.eventCounterpartPhone}</td>
    </tr>
    <tr>
+      <td><strong>Verpflegung</strong></td>
+      <td>{f:if(condition: '{data.eventCatering} == "yes"', then: 'Verpflegung der Helfer wird übernommen', else: 'Selbstverpflegung')}</td>
+   </tr>
+   <tr>
       <td><strong>Anmerkung</strong></td>
       <td>{data.note}</td>
    </tr>
