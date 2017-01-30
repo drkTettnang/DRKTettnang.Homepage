@@ -196,6 +196,17 @@ img {
    content: '@';
 }
 
+.snow {
+   background-image: url('../Images/s1.png'), url('../Images/s2.png'), url('../Images/s3.png');
+  animation: snow 10s linear infinite;
+}
+
+@keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 200px 200px, -150px 150px;}
+  100% {background-position: 500px 1000px, 400px 400px, -300px 300px;}
+}
+
 input[required], textarea[required] {
    &.no-validation {
       background-image: url() !important;
