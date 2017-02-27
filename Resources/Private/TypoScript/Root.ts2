@@ -10,7 +10,7 @@ prototype(DRKTettnang.Homepage:AjaxType) < prototype(TYPO3.TypoScript:Collection
 	collection = ${q(node).find('#' + request.arguments.nodeId)}
 	itemRenderer = TYPO3.Neos:ContentCase
 	itemName = 'node'
-	
+
 	//.children()
 }
 
@@ -30,12 +30,12 @@ page = Page {
 
    httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' platform.twitter.com www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
    httpResponseHead.headers.Content-Security-Policy.@if.1 = ${node.context.workspaceName == 'live'}
-   
+
    head {
 		stylesheets.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 			sectionName = 'stylesheets'
-         
+
          backgroundImage = ${q(node).property('backgroundImage') != null && q(node).property('backgroundImage') != '' ? q(node).property('backgroundImage') : q(node).parents('[backgroundImage!=""][backgroundImage]').first().property('backgroundImage')}
 		}
 
@@ -43,7 +43,7 @@ page = Page {
 			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 			sectionName = 'headScripts'
 		}
-      
+
       metadata = TYPO3.TypoScript:Template {
 			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 			sectionName = 'metadata'
@@ -53,20 +53,20 @@ page = Page {
 	body {
 		templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 		sectionName = 'body'
-      
+
       brand = ${Configuration.setting('DRKTettnang.Homepage.brand')}
-      
+
       hasSecondMenu = ${q(node).siblings('[instanceof TYPO3.Neos.NodeTypes:Page]') && q(node).parents('[instanceof TYPO3.Neos.NodeTypes:Page]')}
-      
+
       isDistributor = ${q(node).children('[instanceof TYPO3.Neos.NodeTypes:Page]')}
-      
+
 		parts {
 			menu = Menu {
             templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/Menu.html'
-            
+
             entryLevel = 1
             maximumLevels = 2
-            
+
             attributes {
                class = 'nav navbar-nav'
             }
@@ -80,13 +80,13 @@ page = Page {
                  class = ' dropdown normal'
             }
          }
-			
+
          secondMenu = Menu {
             templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/SecondMenu.html'
             entryLevel = 2
             maximumLevels = 2
          }
-         
+
          thirdMenu = Menu {
             templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/ThirdMenu.html'
             entryLevel = 3
@@ -97,7 +97,7 @@ page = Page {
             parentTitle = ${q(node).parents().count()==3 ? q(node).parent().property('title') : q(node).property('title')}
             level = ${q(node).parents().count()}
          }
-         
+
          footerMenu = Menu {
             entryLevel = 2
             templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/FooterMenu.html'
@@ -117,6 +117,10 @@ page = Page {
                 collection = ${q(site).children('[title="Sidebar"]').first().find('[instanceof DRKTettnang.Homepage:SideBox]')}
                 itemRenderer = TYPO3.Neos:ContentCase
                 itemName = 'node'
+
+					@cache {
+						mode = 'cached'
+					}
          }
          header = ContentCollection {
             nodePath = 'header'
@@ -136,7 +140,7 @@ operation < page
 operation.body.content {
    main =  TYPO3.TypoScript:Template {
       templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
-      
+
       total = ${q(node).property('uriPathSegment')}
       index = 0
 
