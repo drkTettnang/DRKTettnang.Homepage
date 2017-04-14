@@ -1,15 +1,16 @@
+
 'DRKTettnang.Homepage:BookingForm':
-   superTypes:
-      'DRKTettnang.Homepage:Form': TRUE
-   ui:
-      label: 'Buchungsformular'
-   properties:
-      text1:
-         ui:
-            label: 'Rechtshinweis'
-      text2:
-         ui:
-            label: 'Anschreiben E-Mail'
-      text3:
-         ui:
-            label: 'Kontakt E-Mail'
+  superTypes:
+    'DRKTettnang.Homepage:Form': '1'
+  ui:
+    label: Buchungsformular
+  properties:
+    text1:
+      ui:
+        label: Rechtshinweis
+    text2:
+      ui:
+        label: 'Anschreiben E-Mail'
+    text3:
+      ui:
+        label: 'Kontakt E-Mail'
