@@ -1,5 +1,7 @@
+
 'DRKTettnang.Homepage:OperationOverview':
-   superTypes: ['TYPO3.Neos.NodeTypes:Menu']
-   ui: 
-      group: 'structure'
-      label: 'Einsatzübersicht'
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Menu': true
+  ui:
+    group: structure
+    label: Einsatzübersicht

@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:Operation':
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': true
   ui:
     icon: icon-bell
     group: general

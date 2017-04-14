@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:BookingForm':
   superTypes:
-    'DRKTettnang.Homepage:Form': '1'
+    'DRKTettnang.Homepage:Form': true
   ui:
     label: Buchungsformular
   properties:

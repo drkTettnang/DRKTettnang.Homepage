@@ -1,19 +1,21 @@
+
 'DRKTettnang.Homepage:LastOperationReferences':
-   superTypes: ['TYPO3.Neos:Content']
-   ui:
-      group: 'general'
-      label: 'Letzter Einsatz'
-      icon: 'icon-bell'
-      inspector:
-         groups:
-            operation:
-               label: 'Einsatzdaten'
-               position: 0
-   properties:
-      operationRoot:
-        type: reference
-        ui:
-          reloadPageIfChanged: true
-          label: 'Einsatz-Wurzel'
-          inspector:
-            group: 'operation'
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    group: general
+    label: 'Letzter Einsatz'
+    icon: icon-bell
+    inspector:
+      groups:
+        operation:
+          label: Einsatzdaten
+          position: 0
+  properties:
+    operationRoot:
+      type: reference
+      ui:
+        reloadPageIfChanged: true
+        label: Einsatz-Wurzel
+        inspector:
+          group: operation

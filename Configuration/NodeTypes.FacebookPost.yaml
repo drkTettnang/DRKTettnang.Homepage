@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:FacebookPost':
   superTypes:
-    'TYPO3.Neos:Plugin': '1'
+    'TYPO3.Neos:Plugin': true
   ui:
     label: 'Facebook Post'
     group: plugins

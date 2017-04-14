@@ -1,76 +1,78 @@
+
 'DRKTettnang.Homepage:Events':
-   superTypes: ['TYPO3.Neos:Content']
-   ui:
-      icon: 'icon-calendar'
-      group: 'plugins'
-      label: 'Kurs Termine'
-      inspector:
-         groups:
-            event:
-               label: 'Kurse'
-               position: 0
-   properties:
-      lic:
-         type: integer
-         defaultValue: 0
-         ui:
-            reloadPageIfChanged: true
-            label: 'Lizenz-Nr.'
-            inspector:
-               group: 'event'
-      location:
-         type: string
-         defaultValue: ''
-         ui:
-            reloadPageIfChanged: true
-            label: 'Ort'
-            inspector:
-               group: 'event'
-               editorOptions:
-                  placeholder: 'Zeige alle Kurse im Lizenz Gebiet'
-      maxEvents:
-         type: integer
-         defaultValue: 0
-         ui:
-            reloadPageIfChanged: true
-            label: 'Maximale Anzahl'
-            inspector:
-               group: 'event'
-               editorOptions:
-                  placeholder: 'Zeige alle verfügbaren Kurse'
-      bezeichnung:
-         type: boolean
-         ui:
-            reloadPageIfChanged: true
-            label: 'Zeige Kurs-Art'
-            inspector:
-               group: 'event'
-      lgTyp:
-         type: string
-         ui:
-            reloadPageIfChanged: true
-            label: 'Kurs Art'
-            inspector:
-               group: 'event'
-               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-               editorOptions:
-                  multiple: false
-                  allowEmpty: true
-                  values:
-                     EH:
-                        label: 'Erste Hilfe'
-                     EHK:
-                        label: 'EH Kind'
-                     EHT:
-                        label: 'EH Fortbildung'
-                     EHSPO:
-                        label: 'EH Sport'
-      mon:
-         type: integer
-         ui:
-            reloadPageIfChanged: true
-            label: 'Anzahl Monate'
-            inspector:
-               group: 'event'
-               editorOptions:
-                  placeholder: 'Unbegrenzt'
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    icon: icon-calendar
+    group: plugins
+    label: 'Kurs Termine'
+    inspector:
+      groups:
+        event:
+          label: Kurse
+          position: 0
+  properties:
+    lic:
+      type: integer
+      defaultValue: 0
+      ui:
+        reloadPageIfChanged: true
+        label: Lizenz-Nr.
+        inspector:
+          group: event
+    location:
+      type: string
+      defaultValue: ''
+      ui:
+        reloadPageIfChanged: true
+        label: Ort
+        inspector:
+          group: event
+          editorOptions:
+            placeholder: 'Zeige alle Kurse im Lizenz Gebiet'
+    maxEvents:
+      type: integer
+      defaultValue: 0
+      ui:
+        reloadPageIfChanged: true
+        label: 'Maximale Anzahl'
+        inspector:
+          group: event
+          editorOptions:
+            placeholder: 'Zeige alle verfügbaren Kurse'
+    bezeichnung:
+      type: boolean
+      ui:
+        reloadPageIfChanged: true
+        label: 'Zeige Kurs-Art'
+        inspector:
+          group: event
+    lgTyp:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: 'Kurs Art'
+        inspector:
+          group: event
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            multiple: false
+            allowEmpty: true
+            values:
+              EH:
+                label: 'Erste Hilfe'
+              EHK:
+                label: 'EH Kind'
+              EHT:
+                label: 'EH Fortbildung'
+              EHSPO:
+                label: 'EH Sport'
+    mon:
+      type: integer
+      ui:
+        reloadPageIfChanged: true
+        label: 'Anzahl Monate'
+        inspector:
+          group: event
+          editorOptions:
+            placeholder: Unbegrenzt

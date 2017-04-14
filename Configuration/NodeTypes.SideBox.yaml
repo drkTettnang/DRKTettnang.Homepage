@@ -1,40 +1,42 @@
+
 'DRKTettnang.Homepage:SideBox':
-   superTypes: ['TYPO3.Neos:Content']
-   ui:
-      group: 'general'
-      label: 'Seitenbox'
-      inlineEditable: true
-      icon: 'icon-file-text'
-   properties:
-      headline:
-         type: string
-         defaultValue: 'Überschrift'
-         ui:
-            inlineEditable: true
-            label: 'Überschrift'
-            aloha:
-               'format':
-                  '*': false
-                  'h3': true
-               'table': []
-               'link': []
-               'list': []
-               'alignment': []
-               'formatlesspaste': []
-      text: 
-         type: string
-         defaultValue: 'Text eingeben'
-         ui:
-            label: 'Text'
-            inlineEditable: true
-            aloha:
-               'format':
-                  '*': false
-                  'p': true
-                  'b': true
-                  'i': true
-               'table': []
-               'link': []
-               'list': []
-               'alignment': []
-               'formatlesspaste': []
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    group: general
+    label: Seitenbox
+    inlineEditable: true
+    icon: icon-file-text
+  properties:
+    headline:
+      type: string
+      defaultValue: Überschrift
+      ui:
+        inlineEditable: true
+        label: Überschrift
+        aloha:
+          format:
+            '*': false
+            h3: true
+          table: {  }
+          link: {  }
+          list: {  }
+          alignment: {  }
+          formatlesspaste: {  }
+    text:
+      type: string
+      defaultValue: 'Text eingeben'
+      ui:
+        label: Text
+        inlineEditable: true
+        aloha:
+          format:
+            '*': false
+            p: true
+            b: true
+            i: true
+          table: {  }
+          link: {  }
+          list: {  }
+          alignment: {  }
+          formatlesspaste: {  }

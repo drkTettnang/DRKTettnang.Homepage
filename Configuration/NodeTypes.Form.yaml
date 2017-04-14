@@ -2,7 +2,7 @@
 'DRKTettnang.Homepage:Form':
   abstract: true
   superTypes:
-    'TYPO3.Neos:Plugin': '1'
+    'TYPO3.Neos:Plugin': true
   ui:
     label: Formular
     group: plugins

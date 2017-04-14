@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:MainBox':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
     group: general
     label: Artikel

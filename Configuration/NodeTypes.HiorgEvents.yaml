@@ -1,66 +1,68 @@
+
 'DRKTettnang.Homepage:HiorgEvents':
-   superTypes: ['TYPO3.Neos:Content']
-   ui:
-      icon: 'icon-calendar'
-      group: 'plugins'
-      label: 'Hiorg Termine'
-      inspector:
-         groups:
-            hiorg:
-               label: 'Hiorg'
-               position: 1
-            filter:
-               label: 'Filter'
-               position: 2
-   properties:
-      ov:
-         type: string
-         defaultValue: ''
-         ui:
-            reloadPageIfChanged: true
-            label: 'Kürzel'
-            inspector:
-               group: 'hiorg'
-               editorOptions:
-                  placeholder: 'xxx'
-                  required: true
-      limit:
-         type: integer
-         defaultValue: 0
-         ui:
-            reloadPageIfChanged: true
-            label: 'Maximale Anzahl'
-            inspector:
-               group: 'filter'
-               editorOptions:
-                  placeholder: 'Zeige alle verfügbaren Termine'
-      title:
-         type: string
-         defaultValue: ''
-         ui:
-            reloadPageIfChanged: true
-            label: 'Titel'
-            inspector:
-               group: 'filter'
-               editorOptions:
-                  placeholder: 'Zeige alle Termine'
-      location:
-         type: string
-         defaultValue: ''
-         ui:
-            reloadPageIfChanged: true
-            label: 'Ort'
-            inspector:
-               group: 'filter'
-               editorOptions:
-                  placeholder: 'Zeige alle Termine'
-      category:
-         type: string
-         defaultValue: ''
-         ui:
-            reloadPageIfChanged: true
-            label: 'Kategorie'
-            inspector:
-               group: 'filter'
-               editorOptions:
-                  placeholder: 'Zeige alle Termine'
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    icon: icon-calendar
+    group: plugins
+    label: 'Hiorg Termine'
+    inspector:
+      groups:
+        hiorg:
+          label: Hiorg
+          position: 1
+        filter:
+          label: Filter
+          position: 2
+  properties:
+    ov:
+      type: string
+      defaultValue: ''
+      ui:
+        reloadPageIfChanged: true
+        label: Kürzel
+        inspector:
+          group: hiorg
+          editorOptions:
+            placeholder: xxx
+            required: true
+    limit:
+      type: integer
+      defaultValue: 0
+      ui:
+        reloadPageIfChanged: true
+        label: 'Maximale Anzahl'
+        inspector:
+          group: filter
+          editorOptions:
+            placeholder: 'Zeige alle verfügbaren Termine'
+    title:
+      type: string
+      defaultValue: ''
+      ui:
+        reloadPageIfChanged: true
+        label: Titel
+        inspector:
+          group: filter
+          editorOptions:
+            placeholder: 'Zeige alle Termine'
+    location:
+      type: string
+      defaultValue: ''
+      ui:
+        reloadPageIfChanged: true
+        label: Ort
+        inspector:
+          group: filter
+          editorOptions:
+            placeholder: 'Zeige alle Termine'
+    category:
+      type: string
+      defaultValue: ''
+      ui:
+        reloadPageIfChanged: true
+        label: Kategorie
+        inspector:
+          group: filter
+          editorOptions:
+            placeholder: 'Zeige alle Termine'
