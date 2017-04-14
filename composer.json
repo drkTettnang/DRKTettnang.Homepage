@@ -12,5 +12,10 @@
         "psr-0": {
             "DRKTettnang\\Homepage": "Classes"
         }
+    },
+    "extra": {
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
     }
 }
