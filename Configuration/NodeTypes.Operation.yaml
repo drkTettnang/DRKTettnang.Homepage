@@ -1,83 +1,85 @@
+
 'DRKTettnang.Homepage:Operation':
-   superTypes: ['TYPO3.Neos:Document']
-   ui:
-      icon: 'icon-bell'
-      group: 'general'
-      label: 'Einsatz'
-      inspector:
-         groups:
-            operation:
-               label: 'Einsatzdaten'
-               position: 0
-   childNodes:
-      'main':
-         type: 'TYPO3.Neos:ContentCollection'
-   properties:
-      title: []
-      backgroundImage: []
-      uriPathSegment: []
-      titleOverride: []
-      assets:
-         type: 'array<TYPO3\Media\Domain\Model\Asset>'
-         ui:
-            label: 'Anhänge'
-            inspector:
-               group: 'operation'
-               position: 40
-      location:
-         type: string
-         defaultValue: 'Tettnang'
-         ui:
-            reloadPageIfChanged: true
-            label: 'Ort'
-            inlineEditable: true
-            inspector:
-               position: 20
-               group: 'operation'
-      description:
-         type: string
-         ui:
-            reloadPageIfChanged: true
-            label: 'Beschreibung'
-            inlineEditable: true
-            inspector:
-               group: 'operation'
-               position: 30
-               editor: 'TYPO3.Neos/Inspector/Editors/TextAreaEditor'
-               editorOptions:
-                  placeholder: 'Kurze Einsatzbeschreibung'
-                  rows: 7
-      type:
-         type: string
-         ui:
-            reloadPageIfChanged: true
-            label: 'Art'
-            inspector:
-               group: 'operation'
-               position: 10
-               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-               editorOptions:
-                  dataSourceIdentifier: 'drktettnang-homepage-operation-types'
-      bos:
-         type: array
-         ui:
-            label: 'Weitere Kräfte'
-            inspector:
-               group: 'operation'
-               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-               position: 50
-               editorOptions:
-                  dataSourceIdentifier: 'drktettnang-homepage-operation-bos'
-      date:
-         type: string
-         ui:
-            reloadPageIfChanged: true
-            label: 'Datum'
-            inlineEditable: true
-            inspector:
-               group: 'operation'
-               position: 15
-               editor: 'TYPO3.Neos/Inspector/Editors/DateTimeEditor'
-               editorOptions:
-                  format: 'd.m.Y H:i'
-                  minuteStep: 1
+  superTypes:
+    - 'TYPO3.Neos:Document'
+  ui:
+    icon: icon-bell
+    group: general
+    label: Einsatz
+    inspector:
+      groups:
+        operation:
+          label: Einsatzdaten
+          position: 0
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    title: {  }
+    backgroundImage: {  }
+    uriPathSegment: {  }
+    titleOverride: {  }
+    assets:
+      type: array<TYPO3\Media\Domain\Model\Asset>
+      ui:
+        label: Anhänge
+        inspector:
+          group: operation
+          position: 40
+    location:
+      type: string
+      defaultValue: Tettnang
+      ui:
+        reloadPageIfChanged: true
+        label: Ort
+        inlineEditable: true
+        inspector:
+          position: 20
+          group: operation
+    description:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: Beschreibung
+        inlineEditable: true
+        inspector:
+          group: operation
+          position: 30
+          editor: TYPO3.Neos/Inspector/Editors/TextAreaEditor
+          editorOptions:
+            placeholder: 'Kurze Einsatzbeschreibung'
+            rows: 7
+    type:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: Art
+        inspector:
+          group: operation
+          position: 10
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            dataSourceIdentifier: drktettnang-homepage-operation-types
+    bos:
+      type: array
+      ui:
+        label: 'Weitere Kräfte'
+        inspector:
+          group: operation
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          position: 50
+          editorOptions:
+            dataSourceIdentifier: drktettnang-homepage-operation-bos
+    date:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: Datum
+        inlineEditable: true
+        inspector:
+          group: operation
+          position: 15
+          editor: TYPO3.Neos/Inspector/Editors/DateTimeEditor
+          editorOptions:
+            format: 'j.n.Y g:i'
+            minuteStep: 1
