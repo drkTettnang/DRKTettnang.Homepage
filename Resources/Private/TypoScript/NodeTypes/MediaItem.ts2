@@ -2,12 +2,12 @@ prototype(DRKTettnang.Homepage:MediaItem) {
 
    //headlineRenderer = TYPO3.Neos.NodeTypes:Headline
    contentRenderer = TYPO3.Neos:ContentCollection
-   
+
    alignment = ${q(node).property('alignment')}
    mediaImage =  TYPO3.Neos:ImageUri {
       asset = ${q(node).property('mediaImage')}
-      maximumWidth = 100
-      maximumHeight = 100
+      maximumWidth = 150
+      maximumHeight = 150
       @if.image = ${q(node).property('mediaImage')}
    }
    mediaLabel = ${q(node).property('mediaLabel')}

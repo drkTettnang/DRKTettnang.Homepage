@@ -1,61 +1,62 @@
+
 'DRKTettnang.Homepage:FacebookPost':
   superTypes:
-    'TYPO3.Neos:Plugin': TRUE
+    'TYPO3.Neos:Plugin': true
   ui:
     label: 'Facebook Post'
-    group: 'plugins'
-    icon: 'icon-facebook-sign'
+    group: plugins
+    icon: icon-facebook-sign
     inspector:
       groups:
-          settings:
-             label: 'Einstellungen'
-             position: 0
+        settings:
+          label: Einstellungen
+          position: 0
   properties:
-     pageid:
-        type: string
-        ui:
-           reloadPageIfChanged: true
-           label: 'Page ID'
-           inspector:
-             group: 'settings'
-     token:
-        type: string
-        ui:
-           reloadPageIfChanged: true
-           label: 'Page Access Token'
-           inspector:
-             group: 'settings'
-     limit:
-        type: integer
-        ui:
-           reloadPageIfChanged: true
-           label: 'Limit'
-           inspector:
-             group: 'settings'
-     ignore:
-        type: string
-        ui:
-           reloadPageIfChanged: true
-           label: 'Ignore Pattern'
-           inspector:
-             group: 'settings'
-     links:
-        type: array
-        ui:
-           reloadPageIfChanged: true
-           label: 'Links'
-           inspector:
-              group: 'settings'
-              editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-              editorOptions:
-                 multiple: true
-                 allowEmpty: true
-                 values:
-                    comment:
-                       label: 'Kommentieren'
-                    share:
-                       label: 'Teilen'
-                    like:
-                       label: 'Liken'
-                    more:
-                       label: 'Mehr'
+    pageid:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: 'Page ID'
+        inspector:
+          group: settings
+    token:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: 'Page Access Token'
+        inspector:
+          group: settings
+    limit:
+      type: integer
+      ui:
+        reloadPageIfChanged: true
+        label: Limit
+        inspector:
+          group: settings
+    ignore:
+      type: string
+      ui:
+        reloadPageIfChanged: true
+        label: 'Ignore Pattern'
+        inspector:
+          group: settings
+    links:
+      type: array
+      ui:
+        reloadPageIfChanged: true
+        label: Links
+        inspector:
+          group: settings
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            multiple: true
+            allowEmpty: true
+            values:
+              comment:
+                label: Kommentieren
+              share:
+                label: Teilen
+              like:
+                label: Liken
+              more:
+                label: Mehr

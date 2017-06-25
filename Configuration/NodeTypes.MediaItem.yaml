@@ -1,74 +1,76 @@
+
 'DRKTettnang.Homepage:MediaItem':
-   superTypes: ['TYPO3.Neos:Content']
-   ui:
-      group: 'general'
-      label: 'Media Item'
-      inlineEditable: true
-      icon: 'icon-asterisk'
-      inspector:
-         groups:
-            media:
-               label: 'Media'
-               position: 10
-   childNodes:
-      content:
-         type: 'TYPO3.Neos:ContentCollection'
-   properties:
-      mediaColor:
-         type: string
-         validation:
-            'TYPO3.Neos/Validation/RegularExpressionValidator':
-               regularExpression: '/^#([0-9a-z]{3}){1,2}$/i'
-         ui:
-            label: 'Hintergrundfarbe'
-            reloadIfChanged: true
-            inspector:
-               group: 'media'
-               position: 300
-               editorOptions:
-                  placeholder: 'Farbe als Hex'
-      mediaLabel:
-         type: string
-         defaultValue: ''
-         ui:
-            label: 'Beschriftung'
-            reloadIfChanged: true
-            inspector:
-               group: 'media'
-               position: 100
-      mediaImage:
-         type: 'TYPO3\Media\Domain\Model\ImageInterface'
-         ui:
-            label: 'Hintergrundbild'
-            reloadIfChanged: TRUE
-            inspector:
-               group: 'media'
-               position: 200
-               editorOptions:
-                  features:
-                     crop: TRUE
-                  crop:
-                     aspectRatio:
-                        locked:
-                           width: 1
-                           height: 1
-      alignment:
-         type: 'string'
-         defaultValue: 'left'
-         ui:
-            label: 'Ausrichtung'
-            reloadIfChanged: TRUE
-            inspector:
-               group: 'media'
-               position: 150
-               editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-               editorOptions:
-                  multiple: false
-                  allowEmpty: false
-                  values:
-                     left:
-                        label: 'Links'
-                     top:
-                        label: 'Oben'
-                     right:
-                        label: 'Rechts'
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    group: general
+    label: 'Media Item'
+    inlineEditable: true
+    icon: icon-asterisk
+    inspector:
+      groups:
+        media:
+          label: Media
+          position: 10
+  childNodes:
+    content:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    mediaColor:
+      type: string
+      validation:
+        TYPO3.Neos/Validation/RegularExpressionValidator:
+          regularExpression: '/^#([0-9a-z]{3}){1,2}$/i'
+      ui:
+        label: Hintergrundfarbe
+        reloadIfChanged: true
+        inspector:
+          group: media
+          position: 300
+          editorOptions:
+            placeholder: 'Farbe als Hex'
+    mediaLabel:
+      type: string
+      defaultValue: ''
+      ui:
+        label: Beschriftung
+        reloadIfChanged: true
+        inspector:
+          group: media
+          position: 100
+    mediaImage:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: Hintergrundbild
+        reloadIfChanged: true
+        inspector:
+          group: media
+          position: 200
+          editorOptions:
+            features:
+              crop: true
+            crop:
+              aspectRatio:
+                locked:
+                  width: 1
+                  height: 1
+    alignment:
+      type: string
+      defaultValue: left
+      ui:
+        label: Ausrichtung
+        reloadIfChanged: true
+        inspector:
+          group: media
+          position: 150
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            multiple: false
+            allowEmpty: false
+            values:
+              left:
+                label: Links
+              top:
+                label: Oben
+              right:
+                label: Rechts

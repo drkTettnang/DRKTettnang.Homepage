@@ -982,6 +982,15 @@ article {
     padding: 0;
     text-align: center;
     font-size: 30px;
+    transition: transform .5s;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &:hover {
+    .media {
+      transform: scale(1.2);
+    }
   }
 
   &.left {
@@ -1120,7 +1129,7 @@ article {
   background-image: url(../Images/icons/rd.svg);
 }
 
-.icon-rhs, .icon-rettungshundeStaffel {
+.icon-rhs, .icon-rettungshundestaffel {
   background-image: url(../Images/icons/rhs.svg);
 }
 
