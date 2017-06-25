@@ -35,8 +35,9 @@
             p: true
             b: true
             i: true
+          link:
+            a: true
           table: {  }
-          link: {  }
           list: {  }
           alignment: {  }
           formatlesspaste: {  }
