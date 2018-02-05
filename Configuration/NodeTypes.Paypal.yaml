@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:Paypal':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     icon: icon-money
     group: plugins
@@ -19,8 +19,8 @@
       type: string
       defaultValue: ''
       validation:
-        TYPO3.Neos/Validation/EmailAddressValidator: {  }
-        TYPO3.Neos/Validation/NotEmptyValidator: {  }
+        Neos.Neos/Validation/EmailAddressValidator: {  }
+        Neos.Neos/Validation/NotEmptyValidator: {  }
       ui:
         reloadPageIfChanged: false
         label: Empfänger
@@ -44,7 +44,7 @@
         label: Danksagungsseite
         inspector:
           group: paypal
-          editor: TYPO3.Neos/Inspector/Editors/LinkEditor
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
           editorOptions:
             assets: false
     slider:
@@ -58,7 +58,7 @@
     width:
       type: string
       validation:
-        TYPO3.Neos/Validation/RegularExpressionValidator:
+        Neos.Neos/Validation/RegularExpressionValidator:
           regularExpression: '/^[0-9]+(px|%)$/'
       ui:
         reloadPageIfChanged: true
@@ -74,7 +74,7 @@
         label: Ausrichtung
         inspector:
           group: layout
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             multiple: false
             allowEmpty: true

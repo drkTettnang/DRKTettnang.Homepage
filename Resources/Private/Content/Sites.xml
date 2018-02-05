@@ -3,7 +3,7 @@
  <site name="drk-tettnang.de" state="1" siteResourcesPackageKey="DRKTettnang.Homepage" siteNodeName="homepage">
   <nodes formatVersion="2.0">
    <node nodeName="homepage">
-    <variant workspace="live" nodeType="TYPO3.Neos.NodeTypes:Page" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
+    <variant workspace="live" nodeType="Neos.NodeTypes:Page" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
      <dimensions>
      
       <language>en_US</language>
@@ -16,7 +16,7 @@
      </properties>
     </variant>
     <node nodeName="main">
-     <variant workspace="live" nodeType="TYPO3.Neos:ContentCollection" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
+     <variant workspace="live" nodeType="Neos.Neos:ContentCollection" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
       <dimensions>
       
        <language>en_US</language>
@@ -25,7 +25,7 @@
       <accessRoles __type="array"/>
      </variant>
      <node nodeName="text1">
-      <variant workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
+      <variant workspace="live" nodeType="Neos.NodeTypes:Text" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
        <dimensions>
        
         <language>en_US</language>

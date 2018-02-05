@@ -2,21 +2,22 @@
 
 namespace DRKTettnang\Homepage\Controller;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Log\SystemLoggerInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Log\SystemLoggerInterface;
+use Neos\Flow\ResourceManagement\ResourceManager;
 
-class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
+class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
 {
    /**
     * @Flow\Inject
-    * @var \TYPO3\Media\Domain\Repository\AssetCollectionRepository
+    * @var \Neos\Media\Domain\Repository\AssetCollectionRepository
     */
    protected $assetCollectionRepository;
 
    /**
     * @Flow\Inject
     *
-    * @var TYPO3\Media\Domain\Repository\AssetRepository
+    * @var Neos\Media\Domain\Repository\AssetRepository
     */
    protected $assetRepository;
 
@@ -30,7 +31,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
    /**
     * @Flow\Inject
     *
-    * @var \TYPO3\Flow\Resource\ResourceManager
+    * @var ResourceManager
     */
    protected $resourceManager;
 
@@ -193,7 +194,7 @@ class FacebookController extends \TYPO3\Flow\Mvc\Controller\ActionController
 
                         if ($image === null) {
                             $resource = $this->resourceManager->importResource($src);
-                            $image = new \TYPO3\Media\Domain\Model\Image($resource);
+                            $image = new \Neos\Media\Domain\Model\Image($resource);
 
                             if ($hasCollection) {
                                $collections = $image->getAssetCollections();

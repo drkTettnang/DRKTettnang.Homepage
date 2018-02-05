@@ -1,8 +1,8 @@
 <?php 
 namespace DRKTettnang\Homepage\ViewHelpers;
 
-use TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractTagBasedViewHelper;
+use Neos\Flow\Annotations as Flow;
 
 class OperationTypeViewHelper extends AbstractTagBasedViewHelper {
 

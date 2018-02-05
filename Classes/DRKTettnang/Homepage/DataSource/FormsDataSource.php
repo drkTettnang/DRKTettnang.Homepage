@@ -1,9 +1,9 @@
 <?php
 namespace DRKTettnang\Homepage\DataSource;
 
-use TYPO3\Neos\Service\DataSource\AbstractDataSource;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Neos\Service\DataSource\AbstractDataSource;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Neos\Flow\Annotations as Flow;
 
 class FormsDataSource extends AbstractDataSource {
 

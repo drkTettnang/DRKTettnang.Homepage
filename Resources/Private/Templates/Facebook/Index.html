@@ -1,4 +1,4 @@
-{namespace media=TYPO3\Media\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
 {namespace drk=DRKTettnang\Homepage\ViewHelpers}
 <f:if condition="{identifier}">
    <f:then>
@@ -23,12 +23,12 @@
             <f:if condition="{images}">
                <div class="images gallery">
                   <f:for each="{images}" as="image">
-                     <a href="{media:uri.image(asset: image, maximumHeight: 2000, maximumWidth: 2000, allowCropping: false)}" 
-                        data-bg-url-max="{media:uri.image(asset: image, maximumWidth: 720, allowCropping: false)}" 
-                        data-bg-url-square="{media:uri.image(asset: image, height: 720, width: 720, allowCropping: true)}" 
-                        data-bg-url-large="{media:uri.image(asset: image, height: 150, width: 720, allowCropping: true)}" 
-                        data-bg-url-medium="{media:uri.image(asset: image, height: 130, width: 240, allowCropping: true)}" 
-                        style="background-image:url({media:uri.image(asset: image, height: 120, width: 120, allowCropping: true)})"></a>
+                     <a href="{media:uri.image(image: image, maximumHeight: 2000, maximumWidth: 2000, allowCropping: false)}"
+                        data-bg-url-max="{media:uri.image(image: image, maximumWidth: 720, allowCropping: false)}"
+                        data-bg-url-square="{media:uri.image(image: image, height: 720, width: 720, allowCropping: true)}"
+                        data-bg-url-large="{media:uri.image(image: image, height: 150, width: 720, allowCropping: true)}"
+                        data-bg-url-medium="{media:uri.image(image: image, height: 130, width: 240, allowCropping: true)}"
+                        style="background-image:url({media:uri.image(image: image, height: 120, width: 120, allowCropping: true)})"></a>
                   </f:for>
                </div>
             </f:if>

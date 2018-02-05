@@ -1,10 +1,10 @@
 prototype(DRKTettnang.Homepage:MediaItem) {
 
-   //headlineRenderer = TYPO3.Neos.NodeTypes:Headline
-   contentRenderer = TYPO3.Neos:ContentCollection
+   //headlineRenderer = Neos.NodeTypes:Headline
+   contentRenderer = Neos.Neos:ContentCollection
 
    alignment = ${q(node).property('alignment')}
-   mediaImage =  TYPO3.Neos:ImageUri {
+   mediaImage =  Neos.Neos:ImageUri {
       asset = ${q(node).property('mediaImage')}
       maximumWidth = 150
       maximumHeight = 150

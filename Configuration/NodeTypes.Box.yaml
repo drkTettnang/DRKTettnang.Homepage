@@ -1,19 +1,19 @@
 
 'DRKTettnang.Homepage:Box':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     group: general
     label: Box
     icon: icon-sign-blank
   childNodes:
     content:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
           '*': false
-          'TYPO3.Neos.NodeTypes:Text': true
-          'TYPO3.Neos.NodeTypes:Column': true
-          'TYPO3.Neos.NodeTypes:Image': true
+          'Neos.NodeTypes:Text': true
+          'Neos.NodeTypes:Column': true
+          'Neos.NodeTypes:Image': true
           'DRKTettnang.Homepage:Gallery': true
           'DRKTettnang.Homepage:Paypal': true

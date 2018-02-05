@@ -1,20 +1,20 @@
-<?php 
+<?php
 namespace DRKTettnang\Homepage\ViewHelpers\Format;
 
-use TYPO3\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\Fluid\Core\ViewHelper\Facets\CompilableInterface;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
+use Neos\FluidAdaptor\Core\ViewHelper\Facets\CompilableInterface;
 
 class CssClassViewHelper extends AbstractViewHelper implements CompilableInterface {
-   
-        
+
+
 	/**
 	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
 	 * @see AbstractViewHelper::isOutputEscapingEnabled()
 	 * @var boolean
 	 */
 	protected $escapeOutput = FALSE;
-   
+
         /**
          * @var boolean
          */
@@ -29,7 +29,7 @@ class CssClassViewHelper extends AbstractViewHelper implements CompilableInterfa
          * @api
          */
         public function render($value = NULL) {
-           return self::renderStatic(array('value' => $value), $this->buildRenderChildrenClosure(), $this->renderingContext);
+           return self::renderStatic(array('value' => $value), $this->buildRenderChildrenClosure());
         }
 
         /**
@@ -37,7 +37,7 @@ class CssClassViewHelper extends AbstractViewHelper implements CompilableInterfa
          *
          * @param array $arguments
          * @param \Closure $renderChildrenClosure
-         * @param \TYPO3\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
+         * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
          * @return string
          */
         static public function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {

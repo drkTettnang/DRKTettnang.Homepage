@@ -1,15 +1,15 @@
 privilegeTargets:
-  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
     'DRKTettnang.Homepage:FacebookPost':
       matcher: 'method(DRKTettnang\Homepage\Controller\FacebookController->(index)Action())'
     'DRKTettnang.Homepage:Form':
       matcher: 'method(DRKTettnang\Homepage\Controller\FormController->(step1|step2)Action())'
-  TYPO3\TYPO3CR\Security\Authorization\Privilege\Node\EditNodePrivilege:
+  Neos\ContentRepository\Security\Authorization\Privilege\Node\EditNodePrivilege:
     'DRKTettnang.Homepage:EditFacebookPost':
       matcher: 'nodeIsOfType("DRKTettnang.Homepage:FacebookPost")'
       
 roles:
-  'TYPO3.Flow:Everybody':
+  'Neos.Flow:Everybody':
     privileges:
       -
         privilegeTarget: 'DRKTettnang.Homepage:FacebookPost'

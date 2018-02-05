@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:BloodDonationEvents':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     icon: icon-calendar
     group: plugins
@@ -16,7 +16,7 @@
       type: string
       defaultValue: ''
       validation:
-        TYPO3.Neos/Validation/RegularExpressionValidator:
+        Neos.Neos/Validation/RegularExpressionValidator:
           regularExpression: '/^([0-9]{5}|[a-zA-Z]+)(\|([0-9]{5}|[a-zA-Z]+))*$/'
       ui:
         reloadPageIfChanged: true

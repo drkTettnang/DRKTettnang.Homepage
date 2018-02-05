@@ -1,5 +1,5 @@
-{namespace neos=TYPO3\Neos\ViewHelpers} 
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers} 
+{namespace ts=Neos\Fusion\ViewHelpers}
 <f:for each="{items}" as="item" iteration="iterator">
    <f:render partial="Operation" arguments="{total: iterator.total, index: iterator.index, operation: item.node.properties}" />
 </f:for>

@@ -6,13 +6,7 @@
    .events {
       min-height: 100px;
    }
-   padding-top: 0;
-   .container {
-      max-width: 100%;
-   }
-   .navbar-fixed-top {
-      position: static;
-   }
+
    .common {
       position: relative;
       &:before {
@@ -27,13 +21,13 @@
          z-index: 999;
       }
    }
-   [data-node-alignment="left"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+   [data-node-alignment="left"][typeof="neos:Neos.NodeTypes:Image"] {
       float: left;
       * {
          float: none;
       }
    }
-   [data-node-alignment="right"][typeof="typo3:TYPO3.Neos.NodeTypes:Image"] {
+   [data-node-alignment="right"][typeof="neos:Neos.NodeTypes:Image"] {
       float: right;
       * {
          float: none;

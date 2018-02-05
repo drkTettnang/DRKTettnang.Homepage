@@ -1,5 +1,5 @@
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
-{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
 <div class="mediaItem {alignment}">
    <div class="media" style="{f:if(condition: mediaImage, then: 'background-image: url({mediaImage}) !important;')}{f:if(condition: mediaColor, then: 'background-color: {mediaColor} !important;')}">
       {neos:contentElement.editable(property: 'mediaLabel', tag: 'span')}

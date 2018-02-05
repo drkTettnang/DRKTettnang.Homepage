@@ -1,6 +1,6 @@
 
-prototype(DRKTettnang.Homepage:Paypal) < prototype(TYPO3.Neos:Content) {
-   return.@process.convertUris = TYPO3.Neos:ConvertUris {
+prototype(DRKTettnang.Homepage:Paypal) < prototype(Neos.Neos:Content) {
+   return.@process.convertUris = Neos.Neos:ConvertUris {
       absolute = true
    }
 }

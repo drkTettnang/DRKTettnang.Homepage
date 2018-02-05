@@ -1,4 +1,4 @@
-prototype(DRKTettnang.Homepage:FacebookPost) < prototype(TYPO3.Neos:Plugin) {
+prototype(DRKTettnang.Homepage:FacebookPost) < prototype(Neos.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Facebook'
       action = 'index'
