@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:Operation':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
   ui:
     icon: icon-bell
     group: general
@@ -13,14 +13,14 @@
           position: 0
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     title: {  }
     backgroundImage: {  }
     uriPathSegment: {  }
     titleOverride: {  }
     assets:
-      type: array<TYPO3\Media\Domain\Model\Asset>
+      type: array<Neos\Media\Domain\Model\Asset>
       ui:
         label: Anhänge
         inspector:
@@ -45,7 +45,7 @@
         inspector:
           group: operation
           position: 30
-          editor: TYPO3.Neos/Inspector/Editors/TextAreaEditor
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
           editorOptions:
             placeholder: 'Kurze Einsatzbeschreibung'
             rows: 7
@@ -57,7 +57,7 @@
         inspector:
           group: operation
           position: 10
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             dataSourceIdentifier: drktettnang-homepage-operation-types
     bos:
@@ -66,7 +66,7 @@
         label: 'Weitere Kräfte'
         inspector:
           group: operation
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           position: 50
           editorOptions:
             dataSourceIdentifier: drktettnang-homepage-operation-bos
@@ -79,7 +79,7 @@
         inspector:
           group: operation
           position: 15
-          editor: TYPO3.Neos/Inspector/Editors/DateTimeEditor
+          editor: Neos.Neos/Inspector/Editors/DateTimeEditor
           editorOptions:
             format: 'j.n.Y g:i'
             minuteStep: 1

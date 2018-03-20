@@ -1,13 +1,14 @@
 <?php
 namespace DRKTettnang\Homepage\Controller;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Log\SystemLoggerInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Log\SystemLoggerInterface;
+use Neos\Error\Messages\Error;
 use DRKTettnang\Homepage\Vendor;
 
 //require_once('Html2Text.php');
 
-class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+class FormController extends \Neos\Flow\Mvc\Controller\ActionController {
    
    const EMAILPATTERN = '/[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/';
    
@@ -18,7 +19,7 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
    protected $settings = array();
    
    /**
-    * @var \TYPO3\Flow\Session\SessionInterface
+    * @var \Neos\Flow\Session\SessionInterface
     * @Flow\Inject
     *
     */
@@ -49,6 +50,7 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
       $this->view->assign('text1', $this->request->getInternalArgument('__text1'));
       $this->view->assign('text2', $this->request->getInternalArgument('__text2'));
       $this->view->assign('text3', $this->request->getInternalArgument('__text3'));
+      $this->view->assign('text4', $this->request->getInternalArgument('__text4'));
 	}
 
    /**
@@ -60,13 +62,13 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
       $data = $this->requestToArray();
       $captcha = $this->session->getData('captcha');
 
-      if ($captcha !== $_POST['captcha']) {
-         $this->addFlashMessage('Kontrollcode leider falsch.', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+      if (!isset($_POST['captcha']) || $captcha !== $_POST['captcha']) {
+         $this->addFlashMessage('Kontrollcode leider falsch.', null, Error::SEVERITY_WARNING);
 
          $this->systemLogger->log('Wrong captcha', LOG_INFO);
 
          $this->forward('step1');
-      }else if ($data === false) {
+      } else if ($data === false) {
          $this->forward('step1');
       }
       
@@ -88,9 +90,9 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
          $this->systemLogger->log('Form processed', LOG_INFO);
 
          $this->session->putData('processed', true);
-         $this->addFlashMessage('Formular erfolgreich verarbeitet.', null, \TYPO3\Flow\Error\Message::SEVERITY_OK);
+         $this->addFlashMessage('Formular erfolgreich verarbeitet.', null, Error::SEVERITY_OK);
       } else {
-         $this->addFlashMessage('Dieses Formular wurde schon verarbeitet und wurde aus diesem Grund nicht erneut gesendet. Vermutlich haben Sie diese Seite neu geladen.', null, \TYPO3\Flow\Error\Message::SEVERITY_NOTICE);
+         $this->addFlashMessage('Dieses Formular wurde schon verarbeitet und wurde aus diesem Grund nicht erneut gesendet. Vermutlich haben Sie diese Seite neu geladen.', null, Error::SEVERITY_NOTICE);
       }
 
       $this->view->assign('data', $data);	
@@ -121,7 +123,7 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
    
    private function sendMail($from, $to, $data, $templateFile) {
 
-      $template = new \TYPO3\Fluid\View\StandaloneView();
+      $template = new \Neos\FluidAdaptor\View\StandaloneView();
       $template->setFormat('html');
       $template->setTemplatePathAndFilename('resource://DRKTettnang.Homepage/Private/Templates/Mail/'.$templateFile.'.html');
       $template->setPartialRootPath('resource://DRKTettnang.Homepage/Private/Partials/');
@@ -134,11 +136,11 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
       $subject = trim($template->renderSection('subject'));
       $html = $template->render();
 
-      $body = trim($template->renderSection('body'));
+      $body = trim($template->renderSection('body', [], true));
       $html2text = new \DRKTettnang\Homepage\Vendor\Html2Text($body);
       $plain = $html2text->getText();
 
-      $mail = new \TYPO3\SwiftMailer\Message();
+      $mail = new \Neos\SwiftMailer\Message();
       $mail->setTo($to);
       $mail->setFrom($from);
       $mail->setSubject($subject);
@@ -164,7 +166,7 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
                $failed = true;
                
                if($validate) {
-                  $this->addFlashMessage('Bitte geben Sie eine korrekte E-Mail Adresse ein', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte geben Sie eine korrekte E-Mail Adresse ein', null, Error::SEVERITY_WARNING);
                }
             }
             
@@ -172,7 +174,7 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
                $failed = true;
                
                if($validate) {
-                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, Error::SEVERITY_WARNING);
                }
             }
             
@@ -182,12 +184,24 @@ class FormController extends \TYPO3\Flow\Mvc\Controller\ActionController {
             
             if($validate) {
                if (in_array('agree', $config)) {
-                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, Error::SEVERITY_WARNING);
                } else {
-                  $this->addFlashMessage('Bitte füllen Sie alle Pflichtfelder aus', null, \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte füllen Sie alle Pflichtfelder aus', null, Error::SEVERITY_WARNING);
                }
             }
          }
+      }
+
+      if (!empty($data['eventDate']) && !empty($data['sanStart'])) {
+            $eventDate = new \DateTime($data['eventDate'] . ' ' . $data['sanStart']);
+            $this->systemLogger->log('Date: '.$data['eventDate'] . ' ' . $data['sanStart'], LOG_INFO);
+            $now = new \DateTime('now');
+            $dateDiff = $now->diff($eventDate);
+            $daysLeft = intval($dateDiff->format('%a'));
+            $weeksLeft = floor($daysLeft / 7);
+            $remainingDays = $daysLeft % 7;
+
+            $data['timeUntilEvent'] = "in $weeksLeft Woche(n) und $remainingDays Tag(en)";
       }
       
       return ($failed && $validate) ? false : $data;

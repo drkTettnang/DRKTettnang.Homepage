@@ -1,20 +1,20 @@
-<?php 
+<?php
 namespace DRKTettnang\Homepage\ViewHelpers\Format;
 
-use TYPO3\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\Fluid\Core\ViewHelper\Facets\CompilableInterface;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
+use Neos\FluidAdaptor\Core\ViewHelper\Facets\CompilableInterface;
 
 class LinebreakViewHelper extends AbstractViewHelper implements CompilableInterface {
-   
-        
+
+
 	/**
 	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
 	 * @see AbstractViewHelper::isOutputEscapingEnabled()
 	 * @var boolean
 	 */
 	protected $escapeOutput = FALSE;
-   
+
         /**
          * @var boolean
          */
@@ -37,7 +37,7 @@ class LinebreakViewHelper extends AbstractViewHelper implements CompilableInterf
          *
          * @param array $arguments
          * @param \Closure $renderChildrenClosure
-         * @param \TYPO3\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
+         * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
          * @return string
          */
         static public function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
@@ -47,7 +47,7 @@ class LinebreakViewHelper extends AbstractViewHelper implements CompilableInterf
                 }
                 if (is_string($value) || (is_object($value) && method_exists($value, '__toString'))) {
                      $html = str_replace("\n", '<br />', $value);
-                     
+
                      return $html;
                 }
 

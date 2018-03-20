@@ -1,2 +1,2 @@
-prototype(DRKTettnang.Homepage:Operation) < prototype(TYPO3.Neos:Document) {
+prototype(DRKTettnang.Homepage:Operation) < prototype(Neos.Neos:Document) {
 }

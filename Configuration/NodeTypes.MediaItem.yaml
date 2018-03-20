@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:MediaItem':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     group: general
     label: 'Media Item'
@@ -14,12 +14,12 @@
           position: 10
   childNodes:
     content:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     mediaColor:
       type: string
       validation:
-        TYPO3.Neos/Validation/RegularExpressionValidator:
+        Neos.Neos/Validation/RegularExpressionValidator:
           regularExpression: '/^#([0-9a-z]{3}){1,2}$/i'
       ui:
         label: Hintergrundfarbe
@@ -39,7 +39,7 @@
           group: media
           position: 100
     mediaImage:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: Hintergrundbild
         reloadIfChanged: true
@@ -63,7 +63,7 @@
         inspector:
           group: media
           position: 150
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             multiple: false
             allowEmpty: false

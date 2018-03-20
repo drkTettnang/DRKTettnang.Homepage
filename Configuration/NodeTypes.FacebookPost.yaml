@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:FacebookPost':
   superTypes:
-    'TYPO3.Neos:Plugin': true
+    'Neos.Neos:Plugin': true
   ui:
     label: 'Facebook Post'
     group: plugins
@@ -47,7 +47,7 @@
         label: Links
         inspector:
           group: settings
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             multiple: true
             allowEmpty: true

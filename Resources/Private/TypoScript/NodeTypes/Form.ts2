@@ -1,4 +1,4 @@
-prototype(DRKTettnang.Homepage:Form) < prototype(TYPO3.Neos:Plugin) {
+prototype(DRKTettnang.Homepage:Form) < prototype(Neos.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Form'
       action = 'step1'

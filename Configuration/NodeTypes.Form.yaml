@@ -2,7 +2,7 @@
 'DRKTettnang.Homepage:Form':
   abstract: true
   superTypes:
-    'TYPO3.Neos:Plugin': true
+    'Neos.Neos:Plugin': true
   ui:
     label: Formular
     group: plugins
@@ -25,7 +25,7 @@
         inspector:
           group: custom
           position: 10
-          editor: TYPO3.Neos/Inspector/Editors/TextAreaEditor
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
           editorOptions:
             placeholder: 'Text 1'
             rows: 12
@@ -38,7 +38,7 @@
         inspector:
           group: custom
           position: 20
-          editor: TYPO3.Neos/Inspector/Editors/TextAreaEditor
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
           editorOptions:
             placeholder: 'Text 2'
             rows: 12
@@ -51,7 +51,20 @@
         inspector:
           group: custom
           position: 30
-          editor: TYPO3.Neos/Inspector/Editors/TextAreaEditor
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
           editorOptions:
             placeholder: 'Text 3'
+            rows: 12
+    text4:
+      type: string
+      ui:
+        reloadPageIfChanged: false
+        label: 'Text 3'
+        inlineEditable: false
+        inspector:
+          group: custom
+          position: 30
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
+          editorOptions:
+            placeholder: 'Text 4'
             rows: 12

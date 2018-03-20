@@ -1,7 +1,12 @@
-prototype(DRKTettnang.Homepage:BookingForm) < prototype(TYPO3.Neos:Plugin) {
+prototype(DRKTettnang.Homepage:BookingForm) < prototype(Neos.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Form'
       action = 'step1'
 
       form = 'BookingForm'
+
+      text1 = ${q(node).property('text1')}
+      text2 = ${q(node).property('text2')}
+      text3 = ${q(node).property('text3')}
+      text4 = ${q(node).property('text4')}
 }

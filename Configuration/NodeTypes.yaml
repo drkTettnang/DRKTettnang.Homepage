@@ -1,5 +1,5 @@
 ---
-'TYPO3.Neos.NodeTypes:Page':
+'Neos.NodeTypes:Page':
    ui:
       inspector:
          groups:
@@ -19,7 +19,7 @@
       xmlSitemapChangeFrequency: []
       xmlSitemapPriority: []
       backgroundImage:
-         type: 'TYPO3\Media\Domain\Model\ImageInterface'
+         type: 'Neos\Media\Domain\Model\ImageInterface'
          ui:
             label: 'Bild'
             reloadPageIfChanged: true
@@ -30,19 +30,19 @@
                   resize: true
    childNodes:
       'sidebar':
-         type: 'TYPO3.Neos:ContentCollection'
+         type: 'Neos.Neos:ContentCollection'
          constraints:
             nodeTypes:
                '*': false
                'DRKTettnang.Homepage:SideBox': true
-               'TYPO3.Neos.NodeTypes:ContentReferences': true
+               'Neos.NodeTypes:ContentReferences': true
       'header':
-         type: 'TYPO3.Neos:ContentCollection'
+         type: 'Neos.Neos:ContentCollection'
          constraints:
             nodeTypes:            
                '*': false
-               'TYPO3.Neos.NodeTypes:Headline': true
-               'TYPO3.Neos.NodeTypes:Text': true
+               'Neos.NodeTypes:Headline': true
+               'Neos.NodeTypes:Text': true
                'DRKTettnang.Homepage:Separator': true
                'Weissheiten.Neos.Bootstrap:Button': true
       'main':
@@ -52,12 +52,12 @@
                'DRKTettnang.OperationHistory:Plugin': true
                'DRKTettnang.Homepage:MainBox': true
                'Weissheiten.Neos.Bootstrap:Carousel': true
-               'TYPO3.Neos.NodeTypes:Column': true
-               'TYPO3.Neos.NodeTypes:ContentReferences': true
+               'Neos.NodeTypes:Column': true
+               'Neos.NodeTypes:ContentReferences': true
                'DRKTettnang.Homepage:OperationOverview': true
                'DRKTettnang.Homepage:LastOperationReferences': true
 
-'TYPO3.Neos:Shortcut':
+'Neos.Neos:Shortcut':
    ui:
       inspector:
          groups:
@@ -66,7 +66,7 @@
                position: 200
    properties:
       backgroundImage:
-         type: 'TYPO3\Media\Domain\Model\ImageInterface'
+         type: 'Neos\Media\Domain\Model\ImageInterface'
          ui:
             label: 'Bild'
             reloadPageIfChanged: true
@@ -86,7 +86,7 @@
             label: 'Zieladresse'
             inspector:
                group: 'layout'
-               editor: 'TYPO3.Neos/Inspector/Editors/LinkEditor'
+               editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
                editorOptions:
                   assets: FALSE
 
@@ -104,7 +104,7 @@
 'Weissheiten.Neos.Bootstrap:NavTabPanel': []
 # 'Weissheiten.Neos.Bootstrap:Carousel': []
 'Flowpack.Neos.FrontendLogin:LoginForm': []
-'TYPO3.Neos.NodeTypes:TextWithImage': []
-#'TYPO3.Neos.NodeTypes:Html': []
-'TYPO3.Neos.NodeTypes:Form': []
-'TYPO3.Neos:PluginView': []
+'Neos.NodeTypes:TextWithImage': []
+#'Neos.NodeTypes:Html': []
+'Neos.NodeTypes:Form': []
+'Neos.Neos:PluginView': []

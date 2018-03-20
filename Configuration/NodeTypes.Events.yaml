@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:Events':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     icon: icon-calendar
     group: plugins
@@ -54,7 +54,7 @@
         label: 'Kurs Art'
         inspector:
           group: event
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             multiple: false
             allowEmpty: true

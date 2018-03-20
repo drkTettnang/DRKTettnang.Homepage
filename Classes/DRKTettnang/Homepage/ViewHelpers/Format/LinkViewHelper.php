@@ -1,13 +1,13 @@
-<?php 
+<?php
 namespace DRKTettnang\Homepage\ViewHelpers\Format;
 
-use TYPO3\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\Fluid\Core\ViewHelper\Facets\CompilableInterface;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
+use Neos\FluidAdaptor\Core\ViewHelper\Facets\CompilableInterface;
 
 class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
 
-   
+
 	/**
 	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
 	 * @see AbstractViewHelper::isOutputEscapingEnabled()
@@ -39,7 +39,7 @@ class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
          *
          * @param array $arguments
          * @param \Closure $renderChildrenClosure
-         * @param \TYPO3\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
+         * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
          * @return string
          */
         static public function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
@@ -51,13 +51,13 @@ class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
                      $html = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/i', array('self', 'encode_link'), $value);
                      $html = preg_replace_callback('#<a ([^>]*)href=(?:\'([^\']*)\'|"([^"]*)")([^>]*)>([^<]*)</ ?a>#i', array('self', 'check_link'), $html);
                      $html = preg_replace_callback(self::EMAILPATTERN, array('self', 'encode_email'), $html);
-                   
+
                      return $html;
                 }
 
                 return $value;
         }
-        
+
         static public function check_link($matches){
            $before = $matches[1];
            $href = $matches[3];
@@ -65,52 +65,52 @@ class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
            $inner = $matches[5];
 
            $return = '<a '.$before;
-           
+
            if(preg_match('/^mailto[:].+/i', $href)) {
              $return .= preg_replace_callback('/mailto:(.+)@(.+)/i', array('self', 'obfuscate_mailto'), $href);
            } else {
              $return .= "href='$href'";
            }
-           
+
            $return .= $after.'>';
-           
+
            $inner = preg_replace_callback(self::EMAILPATTERN, array('self', 'obfuscate_email'), $inner);
-           
+
            $return .= $inner.'</a>';
-           
+
            return $return;
         }
-        
+
         static public function obfuscate_email($matches){
            $mail = $matches[0];
-           
+
            return str_replace('@', '<span class="ta"></span>', $mail);
         }
-        
+
         static public function obfuscate_mailto($matches){
            $node = $matches[1];
            $domain = $matches[2];
-           
+
            return "data-edon='$node' data-niamod='$domain'";
         }
-        
+
         static public function encode_email($matches){
            $mail = $matches[0];
-           
+
            $attr = preg_replace_callback('/(.+)@(.+)/i', array('self', 'obfuscate_mailto'), $mail);
            $mail = self::obfuscate_email(array($mail));
-           
+
            return "<a $attr>$mail</a>";
         }
-        
+
         static public function encode_link($matches){
            $inner = $matches[1];
            $href = $matches[2];
-           
+
            if(preg_match(self::EMAILPATTERN, $href)) {
              $href = 'mailto:'.$href;
            }
-           
+
            return '<a href="'.$href.'">'.$inner.'</a>';
         }
 }

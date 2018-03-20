@@ -1,5 +1,5 @@
 
-prototype(DRKTettnang.Homepage:Events) < prototype(TYPO3.Neos:Content) {
+prototype(DRKTettnang.Homepage:Events) < prototype(Neos.Neos:Content) {
    lic = ${q(node).property('lic')}
    location = ${q(node).property('location')}
    maxEvents = ${q(node).property('maxEvents')}

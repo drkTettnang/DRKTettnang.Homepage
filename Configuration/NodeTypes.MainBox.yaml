@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:MainBox':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     group: general
     label: Artikel
@@ -21,7 +21,7 @@
         label: Style
         inspector:
           group: layout
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             multiple: false
             allowEmpty: false
@@ -55,16 +55,16 @@
         inlineEditable: false
         inspector:
           group: layout
-          editor: TYPO3.Neos/Inspector/Editors/DateTimeEditor
+          editor: Neos.Neos/Inspector/Editors/DateTimeEditor
           editorOptions:
             format: 'j.n.Y g:i'
   childNodes:
     content:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
       constraints:
         nodeTypes:
           'Flowpack.Neos.FrontendLogin:LoginForm': false
-          'TYPO3.Neos:PluginView': false
-          'TYPO3.Neos.NodeTypes:TextWithImage': false
+          'Neos.Neos:PluginView': false
+          'Neos.NodeTypes:TextWithImage': false
           'DRKTettnang.Homepage:SideBox': false
           'DRKTettnang.Homepage:MainBox': false

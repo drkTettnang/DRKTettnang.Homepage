@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:LastOperationReferences':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     group: general
     label: 'Letzter Einsatz'

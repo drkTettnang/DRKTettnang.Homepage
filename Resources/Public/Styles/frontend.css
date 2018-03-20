@@ -64,6 +64,7 @@ a[target="_blank"]:before {
 #main-content table.clear-layout td, #main-content table.clear-layout th {
   background-color: transparent;
   font-weight: normal;
+  vertical-align: top;
 }
 #main-content .events table {
   margin: 0 0 10px;

@@ -1,9 +1,9 @@
-'TYPO3.Neos.NodeTypes:Image':
+'Neos.NodeTypes:Image':
    properties:
       width:
          type: string
          validation:
-            'TYPO3.Neos/Validation/RegularExpressionValidator':
+            'Neos.Neos/Validation/RegularExpressionValidator':
                regularExpression: '/^[0-9]+(px|%)$/'
          ui:
             reloadPageIfChanged: true

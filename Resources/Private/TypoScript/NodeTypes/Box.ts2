@@ -1,5 +1,5 @@
 prototype(DRKTettnang.Homepage:Box) {
-   contentRenderer = TYPO3.Neos:ContentCollection
+   contentRenderer = Neos.Neos:ContentCollection
    
    content = ${q(node).children('content').get(0)}
 }

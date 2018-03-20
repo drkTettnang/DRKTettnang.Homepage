@@ -14,3 +14,6 @@
     text3:
       ui:
         label: 'Kontakt E-Mail'
+    text4:
+      ui:
+        label: Datenschutz

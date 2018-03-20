@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:HiorgEvents':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     icon: icon-calendar
     group: plugins
