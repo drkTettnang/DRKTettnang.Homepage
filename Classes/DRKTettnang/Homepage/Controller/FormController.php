@@ -191,6 +191,18 @@ class FormController extends \Neos\Flow\Mvc\Controller\ActionController {
             }
          }
       }
+
+      if (!empty($data['eventDate']) && !empty($data['sanStart'])) {
+            $eventDate = new \DateTime($data['eventDate'] . ' ' . $data['sanStart']);
+            $this->systemLogger->log('Date: '.$data['eventDate'] . ' ' . $data['sanStart'], LOG_INFO);
+            $now = new \DateTime('now');
+            $dateDiff = $now->diff($eventDate);
+            $daysLeft = intval($dateDiff->format('%a'));
+            $weeksLeft = floor($daysLeft / 7);
+            $remainingDays = $daysLeft % 7;
+
+            $data['timeUntilEvent'] = "in $weeksLeft Woche(n) und $remainingDays Tag(en)";
+      }
       
       return ($failed && $validate) ? false : $data;
    }
