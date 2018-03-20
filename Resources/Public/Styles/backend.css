@@ -19,16 +19,16 @@
   opacity: 0.5;
   z-index: 999;
 }
-.neos-backend [data-node-alignment="left"][typeof="typo3:Neos.NodeTypes:Image"] {
+.neos-backend [data-node-alignment="left"][typeof="neos:Neos.NodeTypes:Image"] {
   float: left;
 }
-.neos-backend [data-node-alignment="left"][typeof="typo3:Neos.NodeTypes:Image"] * {
+.neos-backend [data-node-alignment="left"][typeof="neos:Neos.NodeTypes:Image"] * {
   float: none;
 }
-.neos-backend [data-node-alignment="right"][typeof="typo3:Neos.NodeTypes:Image"] {
+.neos-backend [data-node-alignment="right"][typeof="neos:Neos.NodeTypes:Image"] {
   float: right;
 }
-.neos-backend [data-node-alignment="right"][typeof="typo3:Neos.NodeTypes:Image"] * {
+.neos-backend [data-node-alignment="right"][typeof="neos:Neos.NodeTypes:Image"] * {
   float: none;
 }
 .neos-backend .neos-contentelement.neos-contentelement-hidden > * {
