@@ -50,6 +50,7 @@ class FormController extends \Neos\Flow\Mvc\Controller\ActionController {
       $this->view->assign('text1', $this->request->getInternalArgument('__text1'));
       $this->view->assign('text2', $this->request->getInternalArgument('__text2'));
       $this->view->assign('text3', $this->request->getInternalArgument('__text3'));
+      $this->view->assign('text4', $this->request->getInternalArgument('__text4'));
 	}
 
    /**
@@ -61,13 +62,13 @@ class FormController extends \Neos\Flow\Mvc\Controller\ActionController {
       $data = $this->requestToArray();
       $captcha = $this->session->getData('captcha');
 
-      if ($captcha !== $_POST['captcha']) {
+      if (!isset($_POST['captcha']) || $captcha !== $_POST['captcha']) {
          $this->addFlashMessage('Kontrollcode leider falsch.', null, Error::SEVERITY_WARNING);
 
          $this->systemLogger->log('Wrong captcha', LOG_INFO);
 
          $this->forward('step1');
-      }else if ($data === false) {
+      } else if ($data === false) {
          $this->forward('step1');
       }
       

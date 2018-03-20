@@ -55,3 +55,16 @@
           editorOptions:
             placeholder: 'Text 3'
             rows: 12
+    text4:
+      type: string
+      ui:
+        reloadPageIfChanged: false
+        label: 'Text 3'
+        inlineEditable: false
+        inspector:
+          group: custom
+          position: 30
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor
+          editorOptions:
+            placeholder: 'Text 4'
+            rows: 12
