@@ -29,7 +29,7 @@ class CssClassViewHelper extends AbstractViewHelper implements CompilableInterfa
          * @api
          */
         public function render($value = NULL) {
-           return self::renderStatic(array('value' => $value), $this->buildRenderChildrenClosure());
+           return self::renderStatic(array('value' => $value), $this->buildRenderChildrenClosure(), $this->renderingContext);
         }
 
         /**
