@@ -1,6 +1,6 @@
 {
     "description": "Add description here",
-    "type": "typo3-flow-site",
+    "type": "neos-site",
     "require": {
         "neos/neos": "~3.0.0",
         "neos/nodetypes": "~3.0.0"
