@@ -2,6 +2,6 @@ prototype(DRKTettnang.Homepage:Form) < prototype(Neos.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Form'
       action = 'step1'
-      
+
       form = ${q(node).property('form')}
 }

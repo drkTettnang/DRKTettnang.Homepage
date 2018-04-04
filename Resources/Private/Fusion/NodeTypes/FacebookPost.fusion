@@ -2,9 +2,15 @@ prototype(DRKTettnang.Homepage:FacebookPost) < prototype(Neos.Neos:Plugin) {
       package = 'DRKTettnang.Homepage'
       controller = 'Facebook'
       action = 'index'
-      
+
       identifier =  ${node.identifier}
       ajax = ${request.arguments.ajax == 'true'}
+
+      pageid = ${q(node).property('pageid')}
+      token = ${q(node).property('token')}
+      limit = ${q(node).property('limit')}
+      ignore = ${q(node).property('ignore')}
+      links = ${q(node).property('links')}
 
       @cache {
          mode = 'cached'
