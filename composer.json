@@ -2,8 +2,8 @@
     "description": "Add description here",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~3.0.0",
-        "neos/nodetypes": "~3.0.0"
+        "neos/neos": "*",
+        "neos/nodetypes": "*"
     },
     "suggest": {
         "typo3/neos-seo": "*"
