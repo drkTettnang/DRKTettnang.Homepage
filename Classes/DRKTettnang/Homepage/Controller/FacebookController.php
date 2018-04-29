@@ -57,7 +57,7 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
            return;
         }
 
-        $postUrl = 'https://graph.facebook.com/v2.4/'.$fb['pageid'].'/posts?';
+        $postUrl = 'https://graph.facebook.com/v2.12/'.$fb['pageid'].'/posts?';
         $postUrl .= http_build_query(array(
            'fields' => 'story,created_time,message,actions,likes{name},link',
            'access_token' => $fb['token'],
