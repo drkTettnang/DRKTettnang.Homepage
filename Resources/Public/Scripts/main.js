@@ -957,7 +957,7 @@ $('.date input').datepicker({
 
 /**
  * Workaround until Weissheiten/Weissheiten.Neos.Bootstrap#7 is merged.
- * 
+ *
  * https://github.com/Weissheiten/Weissheiten.Neos.Bootstrap/pull/7
  */
 
@@ -1020,7 +1020,7 @@ if ('transform' in $('body')[0].style) {
          ev.stopPropagation();
 
          clearTimeout(typeTimeout);
-         
+
          if (Piwik) {
             Piwik.getTracker().trackEvent('Participate', 'change');
          }
@@ -1047,9 +1047,9 @@ if ('transform' in $('body')[0].style) {
 
 $('div[data-identifier]').each(function(){
    var el = $(this);
-   
+
    el.html('<p><div class="spinner"><div class="loader"/></div> (Lade Daten)</p>');
-   
+
    $.ajax({
       method: 'GET',
       data: {
@@ -1067,3 +1067,14 @@ $('div[data-identifier]').each(function(){
       }
    });
 });
+
+function testForSnowfall() {
+   var now = new Date();
+   var month = now.getMonth();
+   var day = now.getDate();
+
+   if ((month === 11 && day > 5) || (month === 0 && day < 6)) {
+      $('#main-header > .overlay').addClass('snow');
+   }
+}
+testForSnowfall();
