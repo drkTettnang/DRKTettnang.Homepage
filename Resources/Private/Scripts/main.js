@@ -250,6 +250,11 @@ $('div[data-identifier]').each(function(){
          ajax: true
       },
       success: function(response) {
+         if (response.indexOf('Internal Server Error') > -1) {
+            el.html('<p>Momentan keine Daten verfügbar.</p>');
+            return;
+         }
+
          var html = $(response);
          el.after(html);
 
@@ -257,6 +262,9 @@ $('div[data-identifier]').each(function(){
          fitGallery(html.find('.gallery'));
 
          el.remove();
+      },
+      error: function() {
+         el.html('<p>Momentan keine Daten verfügbar.</p>');
       }
    });
 });
