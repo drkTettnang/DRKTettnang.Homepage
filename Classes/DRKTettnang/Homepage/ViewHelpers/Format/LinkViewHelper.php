@@ -3,9 +3,8 @@ namespace DRKTettnang\Homepage\ViewHelpers\Format;
 
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
-use Neos\FluidAdaptor\Core\ViewHelper\Facets\CompilableInterface;
 
-class LinkViewHelper extends AbstractViewHelper implements CompilableInterface {
+class LinkViewHelper extends AbstractViewHelper {
 
 
 	/**

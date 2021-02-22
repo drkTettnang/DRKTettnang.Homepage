@@ -14,30 +14,22 @@
       ui:
         inlineEditable: true
         label: Überschrift
-        aloha:
-          format:
-            '*': false
-            h3: true
-          table: {  }
-          link: {  }
-          list: {  }
-          alignment: {  }
-          formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h3: true
     text:
       type: string
       defaultValue: 'Text eingeben'
       ui:
         label: Text
         inlineEditable: true
-        aloha:
-          format:
-            '*': false
-            p: true
-            b: true
-            i: true
-          link:
-            a: true
-          table: {  }
-          list: {  }
-          alignment: {  }
-          formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              p: true
+              a: true
+              strong: true
+              em: true

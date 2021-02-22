@@ -1,3 +1,9 @@
 {namespace media=Neos\Media\ViewHelpers}
-<div class="events" data-type="hiorg" data-url="{f:uri.resource(path: 'Ajax/hiorg-termine.php', package: 'DRKTettnang.Homepage')}" data-ov="{ov -> f:format.raw()}" data-limit="{limit -> f:format.raw()}" data-location="{location -> f:format.raw()}" data-title="{title -> f:format.raw()}" data-category="{category -> f:format.raw()}">
+###### Foo
+<f:link.action action="hiorg" controller="ExternalData" package="DRKTettnang.Homepage">
+               test
+</f:link.action>
+###### Bar
+
+<div class="events" data-rest="{f:uri.action(action: 'hiorg', controller: 'ExternalData', package: 'DRKTettnang.Homepage', absolute: true)}" data-type="hiorg" data-url="{f:uri.resource(path: 'Ajax/hiorg-termine.php', package: 'DRKTettnang.Homepage')}" data-ov="{ov -> f:format.raw()}" data-limit="{limit -> f:format.raw()}" data-location="{location -> f:format.raw()}" data-title="{title -> f:format.raw()}" data-category="{category -> f:format.raw()}">
 </div>

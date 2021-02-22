@@ -1,91 +1,101 @@
+
 Neos:
-   Flow:
-      error:
-         exceptionHandler:
-            renderingGroups:
-               notFoundExceptions:
-                  options:
-                     templatePathAndFilename: 'resource://DRKTettnang.Homepage/Private/Templates/Error/Index.html'
-   Neos:
-    typoScript:
+  Flow:
+    error:
+      exceptionHandler:
+        renderingGroups:
+          notFoundExceptions:
+            options:
+              templatePathAndFilename: 'resource://DRKTettnang.Homepage/Private/Templates/Error/Index.html'
+  Neos:
+    fusion:
       autoInclude:
-        'DRKTettnang.OperationHistory': TRUE
+        DRKTettnang.OperationHistory: true
 DRKTettnang:
-   Homepage:
-      brand: 'OV Tettnang e.V.'
-      partials:
-#         bookingForm:
-#            label: 'Buchungsformular'
-#      facebook:
-#         pageid: 'drktettnang'
-#         token: ''
-#         limit: '5'
-#         ignore: '/^--/'
-#         links: ['comment', 'share', 'like', 'more']
-      forms:
-         BookingForm:
-            label: 'Buchungsformular'
-#             actions:
-#                email:
-#                   from:
-#                      'no-reply@localhost': 'no-reply'
-#                   recipients:
-#                      Internal: ['internal@localhost']
-#                      External: ['organizerMail']
-            inputs:
-               organizerName: ['required']
-               organizerStreet: ['required']
-               organizerNumber: ['required']
-               organizerZip: ['required']
-               organizerPlace: ['required']
-               organizerPhone: ['required']
-               organizerMail: ['required', 'email']
-               eventTitle: ['required']
-               eventDate: ['required']
-               eventPlace: ['required']
-               eventDescription: ['required']
-               eventVisitors: ['required']
-               eventVIP: []
-               eventStart: ['required']
-               eventEnd: ['required']
-               sanStart: ['required']
-               sanEnd: ['required']
-               eventCounterpart: ['required']
-               eventCounterpartPhone: ['required']
-               eventCatering: ['required']
-               note: []
-               agreement: ['required', 'agree']
-               privacyAgreement: ['required', 'agree']
-      operation:
-         types:
-            segg:
-               label: 'SEG groß'
-            segk:
-               label: 'SEG klein'
-            btr:
-               label: 'Betreuung und Logistik'
-            hnr:
-               label: 'Hausnotruf'
-            rdh:
-               label: 'Rettungsdiensthintergrund'
-         bos:
-            fw:
-               label: 'Feuerwehr'
-            polizei:
-               label: 'Polizei'
-            rd:
-               label: 'Rettungsdienst'
-            rth:
-               label: 'Rettungshubschrauber'
-            drk:
-               label: 'Weitere DRK Gruppen'
-            thw:
-               label: 'THW'
-            rhs:
-               label: 'Rettungshundestaffel'
-            malteser:
-               label: 'Malteser'
-            johanniter:
-               label: 'Johanniter'
-            dlrg:
-               label: 'DLRG'
+  Homepage:
+    brand: 'OV Tettnang e.V.'
+    partials: null
+    forms:
+      BookingForm:
+        label: Buchungsformular
+        inputs:
+          organizerName:
+            - required
+          organizerStreet:
+            - required
+          organizerNumber:
+            - required
+          organizerZip:
+            - required
+          organizerPlace:
+            - required
+          organizerPhone:
+            - required
+          organizerMail:
+            - required
+            - email
+          eventTitle:
+            - required
+          eventDate:
+            - required
+          eventPlace:
+            - required
+          eventDescription:
+            - required
+          eventVisitors:
+            - required
+          eventVIP: {  }
+          eventStart:
+            - required
+          eventEnd:
+            - required
+          sanStart:
+            - required
+          sanEnd:
+            - required
+          eventCounterpart:
+            - required
+          eventCounterpartPhone:
+            - required
+          eventCatering:
+            - required
+          note: {  }
+          agreement:
+            - required
+            - agree
+          privacyAgreement:
+            - required
+            - agree
+    operation:
+      types:
+        segg:
+          label: 'SEG groß'
+        segk:
+          label: 'SEG klein'
+        btr:
+          label: 'Betreuung und Logistik'
+        hnr:
+          label: Hausnotruf
+        rdh:
+          label: Rettungsdiensthintergrund
+      bos:
+        fw:
+          label: Feuerwehr
+        polizei:
+          label: Polizei
+        rd:
+          label: Rettungsdienst
+        rth:
+          label: Rettungshubschrauber
+        drk:
+          label: 'Weitere DRK Gruppen'
+        thw:
+          label: THW
+        rhs:
+          label: Rettungshundestaffel
+        malteser:
+          label: Malteser
+        johanniter:
+          label: Johanniter
+        dlrg:
+          label: DLRG

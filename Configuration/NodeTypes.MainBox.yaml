@@ -38,15 +38,11 @@
       ui:
         inlineEditable: true
         label: Überschrift
-        aloha:
-          format:
-            '*': false
-            h2: true
-          table: {  }
-          link: {  }
-          list: {  }
-          alignment: {  }
-          formatlesspaste: {  }
+        inline:
+          editorOptions:
+            formatting:
+              '*': false
+              h2: true
     pubdate:
       type: string
       ui:

@@ -11,7 +11,7 @@ class PartialsDataSource extends AbstractDataSource {
          * @var string
          */
         static protected $identifier = 'drktettnang-homepage-partials';
-        
+
         /**
          * @Flow\InjectConfiguration(path="partials")
          * @var array
@@ -25,7 +25,7 @@ class PartialsDataSource extends AbstractDataSource {
          * @param array $arguments Additional arguments (key / value)
          * @return array JSON serializable data
          */
-        public function getData(NodeInterface $node = NULL, array $arguments) {
+        public function getData(?NodeInterface $node = null, array $arguments = []) {
                 return $this->partials;
         }
 }

@@ -3,5 +3,5 @@ prototype(Weissheiten.Neos.Bootstrap:Button) {
    sectionName = 'buttonSection'
    
    href = ${q(node).property('href') || '#'}
-   href.@process.convertUris = ConvertUris
+   href.@process.convertUris = Neos.Neos:ConvertUris
 }

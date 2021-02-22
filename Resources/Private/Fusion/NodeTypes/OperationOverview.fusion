@@ -1,4 +1,4 @@
-prototype(DRKTettnang.Homepage:OperationOverview) < prototype(Neos.NodeTypes:Menu) {
+prototype(DRKTettnang.Homepage:OperationOverview) < prototype(Neos.NodeTypes.Navigation:Navigation) {
    
    filter = 'DRKTettnang.Homepage:Operation'
 }

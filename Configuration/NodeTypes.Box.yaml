@@ -13,7 +13,7 @@
         nodeTypes:
           '*': false
           'Neos.NodeTypes:Text': true
-          'Neos.NodeTypes:Column': true
+          'Neos.NodeTypes.ColumnLayouts:Column': true
           'Neos.NodeTypes:Image': true
           'DRKTettnang.Homepage:Gallery': true
           'DRKTettnang.Homepage:Paypal': true

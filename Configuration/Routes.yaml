@@ -1,0 +1,7 @@
+-
+  name: 'Ajax API'
+  uriPattern: 'api/{@action}'
+  defaults:
+    '@package':    'DRKTettnang.Homepage'
+    '@controller': 'ExternalData'
+    '@format':     'json'

@@ -3,10 +3,10 @@
 namespace DRKTettnang\Homepage\Controller;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\SystemLoggerInterface;
 use Neos\Flow\ResourceManagement\ResourceManager;
+use Neos\Flow\Mvc\Controller\ActionController;
 
-class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
+class FacebookController extends ActionController
 {
    /**
     * @Flow\Inject
@@ -20,13 +20,6 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
     * @var Neos\Media\Domain\Repository\AssetRepository
     */
    protected $assetRepository;
-
-    /**
-     * @Flow\Inject
-     *
-     * @var SystemLoggerInterface
-     */
-    protected $systemLogger;
 
    /**
     * @Flow\Inject
@@ -155,17 +148,17 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
 
         try {
            $json = json_decode($response);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
         }
 
         if ($json === null || !isset($json)) {
-           $this->systemLogger->log('Could not parse JSON.', LOG_INFO);
+           $this->logger->info('Could not parse JSON.');
 
            return null;
         }
 
         if (isset($json->error)) {
-           $this->systemLogger->log('JSON error: '.$json->error->message, LOG_INFO);
+           $this->logger->info('JSON error: '.$json->error->message);
 
            return null;
         }
@@ -184,7 +177,7 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
             }
         }
 
-        $this->systemLogger->log('Found no Facebook post', LOG_INFO);
+        $this->logger->info('Found no Facebook post');
 
         return null;
     }
@@ -202,7 +195,7 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
             if (isset($attachmentJson->data)) {
                 return (isset($attachmentJson->data[0]->subattachments)) ? $attachmentJson->data[0]->subattachments->data : $attachmentJson->data;
             } elseif (isset($attachmentJson->error)) {
-                $this->systemLogger->log('JSON attachment error: '.$attachmentJson->error->message, LOG_INFO);
+                $this->logger->info('JSON attachment error: '.$attachmentJson->error->message);
             }
         }
 
@@ -246,8 +239,8 @@ class FacebookController extends \Neos\Flow\Mvc\Controller\ActionController
             }
 
             // Allow image to be persisted even if this is a "safe" HTTP request:
-            $this->persistenceManager->whiteListObject($image);
-            $this->persistenceManager->whiteListObject($image->getResource());
+            $this->persistenceManager->allowObject($image);
+            $this->persistenceManager->allowObject($image->getResource());
 
             $images[] = $image;
         }

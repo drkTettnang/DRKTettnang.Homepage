@@ -1,7 +1,7 @@
 
 'DRKTettnang.Homepage:OperationOverview':
   superTypes:
-    'Neos.NodeTypes:Menu': true
+    'Neos.NodeTypes.Navigation:Navigation': true
   ui:
     group: structure
     label: Einsatzübersicht

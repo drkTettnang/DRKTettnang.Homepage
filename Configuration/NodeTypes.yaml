@@ -35,7 +35,7 @@
             nodeTypes:
                '*': false
                'DRKTettnang.Homepage:SideBox': true
-               'Neos.NodeTypes:ContentReferences': true
+               'Neos.NodeTypes.ContentReferences:ContentReferences': true
       'header':
          type: 'Neos.Neos:ContentCollection'
          constraints:
@@ -52,8 +52,8 @@
                'DRKTettnang.OperationHistory:Plugin': true
                'DRKTettnang.Homepage:MainBox': true
                'Weissheiten.Neos.Bootstrap:Carousel': true
-               'Neos.NodeTypes:Column': true
-               'Neos.NodeTypes:ContentReferences': true
+               'Neos.NodeTypes.ColumnLayouts:Column': true
+               'Neos.NodeTypes.ContentReferences:ContentReferences': true
                'DRKTettnang.Homepage:OperationOverview': true
                'DRKTettnang.Homepage:LastOperationReferences': true
 
@@ -105,6 +105,6 @@
 # 'Weissheiten.Neos.Bootstrap:Carousel': []
 'Flowpack.Neos.FrontendLogin:LoginForm': []
 'Neos.NodeTypes:TextWithImage': []
-#'Neos.NodeTypes:Html': []
-'Neos.NodeTypes:Form': []
+#'Neos.NodeTypes.Html:Html': []
+'Neos.NodeTypes.Form:Form': []
 'Neos.Neos:PluginView': []

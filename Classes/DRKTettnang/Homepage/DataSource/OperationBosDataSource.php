@@ -11,7 +11,7 @@ class OperationBosDataSource extends AbstractDataSource {
          * @var string
          */
         static protected $identifier = 'drktettnang-homepage-operation-bos';
-        
+
         /**
          * @Flow\InjectConfiguration(path="operation.bos")
          * @var array
@@ -25,7 +25,7 @@ class OperationBosDataSource extends AbstractDataSource {
          * @param array $arguments Additional arguments (key / value)
          * @return array JSON serializable data
          */
-        public function getData(NodeInterface $node = NULL, array $arguments) {
+        public function getData(?NodeInterface $node = null, array $arguments = []) {
                 return $this->bos;
         }
 }
