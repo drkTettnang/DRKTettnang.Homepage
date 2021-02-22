@@ -299,7 +299,10 @@ function displayHiorgEvents(container, html, options) {
 
       details.push('<div class="title">' + titleString + '</div>');
       details.push('<div class="fromTo">' + fromToString + '</div>');
-      details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
+
+      if (locationString) {
+         details.push('<div class="location"><span class="fa fa-map-marker"></span> ' + locationString + '</div>');
+      }
 
       $('<td>').html(details.join('')).appendTo(tr);
 
@@ -1057,6 +1060,11 @@ $('div[data-identifier]').each(function(){
          ajax: true
       },
       success: function(response) {
+         if (response.indexOf('Internal Server Error') > -1) {
+            el.html('<p>Momentan keine Daten verfügbar.</p>');
+            return;
+         }
+
          var html = $(response);
          el.after(html);
 
@@ -1064,6 +1072,9 @@ $('div[data-identifier]').each(function(){
          fitGallery(html.find('.gallery'));
 
          el.remove();
+      },
+      error: function() {
+         el.html('<p>Momentan keine Daten verfügbar.</p>');
       }
    });
 });
