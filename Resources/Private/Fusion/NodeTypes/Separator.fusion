@@ -1,3 +1,3 @@
 prototype(DRKTettnang.Homepage:Separator) < prototype(Neos.Neos:Content) {
-
+    templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Separator.html'
 }

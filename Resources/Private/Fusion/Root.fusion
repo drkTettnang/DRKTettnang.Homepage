@@ -26,7 +26,7 @@ root.ajax {
 }
 root.@cache.entryIdentifier.projects = ${'ajax' + request.arguments.nodeId + request.arguments.ajax}
 
-page = Neos.Neos:Page {
+prototype(Neos.NodeTypes:Page) {
 
    httpResponseHead.headers.Content-Security-Policy = "default-src 'self'; img-src 'self' data: ssl.gstatic.com;frame-src 'self' platform.twitter.com www.facebook.com accounts.google.com apis.google.com; script-src apis.google.com 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'"
    httpResponseHead.headers.Content-Security-Policy.@if.1 = ${node.context.workspaceName == 'live'}
@@ -36,7 +36,7 @@ page = Neos.Neos:Page {
 			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 			sectionName = 'stylesheets'
 
-         backgroundImage = ${q(node).property('backgroundImage') != null && q(node).property('backgroundImage') != '' ? q(node).property('backgroundImage') : q(node).parents('[backgroundImage!=""][backgroundImage]').first().property('backgroundImage')}
+		 backgroundImage = ${q(node).property('backgroundImage') != null && q(node).property('backgroundImage') != '' ? q(node).property('backgroundImage') : q(node).parents('[backgroundImage!=""][backgroundImage]').first().property('backgroundImage')}
 		}
 
 		javascripts.site = Neos.Fusion:Template {
@@ -44,7 +44,7 @@ page = Neos.Neos:Page {
 			sectionName = 'headScripts'
 		}
 
-      metadata = Neos.Fusion:Template {
+	  metadata = Neos.Fusion:Template {
 			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 			sectionName = 'metadata'
 		}
@@ -54,77 +54,77 @@ page = Neos.Neos:Page {
 		templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/Page/Default.html'
 		sectionName = 'body'
 
-      brand = ${Configuration.setting('DRKTettnang.Homepage.brand')}
+		brand = ${Configuration.setting('DRKTettnang.Homepage.brand')}
 
-      hasSecondMenu = ${q(node).siblings('[instanceof Neos.NodeTypes:Page]') && q(node).parents('[instanceof Neos.NodeTypes:Page]')}
+		hasSecondMenu = ${q(node).siblings('[instanceof Neos.NodeTypes:Page]') && q(node).parents('[instanceof Neos.NodeTypes:Page]')}
 
-      isDistributor = ${q(node).children('[instanceof Neos.NodeTypes:Page]')}
+		isDistributor = ${q(node).children('[instanceof Neos.NodeTypes:Page]')}
 
 		parts {
 			menu = Neos.Neos:Menu {
-            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/Menu.html'
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/Menu.html'
 
-            entryLevel = 1
-            maximumLevels = 2
+			entryLevel = 1
+			maximumLevels = 2
 
-            attributes {
-               class = 'nav navbar-nav'
-            }
-            active.sub.attributes = Neos.Fusion:Attributes {
-                   class = 'dropdown active'
-           }
-            current.sub.attributes = Neos.Fusion:Attributes {
-                class = 'dropdown current'
-            }
-            normal.sub.attributes = Neos.Fusion:Attributes {
-                 class = ' dropdown normal'
-            }
-         }
+			attributes {
+			   class = 'nav navbar-nav'
+			}
+			active.sub.attributes = Neos.Fusion:Attributes {
+				   class = 'dropdown active'
+		   }
+			current.sub.attributes = Neos.Fusion:Attributes {
+				class = 'dropdown current'
+			}
+			normal.sub.attributes = Neos.Fusion:Attributes {
+				 class = ' dropdown normal'
+			}
+		 }
 
-         secondMenu = Neos.Neos:Menu {
-            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/SecondMenu.html'
-            entryLevel = 2
-            maximumLevels = 2
-         }
+		 secondMenu = Neos.Neos:Menu {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/SecondMenu.html'
+			entryLevel = 2
+			maximumLevels = 2
+		 }
 
-         thirdMenu = Neos.Neos:Menu {
-            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/ThirdMenu.html'
-            entryLevel = 3
-            maximumLevels = 0
-            attributes {
-               class = 'dropdown-menu dropdown-menu-right'
-            }
-            parentTitle = ${q(node).parents().count()==3 ? q(node).parent().property('title') : q(node).property('title')}
-            level = ${q(node).parents().count()}
-         }
+		 thirdMenu = Neos.Neos:Menu {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/ThirdMenu.html'
+			entryLevel = 3
+			maximumLevels = 0
+			attributes {
+			   class = 'dropdown-menu dropdown-menu-right'
+			}
+			parentTitle = ${q(node).parents().count()==3 ? q(node).parent().property('title') : q(node).property('title')}
+			level = ${q(node).parents().count()}
+		 }
 
-         footerMenu = Neos.Neos:Menu {
-            entryLevel = 2
-            templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/FooterMenu.html'
-            maximumLevels = 1
-            startingPoint = ${q(site).children('[title="Footer"]').last().get(0)}
-         }
+		 footerMenu = Neos.Neos:Menu {
+			entryLevel = 2
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/TypoScriptObjects/FooterMenu.html'
+			maximumLevels = 1
+			startingPoint = ${q(site).children('[title="Footer"]').last().get(0)}
+		 }
 		}
 
 		content {
 			main = Neos.Neos:PrimaryContent {
 				nodePath = 'main'
 			}
-         sidebar = Neos.Neos:ContentCollection {
-            nodePath = 'sidebar'
-         }
-         commonSidebar = Neos.Fusion:Collection {
-                collection = ${q(site).children('[title="Sidebar"]').first().find('[instanceof DRKTettnang.Homepage:SideBox]')}
-                itemRenderer = Neos.Neos:ContentCase
-                itemName = 'node'
+		 sidebar = Neos.Neos:ContentCollection {
+			nodePath = 'sidebar'
+		 }
+		 commonSidebar = Neos.Fusion:Collection {
+				collection = ${q(site).children('[title="Sidebar"]').first().find('[instanceof DRKTettnang.Homepage:SideBox]')}
+				itemRenderer = Neos.Neos:ContentCase
+				itemName = 'node'
 
 					@cache {
 						mode = 'cached'
 					}
-         }
-         header = Neos.Neos:ContentCollection {
-            nodePath = 'header'
-         }
+		 }
+		 header = Neos.Neos:ContentCollection {
+			nodePath = 'header'
+		 }
 		}
 
 		javascripts.site = Neos.Fusion:Template {
@@ -134,26 +134,28 @@ page = Neos.Neos:Page {
 	}
 }
 
-default < page
+prototype(DRKTettnang.Homepage:Operation) < prototype(Neos.Neos:Page) {
+	body.content {
+		main =  Neos.Fusion:Template {
+			templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
 
-operation < page
-operation.body.content {
-   main =  Neos.Fusion:Template {
-      templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Partials/Operation.html'
+			total = ${q(node).property('uriPathSegment')}
+			index = 0
 
-      total = ${q(node).property('uriPathSegment')}
-      index = 0
+			operation {
+				type = ${q(node).property('type')}
+				description = ${q(node).property('description')}
+				location = ${q(node).property('location')}
+				date = ${q(node).property('date')}
+				image = ${q(node).property('image')}
+				assets = ${q(node).property('assets')}
+				bos = ${q(node).property('bos')}
+			}
+		}
 
-      operation {
-         type = ${q(node).property('type')}
-         description = ${q(node).property('description')}
-         location = ${q(node).property('location')}
-         date = ${q(node).property('date')}
-         image = ${q(node).property('image')}
-         assets = ${q(node).property('assets')}
-         bos = ${q(node).property('bos')}
-      }
-   }
-   sidebar = ''
-   header = ''
+		sidebar = ''
+		header = ''
+	}
 }
+
+//default < page

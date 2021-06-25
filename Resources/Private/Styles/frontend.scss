@@ -56,6 +56,10 @@ a[target="_blank"]:before {
     width: 100%;
     border-top: 1px solid #ccc;
 
+    p::before {
+	    content: none;
+    }
+
     tr {
       border-bottom: 1px solid #ccc;
     }

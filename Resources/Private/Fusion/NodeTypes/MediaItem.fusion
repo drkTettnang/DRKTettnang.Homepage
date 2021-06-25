@@ -1,4 +1,5 @@
-prototype(DRKTettnang.Homepage:MediaItem) {
+prototype(DRKTettnang.Homepage:MediaItem) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/MediaItem.html'
 
    //headlineRenderer = Neos.NodeTypes:Headline
    contentRenderer = Neos.Neos:ContentCollection

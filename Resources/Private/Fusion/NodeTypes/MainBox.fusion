@@ -1,7 +1,8 @@
-prototype(DRKTettnang.Homepage:MainBox) {
+prototype(DRKTettnang.Homepage:MainBox) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/MainBox.html'
    //headlineRenderer = Neos.NodeTypes:Headline
    contentRenderer = Neos.Neos:ContentCollection
-   
+
    headline = ${q(node).property('headline')}
    text = ${q(node).property('text')}
    content = ${q(node).children('content').get(0)}

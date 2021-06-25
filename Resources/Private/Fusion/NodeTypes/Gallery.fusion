@@ -1,5 +1,7 @@
 
 prototype(DRKTettnang.Homepage:Gallery) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Gallery.html'
+
    images = ${q(node).property('images')}
    width = ${q(node).property('width') * 105}
    alignment = ${q(node).property('alignment')}

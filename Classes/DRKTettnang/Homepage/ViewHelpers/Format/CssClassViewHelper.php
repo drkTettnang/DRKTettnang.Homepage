@@ -40,7 +40,7 @@ class CssClassViewHelper extends AbstractViewHelper {
          * @return string
          */
         static public function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
-                $value = $arguments['value'];
+                $value = key_exists('value', $arguments) ? $arguments['value'] : null;
                 if ($value === NULL) {
                         $value = $renderChildrenClosure();
                 }

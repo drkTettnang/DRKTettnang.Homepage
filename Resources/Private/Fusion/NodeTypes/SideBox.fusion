@@ -1,8 +1,9 @@
-prototype(DRKTettnang.Homepage:SideBox) {
-   
+prototype(DRKTettnang.Homepage:SideBox) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/SideBox.html'
+
    //headlineRenderer = Neos.NodeTypes:Headline
    //contentRenderer = Neos.Neos:ContentCollection
-   
+
    headline = ${q(node).property('headline')}
    text = ${q(node).property('text')}
 }

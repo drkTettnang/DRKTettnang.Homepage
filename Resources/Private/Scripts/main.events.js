@@ -411,10 +411,6 @@ function loadHiorgEvents() {
       return;
    }
 
-   options.url += '?' + $.param({
-      ov: options.ov
-   });
-
    dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Termine)</p>');
 
    var cache = '';

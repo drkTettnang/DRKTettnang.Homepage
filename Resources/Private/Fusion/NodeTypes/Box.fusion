@@ -1,5 +1,5 @@
-prototype(DRKTettnang.Homepage:Box) {
+prototype(DRKTettnang.Homepage:Box) < prototype(Neos.Neos:Content) {
    contentRenderer = Neos.Neos:ContentCollection
-   
+
    content = ${q(node).children('content').get(0)}
 }

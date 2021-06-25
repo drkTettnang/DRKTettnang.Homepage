@@ -1,4 +1,5 @@
 prototype(DRKTettnang.Homepage:OperationOverview) < prototype(Neos.NodeTypes.Navigation:Navigation) {
-   
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/OperationOverview.html'
+
    filter = 'DRKTettnang.Homepage:Operation'
 }

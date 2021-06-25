@@ -18,5 +18,5 @@ prototype(DRKTettnang.Homepage:LastOperationReferences) < prototype(Neos.Neos:Co
       assets = ${this.lastOperation.property('assets')}
       bos = ${this.lastOperation.property('bos')}
    }
-   
+
    more = ${q(this.root).get(0)}

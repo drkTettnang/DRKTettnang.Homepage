@@ -1,5 +1,7 @@
 
 prototype(DRKTettnang.Homepage:Paypal) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Paypal.html'
+
    return.@process.convertUris = Neos.Neos:ConvertUris {
       absolute = true
    }

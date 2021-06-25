@@ -1,4 +1,6 @@
-prototype(DRKTettnang.Homepage:Jumbotron) {
+prototype(DRKTettnang.Homepage:Jumbotron) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Jumbotron.html'
+
    //headlineRenderer = Neos.NodeTypes:Headline
    contentRenderer = Neos.Neos:ContentCollection
 
