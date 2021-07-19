@@ -2,6 +2,13 @@
 prototype(DRKTettnang.Homepage:Paypal) < prototype(Neos.Neos:Content) {
    templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/Paypal.html'
 
+   receiver = ${q(node).property('receiver')}
+   purpose = ${q(node).property('purpose')}
+   return = ${q(node).property('return')}
+   slider = ${q(node).property('slider')}
+   width = ${q(node).property('width')}
+   float = ${q(node).property('float')}
+
    return.@process.convertUris = Neos.Neos:ConvertUris {
       absolute = true
    }
