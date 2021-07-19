@@ -428,9 +428,12 @@ function loadHiorgEvents() {
    $.ajax({
       url: options.url,
       method: 'GET',
-      dataType: 'text',
-      success: function(text) {
-         text = text.replace(/<img[^>]*src=[^>]*>/gi, '');
+      dataType: 'json',
+      data: {
+          ov: options.ov,
+      },
+      success: function(data) {
+         text = data.content.replace(/<img[^>]*src=[^>]*>/gi, '');
 
          localStorage.setItem(options.url, JSON.stringify({
             time: new Date().getTime(),

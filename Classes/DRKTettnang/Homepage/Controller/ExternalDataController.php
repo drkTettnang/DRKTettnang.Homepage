@@ -21,14 +21,13 @@ class ExternalDataController extends ActionController
     public function hiorgAction()
     {
         $data = [
-            'limit' => $this->request->getInternalArgument('__limit'),
-            'location' => $this->request->getInternalArgument('__location'),
-            'category' => $this->request->getInternalArgument('__category'),
-            'ov' => $this->request->getInternalArgument('__ov') || 'ttt',
+            'ov' => $this->request->getArgument('ov'),
         ];
 
         if (!preg_match('/^[a-z0-9]{1,10}$/i', $data['ov'])) {
             $this->view->assign('value', ['error' => 'No valid OV provided']);
+            $this->response->setStatusCode(500);
+
             return;
         }
 
