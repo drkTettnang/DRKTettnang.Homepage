@@ -235,8 +235,10 @@ function loadTrainingEvents() {
    $.ajax({
       url: options.url,
       method: 'GET',
-      dataType: 'xml',
-      success: function(xml) {
+      dataType: 'json',
+      success: function(data) {
+         var xml = $.parseXML(atob(data.content));
+
          displayTrainingEvents(dom, xml, options);
       },
       error: function() {
@@ -546,13 +548,13 @@ function loadBloodDonationEvents() {
       url: options.url,
       method: 'GET',
       dataType: 'text',
-      success: function(text) {
+      success: function(data) {
          localStorage.setItem(options.url, JSON.stringify({
             time: new Date().getTime(),
-            content: text
+            content: data.content
          }));
 
-         displayBloodDonationEvents(dom, $(text), options);
+         displayBloodDonationEvents(dom, $(data.content), options);
       },
       error: function() {
          console.log('error', arguments);

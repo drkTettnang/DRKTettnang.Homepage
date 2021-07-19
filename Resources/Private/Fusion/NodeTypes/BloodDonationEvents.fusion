@@ -1,0 +1,7 @@
+
+prototype(DRKTettnang.Homepage:BloodDonationEvents) < prototype(Neos.Neos:Content) {
+   templatePath = 'resource://DRKTettnang.Homepage/Private/Templates/NodeTypes/BloodDonationEvents.html'
+
+   location = ${q(node).property('location')}
+   limit = ${q(node).property('limit')}
+}

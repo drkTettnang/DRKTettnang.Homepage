@@ -5,7 +5,7 @@ privilegeTargets:
     'DRKTettnang.Homepage:Form':
       matcher: 'method(DRKTettnang\Homepage\Controller\FormController->(step1|step2)Action())'
     'DRKTettnang.Homepage:ExternalDataController':
-      matcher: 'method(DRKTettnang\Homepage\Controller\ExternalDataController->(hiorg)Action())'
+      matcher: 'method(DRKTettnang\Homepage\Controller\ExternalDataController->(hiorg|event|bloodDonation)Action())'
   Neos\ContentRepository\Security\Authorization\Privilege\Node\EditNodePrivilege:
     'DRKTettnang.Homepage:EditFacebookPost':
       matcher: 'nodeIsOfType("DRKTettnang.Homepage:FacebookPost")'

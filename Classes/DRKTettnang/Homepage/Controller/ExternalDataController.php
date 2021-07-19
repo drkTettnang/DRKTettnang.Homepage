@@ -35,4 +35,49 @@ class ExternalDataController extends ActionController
 
         $this->view->assign('value', $data);
     }
+
+    public function bloodDonationAction()
+    {
+        $location = $this->request->getArgument('location');
+
+        if (!preg_match('/^([0-9]{5}|[a-z]+)(\|([0-9]{5}|[a-z]+))*$/i', $location)) {
+            $this->view->assign('value', ['error' => 'No valid location provided']);
+            $this->response->setStatusCode(500);
+
+            return;
+        }
+
+        $content = file_get_contents('http://www.drk-blutspende.de/blutspendetermine/ergebnisse.php?rss=1&plz_ort_eingabe=' . $location);
+
+        $this->view->assign('value', ['content' => $content]);
+    }
+
+    public function eventAction()
+    {
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        $url = 'https://www.kurs-anmeldung.de/go.dll?'.$query;
+
+        $content = file_get_contents($url);
+
+        if (!$content) {
+            $this->view->assign('value', ['error' => 'Could not get '.$url]);
+            $this->response->setStatusCode(500);
+
+            return;
+        }
+
+        $content = preg_replace_callback(
+            '#<url_anmeldung>(.+)</url_anmeldung>#',
+            function ($matches) {
+                $url = $matches[1];
+                $url = htmlspecialchars_decode($url); //prevents double encoding
+                $url = htmlspecialchars($url);
+
+                return '<url_anmeldung>'.$url.'</url_anmeldung>';
+            },
+            $content
+        );
+
+        $this->view->assign('value', ['content' => base64_encode($content)]);
+    }
 }
