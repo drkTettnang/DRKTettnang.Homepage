@@ -547,7 +547,7 @@ function loadBloodDonationEvents() {
    $.ajax({
       url: options.url,
       method: 'GET',
-      dataType: 'text',
+      dataType: 'json',
       success: function(data) {
          localStorage.setItem(options.url, JSON.stringify({
             time: new Date().getTime(),
