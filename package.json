@@ -9,7 +9,7 @@
   "author": "Klaus Herberth <klaus@herberth.eu>",
   "license": "MIT",
   "scripts": {
-      "build": "grunt build"
+    "build": "grunt build"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
