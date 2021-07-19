@@ -28,15 +28,15 @@ class FacebookController extends ActionController
     */
    protected $resourceManager;
 
-    public function indexAction()
+   public function indexAction()
     {
-        $fb = array(
+        $fb = [
            'pageid' => $this->request->getInternalArgument('__pageid'),
            'token' => $this->request->getInternalArgument('__token'),
            'limit' => $this->request->getInternalArgument('__limit'),
            'ignore' => $this->request->getInternalArgument('__ignore'),
            'links' => $this->request->getInternalArgument('__links')
-        );
+        ];
 
         if (empty($fb['pageid']) || empty($fb['token'])) {
            $this->view->assign('error', 'Empty pageid or token');

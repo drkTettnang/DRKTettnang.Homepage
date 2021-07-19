@@ -1,2 +1,0 @@
-prototype(DRKTettnang.Homepage:Operation) < prototype(Neos.Neos:Document) {
-}
