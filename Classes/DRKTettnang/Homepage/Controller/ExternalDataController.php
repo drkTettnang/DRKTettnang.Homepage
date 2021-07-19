@@ -47,7 +47,7 @@ class ExternalDataController extends ActionController
             return;
         }
 
-        $content = file_get_contents('http://www.drk-blutspende.de/blutspendetermine/ergebnisse.php?rss=1&plz_ort_eingabe=' . $location);
+        $content = file_get_contents('https://www.drk-blutspende.de/blutspendetermine/ergebnisse.php?rss=1&plz_ort_eingabe=' . $location);
 
         $this->view->assign('value', ['content' => $content]);
     }
