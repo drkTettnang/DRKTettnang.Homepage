@@ -56,7 +56,7 @@ class FormController extends ActionController {
       $captcha = $this->session->getData('captcha');
 
       if (!isset($_POST['captcha']) || $captcha !== $_POST['captcha']) {
-         $this->addFlashMessage('Kontrollcode leider falsch.', null, Error::SEVERITY_WARNING);
+         $this->addFlashMessage('Kontrollcode leider falsch.', '', Error::SEVERITY_WARNING);
 
          $this->logger->info('Wrong captcha');
 
@@ -83,9 +83,9 @@ class FormController extends ActionController {
          $this->logger->info('Form processed');
 
          $this->session->putData('processed', true);
-         $this->addFlashMessage('Formular erfolgreich verarbeitet.', null, Error::SEVERITY_OK);
+         $this->addFlashMessage('Formular erfolgreich verarbeitet.', '', Error::SEVERITY_OK);
       } else {
-         $this->addFlashMessage('Dieses Formular wurde schon verarbeitet und wurde aus diesem Grund nicht erneut gesendet. Vermutlich haben Sie diese Seite neu geladen.', null, Error::SEVERITY_NOTICE);
+         $this->addFlashMessage('Dieses Formular wurde schon verarbeitet und wurde aus diesem Grund nicht erneut gesendet. Vermutlich haben Sie diese Seite neu geladen.', '', Error::SEVERITY_NOTICE);
       }
 
       $this->view->assign('data', $data);
@@ -159,7 +159,7 @@ class FormController extends ActionController {
                $failed = true;
 
                if($validate) {
-                  $this->addFlashMessage('Bitte geben Sie eine korrekte E-Mail Adresse ein', null, Error::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte geben Sie eine korrekte E-Mail Adresse ein', '', Error::SEVERITY_WARNING);
                }
             }
 
@@ -167,7 +167,7 @@ class FormController extends ActionController {
                $failed = true;
 
                if($validate) {
-                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, Error::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', '', Error::SEVERITY_WARNING);
                }
             }
 
@@ -177,9 +177,9 @@ class FormController extends ActionController {
 
             if($validate) {
                if (in_array('agree', $config)) {
-                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', null, Error::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte zeigen Sie sich einverstanden mit der untenstehenden Bedingung', '', Error::SEVERITY_WARNING);
                } else {
-                  $this->addFlashMessage('Bitte füllen Sie alle Pflichtfelder aus', null, Error::SEVERITY_WARNING);
+                  $this->addFlashMessage('Bitte füllen Sie alle Pflichtfelder aus', '', Error::SEVERITY_WARNING);
                }
             }
          }
