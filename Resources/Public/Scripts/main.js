@@ -411,10 +411,6 @@ function loadHiorgEvents() {
       return;
    }
 
-   options.url += '?' + $.param({
-      ov: options.ov
-   });
-
    dom.html('<p><div class="spinner"><div class="loader"/></div> (Lade Termine)</p>');
 
    var cache = '';
@@ -470,7 +466,7 @@ function displayBloodDonationEvents(container, html, options) {
       dayString = dayString.replace(/.*(\d{2}\.\d{1,2}\.\d{2,4}).*/, '$1');
 
       var timeString = item.find('title').text().trim().replace(/\s\s+/g, ' ');
-      timeStringSplit = timeString.replace(/.*((\d{2}:\d{2}) ?bis ?(\d{2}:\d{2})).*/, '$2-$3');
+      timeStringSplit = timeString.replace(/.*((\d{2}:\d{2}) ?(?:Uhr)? ?bis ?(\d{2}:\d{2})).*/, '$2-$3');
       timeStringSplit = timeStringSplit.split('-');
       var fromToString = buildFromToString(dayString, $.trim(timeStringSplit[0]), $.trim(timeStringSplit[1]));
 
